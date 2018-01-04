@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="login">
+
+    <div class="main-agileits">
+        <div class="form-w3agile">
+            <h3>Login</h3>
+            <form action="Login" method="post">
+                @if (ViewBag.error != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.Error</div>
+                } 
+                <div class="key">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <input type="text" name="Email" placeholder="Email" value="@ViewBag.email">
+                    <div class="clearfix"></div>
+                </div>
+                <div class="key">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input type="password" name="Password"  placeholder="Password" value="@ViewBag.password">
+                    <div class="clearfix"></div>
+                </div>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+        <div class="forg">
+            <a href="#" class="forg-left">Forgot Password</a>
+            <a>@Html.ActionLink("Đăng Ký", "CreateCustomer", "Customer",new { @class= "forg-right" })
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+
+

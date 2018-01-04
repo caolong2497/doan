@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Final project.dbo.Business' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Business">
+    <Key>
+      <PropertyRef Name="BusinessId" />
+      <PropertyRef Name="BusinessName" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="BusinessId" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="BusinessName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="MetaLink" Type="ntext" />
+    <Property Name="DisplayNo" Type="int" Nullable="false" />
+    <Property Name="IconImg" Type="ntext" />
+    <Property Name="FeatureImg" Type="ntext" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="ShowHome" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PassWord" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="48" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="256" />
+    <Property Name="Avatar" Type="varchar" MaxLength="256" />
+    <Property Name="Balance" Type="float" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="CodeConfirm" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Status" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Feeback">
+    <Key>
+      <PropertyRef Name="FeedbackId" />
+    </Key>
+    <Property Name="FeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FulltName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Content" Type="ntext" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Final project.dbo.GrandPermission' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="GrandPermission">
+    <Key>
+      <PropertyRef Name="PermissionId" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="PermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="PostId" />
+    </Key>
+    <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostTitile" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="PostContent" Type="ntext" />
+    <Property Name="Author" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="FeatureImg" Type="ntext" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetail" />
+    </Key>
+    <Property Name="OrderDetail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Value" Type="float" Nullable="false" />
+    <Property Name="Status" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="48" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="256" />
+    <Property Name="Avatar" Type="varchar" MaxLength="256" />
+    <Property Name="Total" Type="float" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="PermissionId" />
+    </Key>
+    <Property Name="PermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PermissionName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="BusinessId" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="IconImg" Type="ntext" />
+    <Property Name="Screen" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Battery" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="CPU" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Ram" Type="varchar" MaxLength="128" />
+    <Property Name="Camera" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Color" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Osystem" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="Discount" Type="int" Nullable="false" />
+    <Property Name="PriceIn" Type="float" Nullable="false" />
+    <Property Name="PriceOut" Type="float" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="ProviderId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="CoutView" Type="int" />
+    <Property Name="CoutBuy" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Provider">
+    <Key>
+      <PropertyRef Name="ProviderId" />
+    </Key>
+    <Property Name="ProviderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProviderName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="IconImg" Type="ntext" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Slider">
+    <Key>
+      <PropertyRef Name="SliderId" />
+    </Key>
+    <Property Name="SliderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SliderImg" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="DisplayNo" Type="int" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="PassWord" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="256" />
+    <Property Name="Avatar" Type="varchar" MaxLength="256" />
+    <Property Name="IsAdmin" Type="tinyint" />
+    <Property Name="CodeConfirm" Type="varchar" MaxLength="10" />
+    <Property Name="Allower" Type="tinyint" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" />
+  </EntityType>
+  <Association Name="FK__Category__UserId__6FE99F9F">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__UserId__70DDC3D8">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Provider__UserId__71D1E811">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Provider" Type="Self.Provider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Provider">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_DeleteCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_DeleteCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_DeleteProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_DeleteProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_DeleteUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_GetCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_GetCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_GetProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_GetProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_GetUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_InsertCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ParentId" Type="int" Mode="In" />
+    <Parameter Name="MetaLink" Type="ntext" Mode="In" />
+    <Parameter Name="DisplayNo" Type="int" Mode="In" />
+    <Parameter Name="IconImg" Type="ntext" Mode="In" />
+    <Parameter Name="FeatureImg" Type="ntext" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="ShowHome" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_InsertCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PassWord" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Phone" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Avatar" Type="varchar" Mode="In" />
+    <Parameter Name="Balance" Type="float" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="CodeConfirm" Type="varchar" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="returnCode" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_InsertProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProductName" Type="nvarchar" Mode="In" />
+    <Parameter Name="IconImg" Type="ntext" Mode="In" />
+    <Parameter Name="Screen" Type="varchar" Mode="In" />
+    <Parameter Name="Battery" Type="varchar" Mode="In" />
+    <Parameter Name="CPU" Type="varchar" Mode="In" />
+    <Parameter Name="Ram" Type="varchar" Mode="In" />
+    <Parameter Name="Camera" Type="varchar" Mode="In" />
+    <Parameter Name="Color" Type="varchar" Mode="In" />
+    <Parameter Name="Osystem" Type="varchar" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="Discount" Type="int" Mode="In" />
+    <Parameter Name="PriceIn" Type="float" Mode="In" />
+    <Parameter Name="PriceOut" Type="float" Mode="In" />
+    <Parameter Name="CategoryId" Type="int" Mode="In" />
+    <Parameter Name="ProviderId" Type="int" Mode="In" />
+    <Parameter Name="Quantity" Type="int" Mode="In" />
+    <Parameter Name="CoutView" Type="int" Mode="In" />
+    <Parameter Name="CoutBuy" Type="int" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="returnCode" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_InsertProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProviderName" Type="nvarchar" Mode="In" />
+    <Parameter Name="IconImg" Type="ntext" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="returnCode" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_InsertUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PassWord" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Avatar" Type="varchar" Mode="In" />
+    <Parameter Name="IsAdmin" Type="tinyint" Mode="In" />
+    <Parameter Name="CodeConfirm" Type="varchar" Mode="In" />
+    <Parameter Name="Allower" Type="tinyint" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_UpdateCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryId" Type="int" Mode="In" />
+    <Parameter Name="CategoryName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ParentId" Type="int" Mode="In" />
+    <Parameter Name="MetaLink" Type="ntext" Mode="In" />
+    <Parameter Name="DisplayNo" Type="int" Mode="In" />
+    <Parameter Name="IconImg" Type="ntext" Mode="In" />
+    <Parameter Name="FeatureImg" Type="ntext" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="ShowHome" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_UpdateCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerId" Type="int" Mode="In" />
+    <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PassWord" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Phone" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Avatar" Type="varchar" Mode="In" />
+    <Parameter Name="Balance" Type="float" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="CodeConfirm" Type="varchar" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="returnCode" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_UpdateProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProductId" Type="int" Mode="In" />
+    <Parameter Name="ProductName" Type="nvarchar" Mode="In" />
+    <Parameter Name="IconImg" Type="ntext" Mode="In" />
+    <Parameter Name="Screen" Type="varchar" Mode="In" />
+    <Parameter Name="Battery" Type="varchar" Mode="In" />
+    <Parameter Name="CPU" Type="varchar" Mode="In" />
+    <Parameter Name="Ram" Type="varchar" Mode="In" />
+    <Parameter Name="Camera" Type="varchar" Mode="In" />
+    <Parameter Name="Color" Type="varchar" Mode="In" />
+    <Parameter Name="Osystem" Type="varchar" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="Discount" Type="int" Mode="In" />
+    <Parameter Name="PriceIn" Type="float" Mode="In" />
+    <Parameter Name="PriceOut" Type="float" Mode="In" />
+    <Parameter Name="CategoryId" Type="int" Mode="In" />
+    <Parameter Name="ProviderId" Type="int" Mode="In" />
+    <Parameter Name="Quantity" Type="int" Mode="In" />
+    <Parameter Name="CoutView" Type="int" Mode="In" />
+    <Parameter Name="CoutBuy" Type="int" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="returnCode" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_UpdateProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProviderId" Type="int" Mode="In" />
+    <Parameter Name="ProviderName" Type="nvarchar" Mode="In" />
+    <Parameter Name="IconImg" Type="ntext" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="returnCode" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="usp_UpdateUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PassWord" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Avatar" Type="varchar" Mode="In" />
+    <Parameter Name="IsAdmin" Type="tinyint" Mode="In" />
+    <Parameter Name="CodeConfirm" Type="varchar" Mode="In" />
+    <Parameter Name="Allower" Type="tinyint" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feeback" EntityType="Self.Feeback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Business" EntityType="Self.Business" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Business].[BusinessId] AS [BusinessId], 
+    [Business].[BusinessName] AS [BusinessName], 
+    [Business].[Status] AS [Status]
+    FROM [dbo].[Business] AS [Business]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="GrandPermission" EntityType="Self.GrandPermission" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [GrandPermission].[PermissionId] AS [PermissionId], 
+    [GrandPermission].[UserId] AS [UserId], 
+    [GrandPermission].[Status] AS [Status]
+    FROM [dbo].[GrandPermission] AS [GrandPermission]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Category__UserId__6FE99F9F" Association="Self.FK__Category__UserId__6FE99F9F">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__UserId__70DDC3D8" Association="Self.FK__Products__UserId__70DDC3D8">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Provider__UserId__71D1E811" Association="Self.FK__Provider__UserId__71D1E811">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Provider" EntitySet="Provider" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

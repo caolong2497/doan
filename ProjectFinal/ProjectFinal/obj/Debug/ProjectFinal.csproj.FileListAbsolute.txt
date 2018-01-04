@@ -1,0 +1,189 @@
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\ApplicationInsights.config
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\roslyn\csc.exe
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\roslyn\System.Collections.Immutable.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\roslyn\vbc.exe
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\roslyn\VBCSCompiler.exe
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\roslyn\VBCSCompiler.exe.config
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\ProjectFinal.dll.config
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\ProjectFinal.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\ProjectFinal.pdb
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Antlr3.Runtime.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\EntityFramework.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\EntityFramework.SqlServer.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.AI.Agent.Intercept.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.AI.DependencyCollector.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.AI.PerfCounterCollector.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.AI.ServerTelemetryChannel.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.AI.Web.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.AI.WindowsServer.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.ApplicationInsights.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.Web.Infrastructure.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Newtonsoft.Json.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Net.Http.Formatting.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.Helpers.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.Http.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.Http.WebHost.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.Mvc.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.Optimization.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.Razor.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.Deployment.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.Razor.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\WebGrease.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\EntityFramework.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\EntityFramework.SqlServer.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.AI.DependencyCollector.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.AI.ServerTelemetryChannel.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.AI.Web.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.AI.WindowsServer.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.ApplicationInsights.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Newtonsoft.Json.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Net.Http.Formatting.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.Helpers.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.Http.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.Http.WebHost.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.Mvc.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.Optimization.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.Razor.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.Deployment.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.Razor.xml
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\bin\Antlr3.Runtime.pdb
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\obj\Debug\ProjectFinal.csprojResolveAssemblyReference.cache
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\obj\Debug\ProjectFinal.dll
+c:\users\long\documents\visual studio 2015\Projects\ProjectFinal\ProjectFinal\obj\Debug\ProjectFinal.pdb
+D:\Other\ProjectFinal\ProjectFinal\bin\ApplicationInsights.config
+D:\Other\ProjectFinal\ProjectFinal\bin\roslyn\csc.exe
+D:\Other\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Other\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Other\ProjectFinal\ProjectFinal\bin\roslyn\System.Collections.Immutable.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\roslyn\System.Reflection.Metadata.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\roslyn\vbc.exe
+D:\Other\ProjectFinal\ProjectFinal\bin\roslyn\VBCSCompiler.exe
+D:\Other\ProjectFinal\ProjectFinal\bin\roslyn\VBCSCompiler.exe.config
+D:\Other\ProjectFinal\ProjectFinal\bin\ProjectFinal.dll.config
+D:\Other\ProjectFinal\ProjectFinal\bin\ProjectFinal.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\ProjectFinal.pdb
+D:\Other\ProjectFinal\ProjectFinal\bin\Antlr3.Runtime.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\EntityFramework.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\EntityFramework.SqlServer.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.AI.DependencyCollector.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.AI.Web.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.AI.WindowsServer.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.ApplicationInsights.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.Web.Infrastructure.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\Newtonsoft.Json.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Net.Http.Formatting.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.Helpers.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.Http.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.Http.WebHost.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.Mvc.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.Optimization.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.Razor.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.Deployment.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.Razor.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\WebGrease.dll
+D:\Other\ProjectFinal\ProjectFinal\bin\EntityFramework.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\EntityFramework.SqlServer.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.AI.DependencyCollector.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.AI.Web.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.AI.WindowsServer.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.ApplicationInsights.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\Newtonsoft.Json.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Net.Http.Formatting.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.Helpers.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.Http.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.Http.WebHost.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.Mvc.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.Optimization.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.Razor.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.Deployment.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.Razor.xml
+D:\Other\ProjectFinal\ProjectFinal\bin\Antlr3.Runtime.pdb
+D:\Other\ProjectFinal\ProjectFinal\obj\Debug\ProjectFinal.dll
+D:\Other\ProjectFinal\ProjectFinal\obj\Debug\ProjectFinal.pdb
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\ApplicationInsights.config
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\roslyn\csc.exe
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\roslyn\System.Collections.Immutable.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\roslyn\System.Reflection.Metadata.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\roslyn\vbc.exe
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\roslyn\VBCSCompiler.exe
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\roslyn\VBCSCompiler.exe.config
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\ProjectFinal.dll.config
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\ProjectFinal.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\ProjectFinal.pdb
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Antlr3.Runtime.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\EntityFramework.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\EntityFramework.SqlServer.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.AI.DependencyCollector.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.AI.Web.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.AI.WindowsServer.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.ApplicationInsights.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.Web.Infrastructure.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Newtonsoft.Json.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Net.Http.Formatting.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.Helpers.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.Http.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.Http.WebHost.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.Mvc.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.Optimization.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.Razor.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.Deployment.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.Razor.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\WebGrease.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\EntityFramework.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\EntityFramework.SqlServer.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.AI.DependencyCollector.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.AI.Web.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.AI.WindowsServer.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.ApplicationInsights.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Newtonsoft.Json.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Net.Http.Formatting.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.Helpers.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.Http.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.Http.WebHost.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.Mvc.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.Optimization.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.Razor.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.Deployment.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\System.Web.WebPages.Razor.xml
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\bin\Antlr3.Runtime.pdb
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\obj\Debug\ProjectFinal.csprojResolveAssemblyReference.cache
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\obj\Debug\ProjectFinal.dll
+D:\Aptech\đồ án sem3\ProjectFinal\ProjectFinal\obj\Debug\ProjectFinal.pdb
+D:\Other\ProjectFinal\ProjectFinal\obj\Debug\ProjectFinal.csprojResolveAssemblyReference.cache
