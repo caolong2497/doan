@@ -17,9 +17,9 @@
     <script src="~/Content/phone/js/web.js"></script>
 </head>
 <body ng-app="myApp" >
-@Html.Partial("header")
+@Html.Action("header","Common")
         @RenderBody()
-@Html.Partial("footer")
+@Html.Action("footer","Common")
     <!-- cart-js -->
 
     <!-- //cart-js -->  

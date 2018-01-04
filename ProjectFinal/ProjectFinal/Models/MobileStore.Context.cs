@@ -456,6 +456,11 @@ namespace ProjectFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertUserInfo", userNameParameter, fullNameParameter, passWordParameter, emailParameter, avatarParameter, isAdminParameter, codeConfirmParameter, allowerParameter, createDateParameter, statusParameter, error);
         }
     
+        public virtual ObjectResult<usp_TopProvider_Result> usp_TopProvider()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_TopProvider_Result>("usp_TopProvider");
+        }
+    
         public virtual int usp_UpdateCategory(Nullable<int> categoryId, string categoryName, Nullable<int> parentId, string metaLink, Nullable<int> displayNo, string iconImg, string featureImg, string description, Nullable<int> showHome, Nullable<int> status, ObjectParameter error)
         {
             var categoryIdParameter = categoryId.HasValue ?

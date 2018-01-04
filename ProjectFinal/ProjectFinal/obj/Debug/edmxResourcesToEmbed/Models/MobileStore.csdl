@@ -383,6 +383,7 @@
       <Parameter Name="Status" Mode="In" Type="Byte" />
       <Parameter Name="Error" Mode="InOut" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="usp_TopProvider" ReturnType="Collection(Model.usp_TopProvider_Result)" />
     <FunctionImport Name="usp_UpdateCategory">
       <Parameter Name="CategoryId" Mode="In" Type="Int32" />
       <Parameter Name="CategoryName" Mode="In" Type="String" />
@@ -539,5 +540,9 @@
     <Property Type="Byte" Name="Allower" Nullable="true" />
     <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
     <Property Type="Byte" Name="Status" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_TopProvider_Result">
+    <Property Type="Int32" Name="ProviderId" Nullable="true" />
+    <Property Type="String" Name="ProviderName" Nullable="true" MaxLength="256" />
   </ComplexType>
 </Schema>

@@ -360,6 +360,7 @@ warning 6002: The table/view 'Final project.dbo.GrandPermission' does not have a
           <Parameter Name="Status" Type="tinyint" Mode="In" />
           <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="usp_TopProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_UpdateCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CategoryId" Type="int" Mode="In" />
           <Parameter Name="CategoryName" Type="nvarchar" Mode="In" />
@@ -862,6 +863,7 @@ warning 6002: The table/view 'Final project.dbo.GrandPermission' does not have a
             <Parameter Name="Status" Mode="In" Type="Byte" />
             <Parameter Name="Error" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="usp_TopProvider" ReturnType="Collection(Model.usp_TopProvider_Result)" />
           <FunctionImport Name="usp_UpdateCategory">
             <Parameter Name="CategoryId" Mode="In" Type="Int32" />
             <Parameter Name="CategoryName" Mode="In" Type="String" />
@@ -1018,6 +1020,10 @@ warning 6002: The table/view 'Final project.dbo.GrandPermission' does not have a
           <Property Type="Byte" Name="Allower" Nullable="true" />
           <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
           <Property Type="Byte" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_TopProvider_Result">
+          <Property Type="Int32" Name="ProviderId" Nullable="true" />
+          <Property Type="String" Name="ProviderName" Nullable="true" MaxLength="256" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1350,6 +1356,14 @@ warning 6002: The table/view 'Final project.dbo.GrandPermission' does not have a
           <FunctionImportMapping FunctionImportName="usp_InsertProducts" FunctionName="Model.Store.usp_InsertProducts" />
           <FunctionImportMapping FunctionImportName="usp_InsertProvider" FunctionName="Model.Store.usp_InsertProvider" />
           <FunctionImportMapping FunctionImportName="usp_InsertUserInfo" FunctionName="Model.Store.usp_InsertUserInfo" />
+          <FunctionImportMapping FunctionImportName="usp_TopProvider" FunctionName="Model.Store.usp_TopProvider">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.usp_TopProvider_Result">
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="usp_UpdateCategory" FunctionName="Model.Store.usp_UpdateCategory" />
           <FunctionImportMapping FunctionImportName="usp_UpdateCustomer" FunctionName="Model.Store.usp_UpdateCustomer" />
           <FunctionImportMapping FunctionImportName="usp_UpdateProducts" FunctionName="Model.Store.usp_UpdateProducts" />

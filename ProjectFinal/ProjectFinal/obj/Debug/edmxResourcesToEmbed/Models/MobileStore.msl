@@ -326,6 +326,14 @@
     <FunctionImportMapping FunctionImportName="usp_InsertProducts" FunctionName="Model.Store.usp_InsertProducts" />
     <FunctionImportMapping FunctionImportName="usp_InsertProvider" FunctionName="Model.Store.usp_InsertProvider" />
     <FunctionImportMapping FunctionImportName="usp_InsertUserInfo" FunctionName="Model.Store.usp_InsertUserInfo" />
+    <FunctionImportMapping FunctionImportName="usp_TopProvider" FunctionName="Model.Store.usp_TopProvider">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.usp_TopProvider_Result">
+          <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+          <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="usp_UpdateCategory" FunctionName="Model.Store.usp_UpdateCategory" />
     <FunctionImportMapping FunctionImportName="usp_UpdateCustomer" FunctionName="Model.Store.usp_UpdateCustomer" />
     <FunctionImportMapping FunctionImportName="usp_UpdateProducts" FunctionName="Model.Store.usp_UpdateProducts" />

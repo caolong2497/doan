@@ -194,24 +194,15 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
-    <Compile Include="Models\IProviderRepository.cs" />
-    <Compile Include="Models\ProviderRespository.cs" />
-    <Compile Include="Utils\Common.cs" />
-    <Compile Include="Controllers\CustomerController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Models\Business.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CustomerRegister.cs" />
-    <Compile Include="Models\CustomerRepository.cs" />
+    <Compile Include="Models\CategoryRespository.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
@@ -221,7 +212,9 @@
     <Compile Include="Models\GrandPermission.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ICustomerRepository.cs" />
+    <Compile Include="Models\ICategoryRespository.cs" />
+    <Compile Include="Models\IProductRespository.cs" />
+    <Compile Include="Models\IProviderRepository.cs" />
     <Compile Include="Models\MobileStore.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -252,9 +245,12 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductRespository.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\Provider.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProviderRespository.cs" />
     <Compile Include="Models\Slider.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
@@ -285,6 +281,19 @@
     <Compile Include="Models\usp_GetUserInfo_Result.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\usp_TopProvider_Result.cs">
+      <DependentUpon>MobileStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Common.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerRegister.cs" />
+    <Compile Include="Models\CustomerRepository.cs" />
+    <Compile Include="Models\ICustomerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -348,6 +357,9 @@
     <Content Include="Content\phone\images\dp7.jpg" />
     <Content Include="Content\phone\images\dp8.jpg" />
     <Content Include="Content\phone\images\dp9.jpg" />
+    <Content Include="Content\phone\images\Galaxy8_item.jpg" />
+    <Content Include="Content\phone\images\GalaxyNote8_item.png" />
+    <Content Include="Content\phone\images\GalaxyS8_item.jpg" />
     <Content Include="Content\phone\images\hcp1.jpg" />
     <Content Include="Content\phone\images\hcp2.jpg" />
     <Content Include="Content\phone\images\hcp3.jpg" />
@@ -377,7 +389,13 @@
     <Content Include="Content\phone\images\ip8.jpg" />
     <Content Include="Content\phone\images\ip9.jpg" />
     <Content Include="Content\phone\images\iphone-X.png" />
+    <Content Include="Content\phone\images\Iphone7plus_do_item.png" />
+    <Content Include="Content\phone\images\Iphone7plus_item.jpeg" />
+    <Content Include="Content\phone\images\iphone7_item.jpg" />
     <Content Include="Content\phone\images\iphone8.jpg" />
+    <Content Include="Content\phone\images\Iphone8plus_item.png" />
+    <Content Include="Content\phone\images\IphoneX_item.jpeg" />
+    <Content Include="Content\phone\images\iphoneX_item.jpg" />
     <Content Include="Content\phone\images\jp1.jpg" />
     <Content Include="Content\phone\images\jp2.jpg" />
     <Content Include="Content\phone\images\jp3.jpg" />
@@ -438,6 +456,8 @@
     <Content Include="Content\phone\images\offer8.jpg" />
     <Content Include="Content\phone\images\offer9.jpg" />
     <Content Include="Content\phone\images\oppo.png" />
+    <Content Include="Content\phone\images\OppoA83_item.jpg" />
+    <Content Include="Content\phone\images\OppoF3.jpg" />
     <Content Include="Content\phone\images\pp1.jpg" />
     <Content Include="Content\phone\images\pp2.jpg" />
     <Content Include="Content\phone\images\pp3.jpg" />
@@ -618,13 +638,6 @@
     <Content Include="Content\phone\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\phone\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\phone\fonts\glyphicons-halflings-regular.woff2" />
-    <EntityDeploy Include="Models\MobileStore.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MobileStore.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\MobileStore.edmx.diagram">
-      <DependentUpon>MobileStore.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-touch.min.js.map" />
@@ -638,6 +651,13 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <EntityDeploy Include="Models\MobileStore.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MobileStore.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MobileStore.edmx.diagram">
+      <DependentUpon>MobileStore.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />
@@ -1400,9 +1420,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Customer\CreateCustomer.cshtml" />
     <Content Include="Views\Customer\Login.cshtml" />
-    <Content Include="Views\Provider\ListProvider.cshtml" />
-    <Content Include="Views\Shared\header.cshtml" />
-    <Content Include="Views\Shared\footer.cshtml" />
+    <Content Include="Views\Common\header.cshtml" />
+    <Content Include="Views\Common\footer.cshtml" />
     <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>

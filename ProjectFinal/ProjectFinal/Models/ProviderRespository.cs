@@ -16,5 +16,10 @@ namespace ProjectFinal.Models
 
             return pro;
         }
+        public IEnumerable<usp_TopProvider_Result> getTopProvider()
+        {
+            var pro = db.usp_TopProvider();
+            return pro;
+        }
     }
 }

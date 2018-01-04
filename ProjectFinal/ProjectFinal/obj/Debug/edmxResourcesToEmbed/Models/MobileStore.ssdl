@@ -355,6 +355,7 @@ warning 6002: The table/view 'Final project.dbo.GrandPermission' does not have a
     <Parameter Name="Status" Type="tinyint" Mode="In" />
     <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
   </Function>
+  <Function Name="usp_TopProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="usp_UpdateCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CategoryId" Type="int" Mode="In" />
     <Parameter Name="CategoryName" Type="nvarchar" Mode="In" />

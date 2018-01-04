@@ -9,5 +9,6 @@ namespace ProjectFinal.Models
     {
 
         List<Provider> getProvider();
+        IEnumerable<usp_TopProvider_Result> getTopProvider();
     }
 }
