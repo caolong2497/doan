@@ -288,6 +288,9 @@ warning 6002: The table/view 'Final project.dbo.GrandPermission' does not have a
         </Function>
         <Function Name="usp_GetCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_GetCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_GetProductDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductId" Type="int" Mode="In" />
+        </Function>
         <Function Name="usp_GetProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_GetProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_GetUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -791,6 +794,9 @@ warning 6002: The table/view 'Final project.dbo.GrandPermission' does not have a
           </FunctionImport>
           <FunctionImport Name="usp_GetCategory" ReturnType="Collection(Model.usp_GetCategory_Result)" />
           <FunctionImport Name="usp_GetCustomer" ReturnType="Collection(Model.usp_GetCustomer_Result)" />
+          <FunctionImport Name="usp_GetProductDetail" ReturnType="Collection(Model.usp_GetProductDetail_Result)">
+            <Parameter Name="ProductId" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="usp_GetProducts" ReturnType="Collection(Model.usp_GetProducts_Result)" />
           <FunctionImport Name="usp_GetProvider" ReturnType="Collection(Model.usp_GetProvider_Result)" />
           <FunctionImport Name="usp_GetUserInfo" ReturnType="Collection(Model.usp_GetUserInfo_Result)" />
@@ -975,6 +981,22 @@ warning 6002: The table/view 'Final project.dbo.GrandPermission' does not have a
           <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
           <Property Type="String" Name="CodeConfirm" Nullable="false" MaxLength="10" />
           <Property Type="Byte" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_GetProductDetail_Result">
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="IconImg" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Screen" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="Battery" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="CPU" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="Ram" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Camera" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="Color" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="Osystem" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Discount" Nullable="false" />
+          <Property Type="Double" Name="PriceOut" Nullable="false" />
+          <Property Type="String" Name="ProviderName" Nullable="false" MaxLength="256" />
         </ComplexType>
         <ComplexType Name="usp_GetProducts_Result">
           <Property Type="Int32" Name="ProductId" Nullable="false" />
@@ -1291,6 +1313,26 @@ warning 6002: The table/view 'Final project.dbo.GrandPermission' does not have a
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="CodeConfirm" ColumnName="CodeConfirm" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetProductDetail" FunctionName="Model.Store.usp_GetProductDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.usp_GetProductDetail_Result">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="IconImg" ColumnName="IconImg" />
+                <ScalarProperty Name="Screen" ColumnName="Screen" />
+                <ScalarProperty Name="Battery" ColumnName="Battery" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="Ram" ColumnName="Ram" />
+                <ScalarProperty Name="Camera" ColumnName="Camera" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Osystem" ColumnName="Osystem" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="PriceOut" ColumnName="PriceOut" />
+                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

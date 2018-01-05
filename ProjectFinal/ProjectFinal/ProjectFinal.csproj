@@ -193,8 +193,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Models\Business.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
@@ -245,8 +245,8 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductViewDetail.cs" />
     <Compile Include="Models\ProductRespository.cs" />
-    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\Provider.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
@@ -270,6 +270,9 @@
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_GetCustomer_Result.cs">
+      <DependentUpon>MobileStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetProductDetail_Result.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_GetProducts_Result.cs">
@@ -1423,6 +1426,12 @@
     <Content Include="Views\Common\header.cshtml" />
     <Content Include="Views\Common\footer.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

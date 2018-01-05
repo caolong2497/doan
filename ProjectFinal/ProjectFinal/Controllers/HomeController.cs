@@ -14,24 +14,21 @@ namespace ProjectFinal.Controllers
         {
             ProviderRespository providerRes = new ProviderRespository();
             List<Provider> provider = providerRes.getProvider();
-            IEnumerable<usp_TopProvider_Result> topProvider = providerRes.getTopProvider();
-            ViewBag.TopProvider = topProvider;
+
+            List<usp_TopProvider_Result> listpro = providerRes.getTopProvider().ToList();
             ViewBag.Provider = provider;
             ViewBag.Title = "Home Page";
             ProductRespository productRes = new ProductRespository();
-            foreach(var c in topProvider)
+            List<IEnumerable<ProductViewModel>> listProduct = new List<IEnumerable<ProductViewModel>>();
+            foreach (var c in listpro)
             {
                 int i = (int)c.ProviderId;
-                productRes.getTopProductbyProvider(i);
+                listProduct.Add(productRes.getTopProductbyProvider(i));
             }
+            ViewBag.TopProvider = listpro;
+            ViewBag.listProduct = listProduct;
             return View();
         }
-        //[HttpGet]
-        //public IEnumerable<ProductViewModel> getTopProductByProvider(int providerid)
-        //{
-           
-        //    return product;
-        //}
 
 
     }

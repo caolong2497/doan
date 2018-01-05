@@ -21,5 +21,30 @@ namespace ProjectFinal.Models
                           };
             return product;
         }
+        public ProductViewDetail getProductDetail(int productid)
+        {
+            var product = from p in db.Products
+                          join i in db.Providers on p.ProviderId equals i.ProviderId
+                          where p.ProductId == productid && p.Status == 1 && i.Status == 1
+                          select new ProductViewDetail
+                          {
+                              ProductId = p.ProductId,
+                              ProductName = p.ProductName,
+                              IconImg = p.IconImg,
+                              Screen = p.Screen,
+                              Battery = p.Battery,
+                              Description = p.Description,
+                              CPU = p.CPU,
+                              Ram = p.Ram,
+                              Camera = p.Camera,
+                              Color = p.Color,
+                              Osystem = p.Osystem,
+                              Discount = p.Discount,
+                              PriceOut = p.PriceOut,
+                              ProviderName = i.ProviderName
+                          };
+            //var product = db.usp_GetProductDetail(productid);
+            return product.First();
+        }
     }
 }

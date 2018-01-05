@@ -200,6 +200,15 @@ namespace ProjectFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetCustomer_Result>("usp_GetCustomer");
         }
     
+        public virtual ObjectResult<usp_GetProductDetail_Result> usp_GetProductDetail(Nullable<int> productId)
+        {
+            var productIdParameter = productId.HasValue ?
+                new ObjectParameter("ProductId", productId) :
+                new ObjectParameter("ProductId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetProductDetail_Result>("usp_GetProductDetail", productIdParameter);
+        }
+    
         public virtual ObjectResult<usp_GetProducts_Result> usp_GetProducts()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetProducts_Result>("usp_GetProducts");

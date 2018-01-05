@@ -264,6 +264,26 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetProductDetail" FunctionName="Model.Store.usp_GetProductDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.usp_GetProductDetail_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="IconImg" ColumnName="IconImg" />
+          <ScalarProperty Name="Screen" ColumnName="Screen" />
+          <ScalarProperty Name="Battery" ColumnName="Battery" />
+          <ScalarProperty Name="CPU" ColumnName="CPU" />
+          <ScalarProperty Name="Ram" ColumnName="Ram" />
+          <ScalarProperty Name="Camera" ColumnName="Camera" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Osystem" ColumnName="Osystem" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="PriceOut" ColumnName="PriceOut" />
+          <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="usp_GetProducts" FunctionName="Model.Store.usp_GetProducts">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Model.usp_GetProducts_Result">
