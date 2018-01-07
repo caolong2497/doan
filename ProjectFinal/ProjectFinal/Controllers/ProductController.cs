@@ -16,6 +16,8 @@ namespace ProjectFinal.Controllers
             ProductRespository proRes = new ProductRespository();
             ProductViewDetail product = proRes.getProductDetail(productid);
             ViewBag.product = product;
+            String[] Image = product.IconImg.Split(',');
+            ViewBag.Image = Image;
             return View();
         }
 

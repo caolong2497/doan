@@ -63,14 +63,16 @@
             <div class="clearfix"> </div>
             @foreach (var product in ViewBag.listProduct)
             {
+               
                 <div class="resp-tabs-container">
                     <div class="tab-1 resp-tab-content">
                         @foreach (var item in product)
                         {
+                            String[] Image = item.IconImg.Split(',');
                             <div class="col-md-3 top-product-grids tp1">
                                 <a href="@Url.Action("ProductDetail", "Product",new { id=item.ProductId })">
                                     <div class="product-img">
-                                        <img class="item-img" src="@item.IconImg" alt=""  />
+                                        <img  src="@Image.GetValue(0)" alt=""  />
                                         <div class="p-mask">
                                             <form action="#" method="post">
                                                 <input type="hidden" name="cmd" value="_cart" />

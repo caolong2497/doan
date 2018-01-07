@@ -1,5 +1,21 @@
-﻿
+﻿@{
+    var priceout = @ViewBag.product.PriceOut * (100 - @ViewBag.product.Discount) / 100;
+}
 
+<link href="~/Content/phone/css/flexslider.css" rel="stylesheet" type="text/css" media="screen" />
+<script>
+// Can also be used with $(document).ready()
+$(window).load(function() {
+	$('.flexslider').flexslider({
+	animation: "slide",
+	controlNav: "thumbnails"
+	});
+});
+</script>
+<!--flex slider-->
+<script src="~/Content/phone/js/imagezoom.js"></script>
+<script src="~/Content/phone/js/jquery.flexslider.js"></script>
+    <!-- //js -->
 <div class="products">
     <div class="container">
         <div class="single-page">
@@ -7,39 +23,25 @@
                 <div class="col-md-6 single-top-left">
                     <div class="flexslider">
                         <ul class="slides">
-                            <li data-thumb="~/Content/phone/images/s1.jpg">
-                                <div class="thumb-image detail_images"> <img src="~Content/phone/images/s1.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-                            </li>
-                            <li data-thumb="~/Content/phone/images/s2.jpg">
-                                <div class="thumb-image"> <img src="~Content/phone/images/s2.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-                            </li>
-                            <li data-thumb="~/Content/phone/images/s3.jpg">
-                                <div class="thumb-image"> <img src="~Content/phone/images/s3.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-                            </li>
+
+                            @foreach (var img in ViewBag.Image)
+                            {
+                                <li data-thumb="@img">
+                                    <div class="thumb-image "> <img src="@img" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                                </li>
+                            }
+
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-6 single-top-right">
                     <h3 class="item_name"> @ViewBag.product.ProductName</h3>
-                    <p>Processing Time: Item will be shipped out within 2-3 working days. </p>
-                    <div class="single-rating">
-                        <ul>
-                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                            <li class="rating">20 reviews</li>
-                            <li><a href="#">Add your review</a></li>
-                        </ul>
-                    </div>
+
                     <div class="single-price">
                         <ul>
-                            <li>$54</li>
-                            <li><del>$60</del></li>
-                            <li><span class="w3off">10% OFF</span></li>
-                            <li>Ends on: Oct,15th</li>
-                            <li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i> Coupon</a></li>
+                            <li>@priceout.ToString("#,###").Replace(",", ".") VNĐ</li>
+                            <li><del>@ViewBag.product.PriceOut.ToString("#,###").Replace(",", ".") VNĐ</del></li>
+                            <li><span class="w3off">@ViewBag.product.Discount % OFF</span></li>
                         </ul>
                     </div>
                     <p class="single-price-text">Fusce a egestas nibh, eget ornare erat. Proin placerat, urna et consequat efficitur, sem odio blandit enim, sit amet euismod turpis est mattis lectus. Vestibulum maximus quam et quam egestas imperdiet. In dignissim auctor viverra. </p>
@@ -121,19 +123,5 @@
         <!-- //collapse -->
     </div>
 </div>
-<!-- newsletter -->
-<div class="newsletter">
-    <div class="container">
-        <div class="col-md-6 w3agile_newsletter_left">
-            <h2>Newsletter</h2>
-            <p>Excepteur sint occaecat cupidatat non proident, sunt.</p>
-        </div>
-        <div class="col-md-6 w3agile_newsletter_right">
-            <form action="#" method="post">
-                <input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-                <input type="submit" value="Subscribe" />
-            </form>
-        </div>
-        <div class="clearfix"> </div>
-    </div>
-</div>
+
+

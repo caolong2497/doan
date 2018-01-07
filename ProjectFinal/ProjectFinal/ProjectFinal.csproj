@@ -397,6 +397,8 @@
     <Content Include="Content\phone\images\iphone7_item.jpg" />
     <Content Include="Content\phone\images\iphone8.jpg" />
     <Content Include="Content\phone\images\Iphone8plus_item.png" />
+    <Content Include="Content\phone\images\iphone8plus_item2.jpg" />
+    <Content Include="Content\phone\images\iphone8plus_item3.jpg" />
     <Content Include="Content\phone\images\IphoneX_item.jpeg" />
     <Content Include="Content\phone\images\iphoneX_item.jpg" />
     <Content Include="Content\phone\images\jp1.jpg" />
