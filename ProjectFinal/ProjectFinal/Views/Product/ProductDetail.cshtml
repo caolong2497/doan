@@ -44,7 +44,28 @@ $(window).load(function() {
                             <li><span class="w3off">@ViewBag.product.Discount % OFF</span></li>
                         </ul>
                     </div>
-                    <p class="single-price-text">Fusce a egestas nibh, eget ornare erat. Proin placerat, urna et consequat efficitur, sem odio blandit enim, sit amet euismod turpis est mattis lectus. Vestibulum maximus quam et quam egestas imperdiet. In dignissim auctor viverra. </p>
+
+                      <ul class="thongso">
+                          <li>
+                              <label>Màn Hình:</label> @ViewBag.product.Screen
+                          </li>
+                          <li>
+                              <label>Camera:</label> @ViewBag.product.Camera
+                          </li>
+                          <li>
+                              <label>Ram:</label> @ViewBag.product.Battery
+                          </li>
+                          <li>
+                              <label>Pin:</label>@ViewBag.product.Battery
+                          </li>
+                          <li>
+                              <label>HĐH:</label> @ViewBag.product.Osystem
+                          </li>
+                          <li>
+                              <label>CPU:</label> @ViewBag.product.CPU
+                          </li>
+                      </ul>
+
                     <form action="#" method="post">
                         <input type="hidden" name="cmd" value="_cart" />
                         <input type="hidden" name="add" value="1" />
@@ -53,8 +74,10 @@ $(window).load(function() {
                         <button type="submit" class="w3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
                     </form>
                     <button class="w3ls-cart w3ls-cart-like"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
+                    
                 </div>
                 <div class="clearfix"> </div>
+
             </div>
         </div>
 
@@ -66,58 +89,52 @@ $(window).load(function() {
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
                             <a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <i class="fa fa-file-text-o fa-icon" aria-hidden="true"></i> Description <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
+                                <i class="fa fa-file-text-o fa-icon" aria-hidden="true"></i> Mô tả sản phẩm<span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
                             </a>
                         </h4>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            @ViewBag.product.Description
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingTwo">
-                        <h4 class="panel-title">
-                            <a class="collapsed pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <i class="fa fa-info-circle fa-icon" aria-hidden="true"></i> additional information <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
+
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingThree">
                         <h4 class="panel-title">
                             <a class="collapsed pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                <i class="fa fa-check-square-o fa-icon" aria-hidden="true"></i> reviews (5) <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
+                                <i class="fa fa-check-square-o fa-icon" aria-hidden="true"></i> Bình Luận <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
                             </a>
                         </h4>
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                         <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            @*<div class="fb-comments" data-href="http://localhost:11501/Product/ProductDetail/@ViewBag.product.ProductId" data-numposts="5"></div>*@
+
+                            <div class="panel panel-default comment_item">
+
+                                <div class="panel-body">
+                                   By <label class="author">Thanh Long</label> at 6-6-2017 :<br />
+                                    <p class="content_cmt">Ngon</p>
+                                </div>
+                            </div>
+                            <div class="panel panel-default comment_item">
+
+                                <div class="panel-body">
+                                    By <label class="author">Hợp ĐV</label> at 6-6-2017 :<br />
+                                    <p class="content_cmt">Ngon</p>
+                                </div>
+                            </div>
+                            <dibiev class="form-group">
+                                <label for="inputlg">Hãy để lại bình luận của bạn ở đây</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                            </dibiev>
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingFour">
-                        <h4 class="panel-title">
-                            <a class="collapsed pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                <i class="fa fa-question-circle fa-icon" aria-hidden="true"></i> help <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                        <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
         <!-- //collapse -->
