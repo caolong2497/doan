@@ -20,6 +20,34 @@ namespace ProjectFinal.Controllers
             ViewBag.Image = Image;
             return View();
         }
-
+        //public ActionResult GetListProduct()
+        //{
+        //    return View();
+        //}
+        public ActionResult GetListProduct(String id)
+        {
+            ProductRespository proRes = new ProductRespository();
+            IEnumerable<ProductViewModel> product=null;
+            if ("lastest".Equals(id))
+            {
+                 product = proRes.getListProductNew();
+            }else if("hot".Equals(id))
+            {
+                 product = proRes.getListProductHot();
+            }else if ("mostview".Equals(id))
+            {
+                product = proRes.getListProductView();
+            }
+            else if ("sale".Equals(id))
+            {
+                product = proRes.getListProductSale();
+            }
+            ViewBag.product = product;
+            return View();
+        }
+        //public ActionResult GetListProduct(ProductSearchModel model)
+        //{
+        //    return View();
+        //}
     }
 }

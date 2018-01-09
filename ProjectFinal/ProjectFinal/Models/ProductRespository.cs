@@ -46,5 +46,62 @@ namespace ProjectFinal.Models
             //var product = db.usp_GetProductDetail(productid);
             return product.First();
         }
+
+        public IEnumerable<ProductViewModel> getListProductNew()
+        {
+            var product = (from b in db.Products
+                          orderby b.CreateDate descending
+                           select new ProductViewModel
+                          {
+                              ProductId = b.ProductId,
+                              ProductName = b.ProductName,
+                              IconImg = b.IconImg,
+                              PriceOut = b.PriceOut
+                          }).Take(9);
+            return product;
+        }
+
+        public IEnumerable<ProductViewModel> getListProductHot()
+        {
+
+            var product = (from b in db.Products
+                           orderby b.CoutBuy descending
+                           select new ProductViewModel
+                           {
+                               ProductId = b.ProductId,
+                               ProductName = b.ProductName,
+                               IconImg = b.IconImg,
+                               PriceOut = b.PriceOut
+                           }).Take(9);
+            return product;
+        }
+
+        public IEnumerable<ProductViewModel> getListProductView()
+        {
+            var product = (from b in db.Products
+                           orderby b.CoutView descending
+                           select new ProductViewModel
+                           {
+                               ProductId = b.ProductId,
+                               ProductName = b.ProductName,
+                               IconImg = b.IconImg,
+                               PriceOut = b.PriceOut
+                           }).Take(9);
+            return product;
+        }
+
+        public IEnumerable<ProductViewModel> getListProductSale()
+        {
+            var product = (from b in db.Products
+                           orderby b.Discount descending
+                           select new ProductViewModel
+                           {
+                               ProductId = b.ProductId,
+                               ProductName = b.ProductName,
+                               IconImg = b.IconImg,
+                               PriceOut = b.PriceOut
+                           }).Take(9);
+            return product;
+        }
     }
 }

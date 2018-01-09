@@ -43,6 +43,12 @@ h1, h2, h3, h4, h5, h6 {
 p {
 	margin:0;
 }
+.comment_post{
+    margin-top:20px;
+}
+.btn_comment{
+    margin-top:15px;
+}
 
 .thongso {
 -webkit-column-count: 2;
@@ -498,10 +504,7 @@ ul.resp-tabs-list li:nth-child(2):after{
 }*/
 .top-product-grids,.women-grids{
 	text-align:center;
-
-}
-.top-product-grids{
-     margin-bottom: 30px;
+    height: 350px;
 }
 .product-img{
 	position:relative;
@@ -1683,10 +1686,11 @@ p.single-price-text {
 }
 .collpse.tabs .panel-body {
 	padding: 15px;
-	color: #999;
+	color: #565656;
 	line-height: 1.8em;
 	font-size: 1em;
 }
+
 .collpse.tabs .panel-default > .panel-heading {
     padding: 0;
     background: #37a1f3;

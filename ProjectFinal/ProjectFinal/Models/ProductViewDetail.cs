@@ -29,4 +29,11 @@ namespace ProjectFinal.Models
         public string IconImg { get; set; }
         public double PriceOut { get; set; }
     }
+    public class ProductSearchModel
+    {
+        public List<String> Battery { get; set; }
+        public List<String> Color { get; set; }
+        public List<double> PriceOut { get; set; }
+        public List<int> ProviderId { get; set; }
+    }
 }
