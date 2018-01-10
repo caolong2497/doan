@@ -1,55 +1,59 @@
 ﻿
 
-    <div class="content">
-        <div class="container">
+    <div class="content" ng-controller="MobileController">
+
+        <div class="container" ng-init="searchProvider(providername)">
             <div class="col-md-4 w3ls_dresses_grid_left">
                 <div class="w3ls_dresses_grid_left_grid">
-                    <h3>Categories</h3>
-                    <div class="w3ls_dresses_grid_left_grid_sub">
-                        <div class="ecommerce_dres-type">
-                            <ul>
-                                <li><a href="shoes.html">Women Shoes</a></li>
-                                <li><a href="shoes.html">Men shoes</a></li>
-                                <li><a href="shoes.html">Casual shoes</a></li>
-                                <li><a href="shoes.html">Running shoes</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="w3ls_dresses_grid_left_grid">
-                    <h3>Brand</h3>
+                    <h3>Thương hiệu</h3>
                     <div class="w3ls_dresses_grid_left_grid_sub">
                         <div class="ecommerce_color">
-                            <ul>
-                                <li><a href="shoes.html">Adidas</a></li>
-                                <li><a href="shoes.html">Fila</a></li>
-                                <li><a href="shoes.html">Nike</a></li>
-                                <li><a href="shoes.html">Osiris</a></li>
-                            </ul>
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="providername" ng-change="searchProvider(providername)" placeholder="Tìm thương hiệu">
+                            </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Tất cả</label>
+                                </div>
+                                @*@foreach (var provider in ViewBag.provider)
+                                {
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="">@provider.ProviderName</label>
+                                    </div>
+
+                                }*@
+                            <div class="checkbox" ng-repeat="provide in data">
+                                <label><input type="checkbox" value="">{{provide.ProviderName}}</label>
+                            </div>
+
                         </div>
                     </div>
                 </div>
                 <div class="w3ls_dresses_grid_left_grid">
-                    <h3>Size</h3>
+                    <h3>Mức giá</h3>
                     <div class="w3ls_dresses_grid_left_grid_sub">
                         <div class="ecommerce_color ecommerce_size">
-                            <ul>
-                                <li><a href="#">Medium</a></li>
-                                <li><a href="#">Large</a></li>
-                                <li><a href="#">Extra Large</a></li>
-                                <li><a href="#">Small</a></li>
-                            </ul>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Tất cả</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Từ 1 - 3 triệu</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Từ 3 - 6 triệu</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Từ 6 - 10 triệu</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Từ 10 - 15 triệu</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Trên 15 Triệuu</label>
+                                </div>
                         </div>
                     </div>
                 </div>
-                <div class="w3ls_dresses_grid_left_grid">
-                    <div class="dresses_img_hover">
-                        <img src="images/offer11.jpg" alt=" " class="img-responsive" />
-                        <div class="dresses_img_hover_pos">
-                            <h4>Upto<span>40%</span><i>Off</i></h4>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="col-md-8 col-sm-8 women-dresses">
                 @foreach (var item in ViewBag.product)

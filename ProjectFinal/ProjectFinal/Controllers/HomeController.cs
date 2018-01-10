@@ -13,7 +13,7 @@ namespace ProjectFinal.Controllers
         public ActionResult Index()
         {
             ProviderRespository providerRes = new ProviderRespository();
-            List<Provider> provider = providerRes.getProvider();
+            var provider = providerRes.getProvider();
 
             List<usp_TopProvider_Result> listpro = providerRes.getTopProvider().ToList();
             ViewBag.Provider = provider;

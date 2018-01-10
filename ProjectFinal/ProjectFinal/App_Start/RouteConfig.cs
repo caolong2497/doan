@@ -14,6 +14,21 @@ namespace ProjectFinal
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "get-list-provider",
+                url: "get-list-provider",
+                defaults: new { controller = "Provider", action = "getListProvider"}
+            );
+            routes.MapRoute(
+                name: "get-list-provider-by-name",
+                url: "get-list-provider-by-name",
+                defaults: new { controller = "Provider", action = "getListProviderByName" }
+            );
+            routes.MapRoute(
+                name: "a",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Home", action = "Index" }
+            );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

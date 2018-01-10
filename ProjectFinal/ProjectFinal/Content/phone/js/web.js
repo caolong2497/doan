@@ -44,5 +44,25 @@ $(window).load(function() {
 });
 var app=angular.module('myApp', []);
 app.controller('MobileController', function ($scope, $http) {
+    //$scope.initProduct = function (id) {
+    //    console.log(id);
+    //    $scope.searchProvider($scope.name);
+    //    $http.get("/Product/GetProduct?id="+id ).then(function (response) {
+    //        $scope.data = response.data;
+    //    });
 
+    //}
+    $scope.searchProvider = function (name) {
+
+        if (name == null || name.length == 0) {
+            $http.get("/get-list-provider").then(function (response) {
+                $scope.data = response.data;
+            });
+        }
+        else {
+            $http.get("/get-list-provider-by-name?name=" + name).then(function (response) {
+                $scope.data = response.data;
+            });
+        }
+    }
     });

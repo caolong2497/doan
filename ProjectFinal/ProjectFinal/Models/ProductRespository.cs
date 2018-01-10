@@ -47,7 +47,7 @@ namespace ProjectFinal.Models
             return product.First();
         }
 
-        public IEnumerable<ProductViewModel> getListProductNew()
+        public List<ProductViewModel> getListProductNew()
         {
             var product = (from b in db.Products
                           orderby b.CreateDate descending
@@ -57,11 +57,11 @@ namespace ProjectFinal.Models
                               ProductName = b.ProductName,
                               IconImg = b.IconImg,
                               PriceOut = b.PriceOut
-                          }).Take(9);
+                          }).Take(9).ToList();
             return product;
         }
 
-        public IEnumerable<ProductViewModel> getListProductHot()
+        public List<ProductViewModel> getListProductHot()
         {
 
             var product = (from b in db.Products
@@ -72,11 +72,11 @@ namespace ProjectFinal.Models
                                ProductName = b.ProductName,
                                IconImg = b.IconImg,
                                PriceOut = b.PriceOut
-                           }).Take(9);
+                           }).Take(9).ToList();
             return product;
         }
 
-        public IEnumerable<ProductViewModel> getListProductView()
+        public List<ProductViewModel> getListProductView()
         {
             var product = (from b in db.Products
                            orderby b.CoutView descending
@@ -86,11 +86,11 @@ namespace ProjectFinal.Models
                                ProductName = b.ProductName,
                                IconImg = b.IconImg,
                                PriceOut = b.PriceOut
-                           }).Take(9);
+                           }).Take(9).ToList();
             return product;
         }
 
-        public IEnumerable<ProductViewModel> getListProductSale()
+        public List<ProductViewModel> getListProductSale()
         {
             var product = (from b in db.Products
                            orderby b.Discount descending
@@ -100,7 +100,7 @@ namespace ProjectFinal.Models
                                ProductName = b.ProductName,
                                IconImg = b.IconImg,
                                PriceOut = b.PriceOut
-                           }).Take(9);
+                           }).Take(9).ToList();
             return product;
         }
     }

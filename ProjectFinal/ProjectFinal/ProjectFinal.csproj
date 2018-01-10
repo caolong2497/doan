@@ -94,6 +94,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -251,6 +252,7 @@
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProviderRespository.cs" />
+    <Compile Include="Models\ProviderView.cs" />
     <Compile Include="Models\Slider.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
@@ -1434,6 +1436,7 @@
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Product\GetListProduct.cshtml" />
+    <Content Include="Views\Product\GetProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

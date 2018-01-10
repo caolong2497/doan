@@ -8,11 +8,11 @@ namespace ProjectFinal.Models
     public interface IProductRespository
     {
         IEnumerable<ProductViewModel> getTopProductbyProvider(int providerid);
-        IEnumerable<ProductViewModel> getListProductNew();
-        IEnumerable<ProductViewModel> getListProductHot();
+        List<ProductViewModel> getListProductNew();
+        List<ProductViewModel> getListProductHot();
 
-        IEnumerable<ProductViewModel> getListProductView();
+        List<ProductViewModel> getListProductView();
 
-        IEnumerable<ProductViewModel> getListProductSale();
+        List<ProductViewModel> getListProductSale();
     }
 }

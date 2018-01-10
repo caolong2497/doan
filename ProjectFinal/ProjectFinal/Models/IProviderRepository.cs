@@ -8,8 +8,8 @@ namespace ProjectFinal.Models
     public interface IProviderRepository
     {
 
-        List<Provider> getProvider();
+        IEnumerable<ProviderView> getProvider();
         IEnumerable<usp_TopProvider_Result> getTopProvider();
-       
+        IEnumerable<ProviderView> getProviderbyName(string name);
     }
 }

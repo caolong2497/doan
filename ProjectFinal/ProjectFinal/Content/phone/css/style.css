@@ -502,6 +502,9 @@ ul.resp-tabs-list li:nth-child(2):after{
     top: 24%;
     left: 59.1%;
 }*/
+.input-group{
+        margin-bottom: 15px;
+}
 .top-product-grids,.women-grids{
 	text-align:center;
     height: 350px;
@@ -578,6 +581,7 @@ button.w3ls-cart.pw3ls-cart {
 button.w3ls-cart.pw3ls-cart:focus{
 	outline:none;
 }
+
 button.w3ls-cart.pw3ls-cart .fa{
 	margin-right:10px;
 }

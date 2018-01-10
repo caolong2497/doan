@@ -10,9 +10,29 @@ namespace ProjectFinal.Models
         MobileStoreEntities db = new MobileStoreEntities();
 
 
-        public List<Provider> getProvider()
+        public IEnumerable<ProviderView> getProvider()
         {
-            var pro = db.Providers.ToList();
+            var pro = from b in db.Providers
+                      where b.Status==1
+                    select new ProviderView
+                    {
+                        ProviderId = b.ProviderId,
+                        ProviderName = b.ProviderName,
+                        IconImg = b.IconImg
+                    };
+
+            return pro;
+        }
+        public IEnumerable<ProviderView> getProviderbyName(string name)
+        {
+            var pro = from b in db.Providers
+                            where b.ProviderName.Contains(name) && b.Status == 1
+                            select new ProviderView
+                            {
+                                ProviderId = b.ProviderId,
+                                ProviderName = b.ProviderName,
+                                IconImg = b.IconImg
+                            };
 
             return pro;
         }
