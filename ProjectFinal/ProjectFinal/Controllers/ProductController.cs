@@ -148,23 +148,23 @@ namespace ProjectFinal.Controllers
             }
             return JsonConvert.SerializeObject(Listproduct);
         }
-        //[HttpGet]
-        //public String GetProductByPrice(String ListPrice)
-        //{
-        //    ProductRespository proRes = new ProductRespository();
-        //    List<ProductViewModel> product = proRes.GetProductByPrice(ListPrice);
-        //    List<ProductViewModel> Listproduct = new List<ProductViewModel>();
-        //    foreach (var item in product)
-        //    {
-        //        ProductViewModel pro = new ProductViewModel();
-        //        pro.ProductId = item.ProductId;
-        //        pro.IconImg = item.IconImg.Split(',')[0];
-        //        pro.ProductName = item.ProductName;
-        //        pro.PriceOut = item.PriceOut;
-        //        pro.Discount = item.Discount;
-        //        Listproduct.Add(pro);
-        //    }
-        //    return JsonConvert.SerializeObject(Listproduct);
-        //}
+        [HttpGet]
+        public String GetProductByCategory(String Id)
+        {
+            ProductRespository proRes = new ProductRespository();
+            List<ProductViewModel> product = proRes.GetProductByPrice(ListPrice);
+            List<ProductViewModel> Listproduct = new List<ProductViewModel>();
+            foreach (var item in product)
+            {
+                ProductViewModel pro = new ProductViewModel();
+                pro.ProductId = item.ProductId;
+                pro.IconImg = item.IconImg.Split(',')[0];
+                pro.ProductName = item.ProductName;
+                pro.PriceOut = item.PriceOut;
+                pro.Discount = item.Discount;
+                Listproduct.Add(pro);
+            }
+            return JsonConvert.SerializeObject(Listproduct);
+        }
     }
 }

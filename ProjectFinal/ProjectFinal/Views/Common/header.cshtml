@@ -52,7 +52,7 @@
                                                             {
                                                                 if (i % 2 == 0)
                                                                 {
-                                                                <li><a href="women.html"><i class="fa fa-angle-right" aria-hidden="true"></i>@cat2.ElementAt(i).CategoryName</a></li>
+                                                                <li><a href="@Url.Action("GetListProduct", "Product",new { id=cat2.ElementAt(i).CategoryName })"><i class="fa fa-angle-right" aria-hidden="true"></i>@cat2.ElementAt(i).CategoryName</a></li>
                                                                 }
                                                             }
                                                         </ul>
@@ -65,7 +65,7 @@
                                                             {
                                                                 if (i % 2 == 1)
                                                                 {
-                                                                    <li><a href="women.html"><i class="fa fa-angle-right" aria-hidden="true"></i>@cat2.ElementAt(i).CategoryName</a></li>
+                                                                    <li><a href="@Url.Action("GetListProduct", "Product",new { id=cat2.ElementAt(i).CategoryName })"><i class="fa fa-angle-right" aria-hidden="true"></i>@cat2.ElementAt(i).CategoryName</a></li>
                                                                 }
                                                             }
 
