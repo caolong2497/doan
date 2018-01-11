@@ -19,57 +19,6 @@ $(document).ready(function () {
 		fit: true   // 100% fit in a container
 	});
 
-	$('.checkAll').click(function () {
-	    text = [];
-	    var c = this.checked;
-	    if (c == true) {
-	        text.push('all');
-	        $('.checkElement').prop('checked', false);
-	    }
-	});
-
-	$('.checkElement').click(function () {
-	    text = [];
-	    $(".checkElement").each(function () {
-	        if ($(this).prop('checked') == true) {
-	            text.push($(this).val());
-	            $('.checkAll').prop('checked', false);
-	            // return false;
-	        }
-	        // text+=this.val()+",";
-	    })
-	    alert(text.join());
-	});
-
-	$('.cb').change(function () {
-	    $.ajax({
-	        url: '',
-	        method: 'GET',
-	        contentType: 'application/json',
-	        dataType: 'json',
-	        processData: false
-	    }).done(function (result) {
-	        console.log(result);
-	    }).fail(function (err) {
-	        console.error(err);
-	    });
-	});
-
-	function getListProduct() {
-	    $.ajax({
-	        url: '/Product/GetProduct/' + id,
-	        method: 'GET',
-	        contentType: 'application/json',
-	        dataType: 'json',
-	        processData: false
-	    }).done(function (result) {
-	        console.log(result);
-	    }).fail(function (err) {
-	        console.error(err);
-	    });
-	}
-
-	//getListProduct();
 });
 $(window).load(function() {
 	$("#flexiselDemo1").flexisel({
@@ -117,4 +66,68 @@ app.controller('MobileController', function ($scope, $http) {
             });
         }
     }
+    $scope.proid = [];
+    $scope.price = [];
+    $('.checkAllPrice').click(function () {
+        $scope.price = [];
+        var c = this.checked;
+        if (c == true) {
+            $scope.price.push('all');
+            $('.checkElement').prop('checked', false);
+        }
+        $scope.SearchProduct();
+    });
+
+    $('.checkElement').click(function () {
+        $scope.price = [];
+        $(".checkElement").each(function () {
+            if ($(this).prop('checked') == true) {
+                $scope.price.push($(this).val());
+                $('.checkAllPrice').prop('checked', false);
+            }
+
+        })
+        $scope.SearchProduct();
+    });
+
+    $('.checkAllProvider').click(function () {
+        $scope.proid = [];
+        var c = this.checked;
+        if (c == true) {
+            $scope.proid.push('all');
+            $('.providerBox').prop('checked', false);
+        }
+        $scope.SearchProduct();
+    });
+    $scope.selectProvider = function () {
+        $scope.proid = [];
+        $(".providerBox").each(function () {
+            if ($(this).prop('checked') == true) {
+                $scope.proid.push($(this).val());
+                $('.checkAllProvider').prop('checked', false);
+
+            }
+        })
+        $scope.SearchProduct();
+    };
+    $scope.SearchProduct = function () {
+        if ($scope.proid.length == 0) {
+            $scope.proid.push('all');
+        }
+        if ($scope.price.length == 0) {
+            $scope.price.push('all');
+        }
+        //console.log($scope.proid + ":" + $scope.price);
+        $http({
+            url: "/Product/SearchProduct/",
+            method: "GET",
+            params: { Listprovider: $scope.proid.join(), ListPrice: $scope.price.join() }
+        }).then(function(response){
+            $scope.Product = response.data;
+        });
+        //$http.get("/get-list-provider-by-name?name=" + name).then(function (response) {
+        //    $scope.data = response.data;
+        //});
+    }
+
     });

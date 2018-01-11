@@ -67,6 +67,7 @@
                     <div class="tab-1 resp-tab-content">
                         @foreach (var item in product)
                         {
+                            var price = item.PriceOut * (100 - item.Discount) / 100;
                             String[] Image = item.IconImg.Split(',');
                             <div class="col-md-3 top-product-grids tp1">
                                 <a href="@Url.Action("ProductDetail", "Product",new { id=item.ProductId })">
@@ -82,9 +83,20 @@
                                             </form>
                                         </div>
                                     </div>
+                                    @if (item.Discount != 0) {
+                                    <label class="sale_label">Sale</label>
+                                    }
                                 </a>
                                 <h4>@item.ProductName</h4>
-                                <h5>@item.PriceOut.ToString("#,###").Replace(",", ".")</h5>
+                                @if (item.Discount != 0)
+                                {
+                                    <h5>@price.ToString("#,###").Replace(",", ".")₫</h5>
+                                <del>@item.PriceOut.ToString("#,###").Replace(",", ".")₫</del>
+                                }
+                                else
+                                {
+                                    <h5>@item.PriceOut.ToString("#,###").Replace(",", ".")₫</h5>
+                                }
                                 </div>
                             }
 

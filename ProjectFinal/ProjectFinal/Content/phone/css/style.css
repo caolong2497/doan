@@ -508,6 +508,22 @@ ul.resp-tabs-list li:nth-child(2):after{
 .top-product-grids,.women-grids{
 	text-align:center;
     height: 350px;
+        position: relative;
+}
+.sale_label {
+    position: absolute;
+    top: 10px;
+    right: -5px;
+    display: inline-block;
+    padding: 3px 14px;
+    text-align: center;
+    line-height: 21px;
+    font-size: 12px;
+    color: #fff;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 4px;
+    background-color: #ff2842;
 }
 .product-img{
 	position:relative;

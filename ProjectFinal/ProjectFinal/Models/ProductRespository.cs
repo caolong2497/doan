@@ -16,6 +16,7 @@ namespace ProjectFinal.Models
                           {
                               ProductId = b.ProductId,
                               ProductName = b.ProductName,
+                              Discount=b.Discount,
                               IconImg = b.IconImg,
                               PriceOut = b.PriceOut
                           };
@@ -93,6 +94,36 @@ namespace ProjectFinal.Models
             return product;
         }
 
+        internal List<ProductViewModel> GetAllProduct()
+        {
+            var product = (from b in db.Products
+                           select new ProductViewModel
+                           {
+                               ProductId = b.ProductId,
+                               ProductName = b.ProductName,
+                               IconImg = b.IconImg,
+                               Discount = b.Discount,
+                               PriceOut = b.PriceOut
+                           }).ToList();
+            return product;
+        }
+
+        internal List<ProductViewModel> GetProductByProvider(string listprovider)
+        {
+            String[] ListProviderId = listprovider.Split(',');
+            var product = (from b in db.Products
+                           where ListProviderId.Contains(b.ProviderId + "")
+                           select new ProductViewModel
+                           {
+                               ProductId = b.ProductId,
+                               ProductName = b.ProductName,
+                               IconImg = b.IconImg,
+                               Discount = b.Discount,
+                               PriceOut = b.PriceOut
+                           }).ToList();
+            return product;
+        }
+
         public List<ProductViewModel> getListProductSale()
         {
             var product = (from b in db.Products
@@ -106,6 +137,160 @@ namespace ProjectFinal.Models
                                PriceOut = b.PriceOut
                            }).Take(9).ToList();
             return product;
+        }
+        
+        public List<ProductViewModel> SearchProduct(String ListProvider,String ListPrice)
+        {
+            String[] ListProviderId = ListProvider.Split(',');
+            String[] Price = ListPrice.Split(',');
+            List<ProductViewModel> Listproduct = new List<ProductViewModel>();
+            foreach (var item in Price)
+            {
+                List<ProductViewModel> product = null;
+                if ("13".Equals(item))
+                {
+                    product = (from b in db.Products
+                               where b.PriceOut <= 3000000 && ListProviderId.Contains(b.ProviderId + "")
+                               select new ProductViewModel
+                               {
+                                   ProductId = b.ProductId,
+                                   ProductName = b.ProductName,
+                                   IconImg = b.IconImg,
+                                   Discount = b.Discount,
+                                   PriceOut = b.PriceOut
+                               }).ToList();
+                }
+                else if ("36".Equals(item))
+                {
+                    product = (from b in db.Products
+                               where b.PriceOut >= 3000000 && b.PriceOut <= 6000000 && ListProviderId.Contains(b.ProviderId + "")
+                               select new ProductViewModel
+                               {
+                                   ProductId = b.ProductId,
+                                   ProductName = b.ProductName,
+                                   IconImg = b.IconImg,
+                                   Discount = b.Discount,
+                                   PriceOut = b.PriceOut
+                               }).ToList();
+                }
+                else if ("610".Equals(item))
+                {
+                    product = (from b in db.Products
+                               where b.PriceOut >= 6000000 && b.PriceOut <= 10000000 && ListProviderId.Contains(b.ProviderId + "")
+                               select new ProductViewModel
+                               {
+                                   ProductId = b.ProductId,
+                                   ProductName = b.ProductName,
+                                   IconImg = b.IconImg,
+                                   Discount = b.Discount,
+                                   PriceOut = b.PriceOut
+                               }).ToList();
+                }
+                else if ("1015".Equals(item))
+                {
+                    product = (from b in db.Products
+                               where b.PriceOut >= 10000000 && b.PriceOut <= 15000000 && ListProviderId.Contains(b.ProviderId + "")
+                               select new ProductViewModel
+                               {
+                                   ProductId = b.ProductId,
+                                   ProductName = b.ProductName,
+                                   IconImg = b.IconImg,
+                                   Discount = b.Discount,
+                                   PriceOut = b.PriceOut
+                               }).ToList();
+                }
+                else
+                {
+                    product = (from b in db.Products
+                               where b.PriceOut >= 15000000 && ListProviderId.Contains(b.ProviderId + "")
+                               select new ProductViewModel
+                               {
+                                   ProductId = b.ProductId,
+                                   ProductName = b.ProductName,
+                                   IconImg = b.IconImg,
+                                   Discount = b.Discount,
+                                   PriceOut = b.PriceOut
+                               }).ToList();
+                }
+                Listproduct.AddRange(product);
+            }
+            return Listproduct;
+        }
+
+        internal List<ProductViewModel> GetProductByPrice(String ListPrice)
+        {
+            String[] Price = ListPrice.Split(',');
+            List<ProductViewModel> Listproduct = new List<ProductViewModel>(); 
+            foreach ( var item in Price)
+            {   
+                List<ProductViewModel> product = null;
+                if ("13".Equals(item))
+                {
+                  product = (from b in db.Products
+                               where b.PriceOut * (100 - b.Discount) / 100 <= 3000000
+                               select new ProductViewModel
+                               {
+                                   ProductId = b.ProductId,
+                                   ProductName = b.ProductName,
+                                   IconImg = b.IconImg,
+                                   Discount = b.Discount,
+                                   PriceOut = b.PriceOut
+                               }).ToList();
+                }
+                else if ("36".Equals(item))
+                {
+                    product = (from b in db.Products
+                               where b.PriceOut*(100-b.Discount)/100 >= 3000000 && b.PriceOut * (100 - b.Discount) / 100 <= 6000000
+                               select new ProductViewModel
+                               {
+                                   ProductId = b.ProductId,
+                                   ProductName = b.ProductName,
+                                   IconImg = b.IconImg,
+                                   Discount = b.Discount,
+                                   PriceOut = b.PriceOut
+                               }).ToList();
+                }else if ("610".Equals(item))
+                {
+                    product = (from b in db.Products
+                               where b.PriceOut * (100 - b.Discount) / 100 >= 6000000 && b.PriceOut * (100 - b.Discount) / 100 <= 10000000
+                               select new ProductViewModel
+                               {
+                                   ProductId = b.ProductId,
+                                   ProductName = b.ProductName,
+                                   IconImg = b.IconImg,
+                                   Discount = b.Discount,
+                                   PriceOut = b.PriceOut
+                               }).ToList();
+                }else if ("1015".Equals(item))
+                {
+                    product = (from b in db.Products
+                               where b.PriceOut * (100 - b.Discount) / 100 >= 10000000 && b.PriceOut * (100 - b.Discount) / 100 <= 15000000
+                               select new ProductViewModel
+                               {
+                                   ProductId = b.ProductId,
+                                   ProductName = b.ProductName,
+                                   IconImg = b.IconImg,
+                                   Discount = b.Discount,
+                                   PriceOut = b.PriceOut
+                               }).ToList();
+                }
+                else
+                {
+                    product = (from b in db.Products
+                               where b.PriceOut * (100 - b.Discount) / 100 >= 15000000
+                               select new ProductViewModel
+                               {
+                                   ProductId = b.ProductId,
+                                   ProductName = b.ProductName,
+                                   IconImg = b.IconImg,
+                                   Discount = b.Discount,
+                                   PriceOut = b.PriceOut
+                               }).ToList();
+                }
+                Listproduct.AddRange(product);
+            }
+            return Listproduct;
+
         }
     }
 }

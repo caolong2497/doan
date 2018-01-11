@@ -62,5 +62,109 @@ namespace ProjectFinal.Controllers
             }
             return JsonConvert.SerializeObject(Listproduct);
         }
+        //[HttpGet]
+        //public String SearchProduct(String id)
+        //{
+        //    ProductRespository proRes = new ProductRespository();
+        //    List<ProductViewModel> product = null;
+        //    List<ProductViewModel> Listproduct = new List<ProductViewModel>();
+        //    if ("lastest".Equals(id))
+        //    {
+        //        product = proRes.getListProductNew();
+        //    }
+        //    else if ("hot".Equals(id))
+        //    {
+        //        product = proRes.getListProductHot();
+        //    }
+        //    else if ("mostview".Equals(id))
+        //    {
+        //        product = proRes.getListProductView();
+        //    }
+        //    else if ("sale".Equals(id))
+        //    {
+        //        product = proRes.getListProductSale();
+        //    }
+        //    foreach (var item in product)
+        //    {
+        //        ProductViewModel pro = new ProductViewModel();
+        //        pro.ProductId = item.ProductId;
+        //        pro.IconImg = item.IconImg.Split(',')[0];
+        //        pro.ProductName = item.ProductName;
+        //        pro.PriceOut = item.PriceOut;
+        //        pro.Discount = item.Discount;
+        //        Listproduct.Add(pro);
+        //    }
+        //    return JsonConvert.SerializeObject(Listproduct);
+        //}
+        //[HttpGet]
+        //public String GetAllProduct()
+        //{
+        //    ProductRespository proRes = new ProductRespository();
+        //    List<ProductViewModel> product = proRes.GetAllProduct();
+        //    List<ProductViewModel> Listproduct = new List<ProductViewModel>();
+        //    foreach (var item in product)
+        //    {
+        //        ProductViewModel pro = new ProductViewModel();
+        //        pro.ProductId = item.ProductId;
+        //        pro.IconImg = item.IconImg.Split(',')[0];
+        //        pro.ProductName = item.ProductName;
+        //        pro.PriceOut = item.PriceOut;
+        //        pro.Discount = item.Discount;
+        //        Listproduct.Add(pro);
+        //    }
+        //    return JsonConvert.SerializeObject(Listproduct);
+        //}
+        [HttpGet]
+        public String SearchProduct(String Listprovider, String ListPrice)
+        {
+            ProductRespository proRes = new ProductRespository();
+            List<ProductViewModel> product = null;
+            if ("all".Equals(Listprovider)&& "all".Equals(ListPrice))
+            {
+                product = proRes.GetAllProduct();
+            }
+            else if("all".Equals(Listprovider) && !"all".Equals(ListPrice))
+            {
+                product = proRes.GetProductByPrice(ListPrice);
+            }
+            else if(!"all".Equals(Listprovider) && "all".Equals(ListPrice))
+            {
+                product = proRes.GetProductByProvider(Listprovider);
+            }
+            else
+            {
+                product = proRes.SearchProduct(Listprovider, ListPrice);
+            }
+            List<ProductViewModel> Listproduct = new List<ProductViewModel>();
+            foreach (var item in product)
+            {
+                ProductViewModel pro = new ProductViewModel();
+                pro.ProductId = item.ProductId;
+                pro.IconImg = item.IconImg.Split(',')[0];
+                pro.ProductName = item.ProductName;
+                pro.PriceOut = item.PriceOut;
+                pro.Discount = item.Discount;
+                Listproduct.Add(pro);
+            }
+            return JsonConvert.SerializeObject(Listproduct);
+        }
+        //[HttpGet]
+        //public String GetProductByPrice(String ListPrice)
+        //{
+        //    ProductRespository proRes = new ProductRespository();
+        //    List<ProductViewModel> product = proRes.GetProductByPrice(ListPrice);
+        //    List<ProductViewModel> Listproduct = new List<ProductViewModel>();
+        //    foreach (var item in product)
+        //    {
+        //        ProductViewModel pro = new ProductViewModel();
+        //        pro.ProductId = item.ProductId;
+        //        pro.IconImg = item.IconImg.Split(',')[0];
+        //        pro.ProductName = item.ProductName;
+        //        pro.PriceOut = item.PriceOut;
+        //        pro.Discount = item.Discount;
+        //        Listproduct.Add(pro);
+        //    }
+        //    return JsonConvert.SerializeObject(Listproduct);
+        //}
     }
 }
