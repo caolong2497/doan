@@ -1,5 +1,7 @@
 ﻿
-$(document).ready(function(){
+$(document).ready(function () {
+    var text = [];
+    var id = $('#id').val();
 	$(".dropdown").hover(            
 		function() {
 			$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
@@ -10,12 +12,64 @@ $(document).ready(function(){
 			$(this).toggleClass('open');       
 		}
 	);
+
 	$('#horizontalTab').easyResponsiveTabs({
 		type: 'default', //Types: default, vertical, accordion           
 		width: 'auto', //auto or any width like 600px
 		fit: true   // 100% fit in a container
 	});
 
+	$('.checkAll').click(function () {
+	    text = [];
+	    var c = this.checked;
+	    if (c == true) {
+	        text.push('all');
+	        $('.checkElement').prop('checked', false);
+	    }
+	});
+
+	$('.checkElement').click(function () {
+	    text = [];
+	    $(".checkElement").each(function () {
+	        if ($(this).prop('checked') == true) {
+	            text.push($(this).val());
+	            $('.checkAll').prop('checked', false);
+	            // return false;
+	        }
+	        // text+=this.val()+",";
+	    })
+	    alert(text.join());
+	});
+
+	$('.cb').change(function () {
+	    $.ajax({
+	        url: '',
+	        method: 'GET',
+	        contentType: 'application/json',
+	        dataType: 'json',
+	        processData: false
+	    }).done(function (result) {
+	        console.log(result);
+	    }).fail(function (err) {
+	        console.error(err);
+	    });
+	});
+
+	function getListProduct() {
+	    $.ajax({
+	        url: '/Product/GetProduct/' + id,
+	        method: 'GET',
+	        contentType: 'application/json',
+	        dataType: 'json',
+	        processData: false
+	    }).done(function (result) {
+	        console.log(result);
+	    }).fail(function (err) {
+	        console.error(err);
+	    });
+	}
+
+	//getListProduct();
 });
 $(window).load(function() {
 	$("#flexiselDemo1").flexisel({
@@ -44,16 +98,14 @@ $(window).load(function() {
 });
 var app=angular.module('myApp', []);
 app.controller('MobileController', function ($scope, $http) {
-    //$scope.initProduct = function (id) {
-    //    console.log(id);
-    //    $scope.searchProvider($scope.name);
-    //    $http.get("/Product/GetProduct?id="+id ).then(function (response) {
-    //        $scope.data = response.data;
-    //    });
-
-    //}
+    $scope.initProduct = function (id) {
+        console.log(id);
+        $scope.searchProvider($scope.providername);
+        $http.get("/Product/GetProduct/"+id ).then(function (response) {
+            $scope.Product = response.data;
+        });
+    }
     $scope.searchProvider = function (name) {
-
         if (name == null || name.length == 0) {
             $http.get("/get-list-provider").then(function (response) {
                 $scope.data = response.data;

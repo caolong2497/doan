@@ -1,8 +1,8 @@
 ﻿
-
+    <input type="hidden" id="id" value="@ViewBag.id"/>
     <div class="content" ng-controller="MobileController">
 
-        <div class="container" ng-init="searchProvider(providername)">
+        <div class="container" ng-init="initProduct('@ViewBag.id')">
             <div class="col-md-4 w3ls_dresses_grid_left">
                 <div class="w3ls_dresses_grid_left_grid">
                     <h3>Thương hiệu</h3>
@@ -14,15 +14,8 @@
                                 <div class="checkbox">
                                     <label><input type="checkbox" value="">Tất cả</label>
                                 </div>
-                                @*@foreach (var provider in ViewBag.provider)
-                                {
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">@provider.ProviderName</label>
-                                    </div>
-
-                                }*@
                             <div class="checkbox" ng-repeat="provide in data">
-                                <label><input type="checkbox" value="">{{provide.ProviderName}}</label>
+                                <label><input type="checkbox" value="{{provide.Providerid}}">{{provide.ProviderName}}</label>
                             </div>
 
                         </div>
@@ -33,51 +26,60 @@
                     <div class="w3ls_dresses_grid_left_grid_sub">
                         <div class="ecommerce_color ecommerce_size">
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="">Tất cả</label>
+                                    <label><input type="checkbox" class="checkAll cb" value="all">Tất cả</label>
                                 </div>
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="">Từ 1 - 3 triệu</label>
+                                    <label><input type="checkbox" class="checkElement cb"   value="13">Từ 1 - 3 triệu</label>
                                 </div>
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="">Từ 3 - 6 triệu</label>
+                                    <label><input type="checkbox" class="checkElement cb"  value="36">Từ 3 - 6 triệu</label>
                                 </div>
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="">Từ 6 - 10 triệu</label>
+                                    <label><input type="checkbox" class="checkElement cb"  value="610">Từ 6 - 10 triệu</label>
                                 </div>
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="">Từ 10 - 15 triệu</label>
+                                    <label><input type="checkbox" class="checkElement cb"  value="1015">Từ 10 - 15 triệu</label>
                                 </div>
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="">Trên 15 Triệuu</label>
+                                    <label><input type="checkbox" class="checkElement cb"  value="15">Trên 15 Triệuu</label>
                                 </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <div class="col-md-8 col-sm-8 women-dresses">
-                @foreach (var item in ViewBag.product)
-                {
-                    String[] Image = item.IconImg.Split(',');
+            <div class="col-md-8 col-sm-8 women-dresses" id="listproduct" >
+                <div ng-repeat="item in Product">
                     <div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
-                        <a href="@Url.Action("ProductDetail", "Product",new { id=item.ProductId })">
+                        <a href="/Product/ProductDetail/{{item.ProductId}}">
+
                             <div class="product-img">
-                                <img src="@Image.GetValue(0)" />
+                                <img src="{{item.IconImg}}" />
                                 <div class="p-mask">
                                     <form action="#" method="post">
                                         <input type="hidden" name="cmd" value="_cart" />
                                         <input type="hidden" name="add" value="1" />
-                                        <input type="hidden" name="w3ls1_item" value="@item.ProductName" />
-                                        <input type="hidden" name="amount" value="@item.PriceOut" />
+                                        <input type="hidden" name="w3ls1_item" value="{{item.ProductName}}" />
+                                        <input type="hidden" name="amount" value="{{item.PriceOut}}" />
                                         <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
                                     </form>
                                 </div>
                             </div>
                         </a>
-                        <h4>@item.ProductName</h4>
-                        <h5>@item.PriceOut.ToString("#,###").Replace(",", ".")</h5>
+                        <h4>{{item.ProductName}}</h4>
+                       
+                        <div ng-if="item.Discount==0">
+                            <h5 >{{item.PriceOut | currency:"":0}}</h5>
+                        </div>
+                        <div ng-if="item.Discount!=0">
+                            <h5>{{item.PriceOut*(100-item.Discount)/100 | currency:"":0}} vnđ</h5>
+                            <del>{{item.PriceOut | currency:"":0}} vnđ</del>
+                           
+                        </div>
+                           
+                        </div>
                     </div>
-                }
+                </div>
                     <div class="clearfix"></div>
 
             </div>

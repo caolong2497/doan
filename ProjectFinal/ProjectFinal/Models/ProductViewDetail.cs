@@ -27,6 +27,7 @@ namespace ProjectFinal.Models
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string IconImg { get; set; }
+        public int Discount { get; set; }
         public double PriceOut { get; set; }
     }
     public class ProductSearchModel

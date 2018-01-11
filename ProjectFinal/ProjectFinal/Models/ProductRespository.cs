@@ -55,8 +55,9 @@ namespace ProjectFinal.Models
                           {
                               ProductId = b.ProductId,
                               ProductName = b.ProductName,
-                              IconImg = b.IconImg,
-                              PriceOut = b.PriceOut
+                               IconImg = b.IconImg,
+                               Discount = b.Discount,
+                               PriceOut = b.PriceOut
                           }).Take(9).ToList();
             return product;
         }
@@ -71,6 +72,7 @@ namespace ProjectFinal.Models
                                ProductId = b.ProductId,
                                ProductName = b.ProductName,
                                IconImg = b.IconImg,
+                               Discount = b.Discount,
                                PriceOut = b.PriceOut
                            }).Take(9).ToList();
             return product;
@@ -85,6 +87,7 @@ namespace ProjectFinal.Models
                                ProductId = b.ProductId,
                                ProductName = b.ProductName,
                                IconImg = b.IconImg,
+                               Discount = b.Discount,
                                PriceOut = b.PriceOut
                            }).Take(9).ToList();
             return product;
@@ -99,6 +102,7 @@ namespace ProjectFinal.Models
                                ProductId = b.ProductId,
                                ProductName = b.ProductName,
                                IconImg = b.IconImg,
+                               Discount=b.Discount,
                                PriceOut = b.PriceOut
                            }).Take(9).ToList();
             return product;

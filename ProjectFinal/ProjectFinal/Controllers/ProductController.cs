@@ -23,8 +23,17 @@ namespace ProjectFinal.Controllers
         }
         public ActionResult GetListProduct(String id)
         {
+            
+            ViewBag.id = id;
+            return View();
+        }
+
+        [HttpGet]
+        public String GetProduct(String id)
+        {
             ProductRespository proRes = new ProductRespository();
-            IEnumerable<ProductViewModel> product = null;
+            List<ProductViewModel> product = null;
+            List<ProductViewModel> Listproduct = new List<ProductViewModel>();
             if ("lastest".Equals(id))
             {
                 product = proRes.getListProductNew();
@@ -41,52 +50,17 @@ namespace ProjectFinal.Controllers
             {
                 product = proRes.getListProductSale();
             }
-            ViewBag.product = product;
-            return View();
+            foreach(var item in product)
+            {
+                ProductViewModel pro = new ProductViewModel();
+                pro.ProductId = item.ProductId;
+                pro.IconImg = item.IconImg.Split(',')[0];
+                pro.ProductName = item.ProductName;
+                pro.PriceOut = item.PriceOut;
+                pro.Discount = item.Discount;
+                Listproduct.Add(pro);
+            }
+            return JsonConvert.SerializeObject(Listproduct);
         }
-        //[HttpGet]
-        //public string GetProduct(String id)
-        //{
-        //    ProductRespository proRes = new ProductRespository();
-        //    IEnumerable<ProductViewModel> product=null;
-        //    if ("lastest".Equals(id))
-        //    {
-        //         product = proRes.getListProductNew();
-        //    }else if("hot".Equals(id))
-        //    {
-        //         product = proRes.getListProductHot();
-        //    }else if ("mostview".Equals(id))
-        //    {
-        //        product = proRes.getListProductView();
-        //    }
-        //    else if ("sale".Equals(id))
-        //    {
-        //        product = proRes.getListProductSale();
-        //    }
-        //    String productJson= JsonConvert.SerializeObject(product);
-        //    return productJson;
-        //}
-        //public PartialViewResult GetProduct(String id)
-        //{
-        //    ProductRespository proRes = new ProductRespository();
-        //    List<ProductViewModel> product = null;
-        //    if ("lastest".Equals(id))
-        //    {
-        //        product = proRes.getListProductNew();
-        //    }
-        //    else if ("hot".Equals(id))
-        //    {
-        //        product = proRes.getListProductHot();
-        //    }
-        //    else if ("mostview".Equals(id))
-        //    {
-        //        product = proRes.getListProductView();
-        //    }
-        //    else if ("sale".Equals(id))
-        //    {
-        //        product = proRes.getListProductSale();
-        //    }
-        //    return PartialView(@"~/Views/Provider/ListProvider.cshtml", product);
-        //}
     }
 }
