@@ -74,13 +74,7 @@
                                     <div class="product-img">
                                         <img  src="@Image.GetValue(0)" alt=""  />
                                         <div class="p-mask">
-                                            <form action="#" method="post">
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="w3ls1_item" value="@item.ProductName" />
-                                                <input type="hidden" name="amount" value="@item.PriceOut" />
-                                                <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
-                                            </form>
+                                                <button type="submit"  class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
                                         </div>
                                     </div>
                                     @if (item.Discount != 0) {

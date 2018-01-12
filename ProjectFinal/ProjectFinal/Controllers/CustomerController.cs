@@ -53,10 +53,21 @@ namespace ProjectFinal.Controllers
 
         public ActionResult Login()
         {
-           
-            return View();
-        }
 
+            if (Session["UserID"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            return RedirectToAction("Login", "Customer");
+        }
 
         [HttpPost]
         [AllowAnonymous]
@@ -71,6 +82,8 @@ namespace ProjectFinal.Controllers
                     var Customer = cusRes.GetCustomer(email, encodePass);
                     if (Customer != null)
                     {
+                        Session["UserID"] = Customer.CustomerId.ToString();
+                        Session["UserName"] = Customer.FullName.ToString();
                         return RedirectToAction("Index", "Home");
                     }
                   

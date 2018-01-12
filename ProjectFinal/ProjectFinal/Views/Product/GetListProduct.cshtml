@@ -1,6 +1,4 @@
-﻿
-    <input type="hidden" id="id" value="@ViewBag.id"/>
-    <div class="content" ng-controller="MobileController">
+﻿    <div class="content" >
 
         <div class="container" ng-init="initProduct('@ViewBag.id')">
             <div class="col-md-4 w3ls_dresses_grid_left">
@@ -49,6 +47,9 @@
 
             </div>
             <div class="col-md-8 col-sm-8 women-dresses" id="listproduct" >
+                <div ng-if="Product.length==0">
+                    <h4> Không Tìm Thấy Sản Phẩm</h4>
+                </div>
                 <div ng-repeat="item in Product">
                     <div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
                         <a href="/Product/ProductDetail/{{item.ProductId}}">
@@ -85,5 +86,3 @@
 
             </div>
         </div>
-    </div>
-  

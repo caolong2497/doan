@@ -10,16 +10,17 @@ namespace ProjectFinal.Models
         MobileStoreEntities db = new MobileStoreEntities();
         public IEnumerable<ProductViewModel> getTopProductbyProvider(int providerid)
         {
-            var product = from b in db.Products
-                          where b.ProviderId == providerid
-                          select new ProductViewModel
+            var product = (from b in db.Products
+                          where b.Status == 1 && b.ProviderId == providerid
+                           orderby b.CoutBuy descending
+                           select new ProductViewModel
                           {
                               ProductId = b.ProductId,
                               ProductName = b.ProductName,
                               Discount=b.Discount,
                               IconImg = b.IconImg,
                               PriceOut = b.PriceOut
-                          };
+                          }).Take(8);
             return product;
         }
         public ProductViewDetail getProductDetail(int productid)
@@ -51,7 +52,8 @@ namespace ProjectFinal.Models
         public List<ProductViewModel> getListProductNew()
         {
             var product = (from b in db.Products
-                          orderby b.CreateDate descending
+                           where b.Status == 1
+                           orderby b.CreateDate descending              
                            select new ProductViewModel
                           {
                               ProductId = b.ProductId,
@@ -67,6 +69,7 @@ namespace ProjectFinal.Models
         {
 
             var product = (from b in db.Products
+                           where b.Status == 1
                            orderby b.CoutBuy descending
                            select new ProductViewModel
                            {
@@ -82,6 +85,7 @@ namespace ProjectFinal.Models
         public List<ProductViewModel> getListProductView()
         {
             var product = (from b in db.Products
+                           where b.Status == 1
                            orderby b.CoutView descending
                            select new ProductViewModel
                            {
@@ -94,9 +98,27 @@ namespace ProjectFinal.Models
             return product;
         }
 
+        internal List<ProductViewModel> GetProductByName(string name)
+        {
+            var product = (from b in db.Products
+                           where b.Status == 1
+                           orderby b.CoutView descending
+                           where b.ProductName.Contains(name)
+                           select new ProductViewModel
+                           {
+                               ProductId = b.ProductId,
+                               ProductName = b.ProductName,
+                               IconImg = b.IconImg,
+                               Discount = b.Discount,
+                               PriceOut = b.PriceOut
+                           }).Take(5).ToList();
+            return product;
+        }
+
         internal List<ProductViewModel> GetAllProduct()
         {
             var product = (from b in db.Products
+                           where b.Status == 1
                            select new ProductViewModel
                            {
                                ProductId = b.ProductId,
@@ -142,8 +164,9 @@ namespace ProjectFinal.Models
 
         internal List<ProductViewModel> GetProductByCategory(string id)
         {
+            int catId = Int32.Parse(id);
             var product = (from b in db.Products
-                           where b.CategoryId.Equals(id)
+                           where b.CategoryId.Equals(catId)
                            orderby b.PriceOut * (100 - b.Discount) / 100 descending
                            select new ProductViewModel
                            {

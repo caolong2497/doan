@@ -1,5 +1,7 @@
 ﻿@model List<ProjectFinal.Models.Category>
-@* menu bar *@
+@{
+    var list = Session["myCart"] as List<ProjectFinal.Models.ProductViewModel>;
+}
 <div class="header-top-w3layouts">
     <div class="container">
         <div class="col-md-6 logo-w3">
@@ -7,8 +9,14 @@
         </div>
         <div class="col-md-6 phone-w3l">
             <ul>
+                @if (Session["UserName"] != null)
+                {
+                    <li>Welcome <bold> @Session["UserName"].ToString()</bold> </li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Customer")</li> <br />
+                }
                 <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
                 <li>+84988888888</li>
+               
             </ul>
         </div>
         <div class="clearfix"></div>
@@ -52,7 +60,7 @@
                                                             {
                                                                 if (i % 2 == 0)
                                                                 {
-                                                                <li><a href="@Url.Action("GetListProduct", "Product",new { id=cat2.ElementAt(i).CategoryName })"><i class="fa fa-angle-right" aria-hidden="true"></i>@cat2.ElementAt(i).CategoryName</a></li>
+                                                                <li><a href="@Url.Action("GetListProduct", "Product",new { id=cat2.ElementAt(i).CategoryId })"><i class="fa fa-angle-right" aria-hidden="true"></i>@cat2.ElementAt(i).CategoryName</a></li>
                                                                 }
                                                             }
                                                         </ul>
@@ -65,7 +73,7 @@
                                                             {
                                                                 if (i % 2 == 1)
                                                                 {
-                                                                    <li><a href="@Url.Action("GetListProduct", "Product",new { id=cat2.ElementAt(i).CategoryName })"><i class="fa fa-angle-right" aria-hidden="true"></i>@cat2.ElementAt(i).CategoryName</a></li>
+                                                                    <li><a href="@Url.Action("GetListProduct", "Product",new { id=cat2.ElementAt(i).CategoryId })"><i class="fa fa-angle-right" aria-hidden="true"></i>@cat2.ElementAt(i).CategoryName</a></li>
                                                                 }
                                                             }
 
@@ -102,39 +110,49 @@
 				});
         </script>
         <div class="col-md-4 search-agileinfo">
-            <form action="#" method="post">
-                <input type="search" name="Search" placeholder="Search for a Product..." required="">
-                <button type="submit" class="btn btn-default search" aria-label="Left Align">
+                <input type="search" id="searchInput" name="Search" ng-model="ProductName" autocomplete="off" placeholder="Search for a Product..." ng-change="searchProductName()">
+                <button  class="btn btn-default search" aria-label="Left Align">
                     <i class="fa fa-search" aria-hidden="true"> </i>
                 </button>
-            </form>
+                <div class="SearchResult" >
+                    <div class="SearchRemain">
+                        <ul >
+                            <li ng-repeat="item in PSearch">
+                                <a href="/Product/ProductDetail/{{item.ProductId}}">
+                                    <p>
+                                        <img src="{{item.IconImg}}" />
+                                    </p>
+                                    <div>
+                                        <h3>{{item.ProductName}}</h3>
+                                        <p ng-if="item.Discount!=0">{{item.PriceOut*(100-item.Discount)/100 | currency:"":0}} ₫ <del style="font-size:11px; color:black">{{item.PriceOut | currency:"":0}} ₫</del> </p>
+                                        <p ng-if="item.Discount==0">
+                                            {{item.PriceOut | currency:"":0}}₫
+                                        </p>
+
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            @*</form>*@
         </div>
         <div class="col-md-1 cart-wthree">
             <div class="cart">
-                <form action="#" method="post" class="last">
+                <form action="/Order/CreateOrder" method="post" class="last">
                     <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="display" value="1" />
                     <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+                    @if (list.Count != 0)
+                    {
+                        <p>@list.Count</p>
+                    }
                 </form>
             </div>
         </div>
         <div class="clearfix"></div>
     </div>
 </div>
-<script src="~/Content/phone/js/minicart.js"></script>
+
 <script>
-        w3ls1.render();
 
-        w3ls1.cart.on('w3sb1_checkout', function (evt) {
-        	var items, len, i;
-
-        	if (this.subtotal() > 0) {
-        		items = this.items();
-
-        		for (i = 0, len = items.length; i < len; i++) {
-        			items[i].set('shipping', 0);
-        			items[i].set('shipping2', 0);
-        		}
-        	}
-        });
 </script>

@@ -1,0 +1,24 @@
+﻿@{
+    var list = Session["myCart"] as List<ProjectFinal.Models.ProductViewModel>;
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Stt</th>
+            <th>Tên Sản  Phẩm</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in list)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.PriceOut</td>
+            </tr>
+        }
+        
+    </tbody>
+</table>

@@ -27,8 +27,16 @@
             <div class="col-md-4 footer-grids fgd4">
                 <h4>My Account</h4>
                 <ul>
-                    <li>@Html.ActionLink("Đăng Nhập", "Login", "Customer")</li>
-                    <li>@Html.ActionLink("Đăng Ký", "CreateCustomer", "Customer")</li>
+                    @if (Session["UserName"] != null)
+                    {
+                        <li>@Html.ActionLink("Đăng Xuất", "Logout", "Customer")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Đăng Nhập", "Login", "Customer")</li>
+                        <li>@Html.ActionLink("Đăng Ký", "CreateCustomer", "Customer")</li>
+                    }
+
                     <li><a href="recommended.html">Gợi ý</a></li>
                     <!-- 				<li><a href="payment.html">Payments</a></li> -->
                 </ul>

@@ -18,6 +18,12 @@ $(document).ready(function () {
 		width: 'auto', //auto or any width like 600px
 		fit: true   // 100% fit in a container
 	});
+	$("#searchInput").focus(function () {
+	    $('.SearchResult').css("display", "block");
+	});
+	$("#searchInput").focusout(function () {
+	    $('.SearchResult').css("display", "none");
+	});
 
 });
 $(window).load(function() {
@@ -54,6 +60,8 @@ app.controller('MobileController', function ($scope, $http) {
             $scope.Product = response.data;
         });
     }
+    
+    $scope.PSearch = {};
     $scope.searchProvider = function (name) {
         if (name == null || name.length == 0) {
             $http.get("/get-list-provider").then(function (response) {
@@ -129,5 +137,46 @@ app.controller('MobileController', function ($scope, $http) {
         //    $scope.data = response.data;
         //});
     }
+    $scope.searchProductName = function () {
+        if ($scope.ProductName == "") {
+            $scope.PSearch = {};
+            //$('.SearchResult').css("display", "none");
+        }else{
+            $http({
+                url: "/Product/GetProductByName/",
+                method: "GET",
+                params: { name: $scope.ProductName }
+            }).then(function (response) {
+                $scope.PSearch = response.data;
+                //if ($scope.PSearch.length != 0) {
+                //    $('.SearchResult').css("display", "block");
+                //} else {
+                //    $('.SearchResult').css("display", "none");
+                //}
+            });
+            
+        }
+       
+    }
+    $scope.addCart = function (Productid) {
+        console.log("123");
+            $http({
+                url: "/Product/addCart/",
+                method: "GET",
+                params: { id: Productid }
+            }).then(function (response) {
+                alert("thêm giỏ hàng thành công");
+            });
+        }
 
+    //$scope.searchName = function () {
+    //    //window.location.href = "http://stackoverflow.com";
+    //    $http({
+    //        url: "/Product/PageProduct/",
+    //        method: "GET",
+    //        params: { name: $scope.ProductName }
+    //    }).then(function (response) {
+
+    //    });
+    //}
     });
