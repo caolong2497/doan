@@ -98,7 +98,7 @@ namespace ProjectFinal.Models
             return product;
         }
 
-        internal List<ProductViewModel> GetProductByName(string name)
+        public List<ProductViewModel> GetProductByName(string name)
         {
             var product = (from b in db.Products
                            where b.Status == 1
@@ -115,7 +115,7 @@ namespace ProjectFinal.Models
             return product;
         }
 
-        internal List<ProductViewModel> GetAllProduct()
+        public List<ProductViewModel> GetAllProduct()
         {
             var product = (from b in db.Products
                            where b.Status == 1
@@ -130,7 +130,7 @@ namespace ProjectFinal.Models
             return product;
         }
 
-        internal List<ProductViewModel> GetProductByProvider(string listprovider)
+        public List<ProductViewModel> GetProductByProvider(string listprovider)
         {
             String[] ListProviderId = listprovider.Split(',');
             var product = (from b in db.Products
@@ -162,7 +162,7 @@ namespace ProjectFinal.Models
             return product;
         }
 
-        internal List<ProductViewModel> GetProductByCategory(string id)
+        public List<ProductViewModel> GetProductByCategory(string id)
         {
             int catId = Int32.Parse(id);
             var product = (from b in db.Products
@@ -228,7 +228,7 @@ namespace ProjectFinal.Models
             return Listproduct;
         }
 
-        internal List<ProductViewModel> GetProductByPrice(String ListPrice)
+        public List<ProductViewModel> GetProductByPrice(String ListPrice)
         {
             String[] Price = ListPrice.Split(',');
             List<ProductViewModel> Listproduct = new List<ProductViewModel>();

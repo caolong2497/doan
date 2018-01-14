@@ -111,7 +111,7 @@
         </script>
         <div class="col-md-4 search-agileinfo">
                 <input type="search" id="searchInput" name="Search" ng-model="ProductName" autocomplete="off" placeholder="Search for a Product..." ng-change="searchProductName()">
-                <button  class="btn btn-default search" aria-label="Left Align">
+                <button  class="btn btn-default search" ng-click="" aria-label="Left Align">
                     <i class="fa fa-search" aria-hidden="true"> </i>
                 </button>
                 <div class="SearchResult" >
@@ -142,7 +142,7 @@
                 <form action="/Order/CreateOrder" method="post" class="last">
                     <input type="hidden" name="cmd" value="_cart" />
                     <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-                    @if (list.Count != 0)
+                    @if (Session["myCart"]!=null)
                     {
                         <p>@list.Count</p>
                     }

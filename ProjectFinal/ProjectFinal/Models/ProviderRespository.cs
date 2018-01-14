@@ -5,6 +5,7 @@ using System.Web;
 
 namespace ProjectFinal.Models
 {
+    //add procedure usp_TopProvider
     public class ProviderRespository : IProviderRepository
     {
         MobileStoreEntities db = new MobileStoreEntities();

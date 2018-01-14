@@ -49,7 +49,52 @@ p {
 .btn_comment{
     margin-top:15px;
 }
-
+.fs-ghplus {
+    width: 100px;
+}
+.fs-ghltd {
+    display: table-cell;
+    vertical-align: top;
+}
+.fs-ghpltb {
+    width: 100%;
+    display: table;
+}
+.fsghbtn {
+    float: left;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    color: #828282;
+    font-size: 22px;
+    background-color: #f8f8f8;
+    border: solid 1px #dfdfdf;
+}
+.fs-ghplip {
+    float: left;
+    width: 40px;
+    height: 28px;
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+    border: solid 1px #e0e0e0;
+    border-left: none;
+    border-right: none;
+}
+.fsghbtn {
+    float: left;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    color: #828282;
+    font-size: 22px;
+    background-color: #f8f8f8;
+    border: solid 1px #dfdfdf;
+}
 .thongso {
 -webkit-column-count: 2;
 -moz-column-count: 2;

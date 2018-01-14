@@ -11,14 +11,25 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in list)
+        @if (Session["myCart"] != null)
         {
-            <tr>
+            foreach (var item in list)
+             {
+                <tr>
                 <td>@item.ProductId</td>
                 <td>@item.ProductName</td>
+                <td>
+                <div class="fs-ghltd fs-ghplus">
+                    <div class="fs-ghpltb clearfix">
+                        <span class="fsghbtn"><i>-</i></span>
+                        <input class="fs-ghplip" type="text" readonly="readonly" value="1" placeholder="0">
+                        <span class="fsghbtn">+</span>
+                    </div>
+                </div>
+                </td>
                 <td>@item.PriceOut</td>
-            </tr>
+                </tr>
+            }
         }
-        
     </tbody>
 </table>

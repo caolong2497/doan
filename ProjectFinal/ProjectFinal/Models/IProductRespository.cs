@@ -14,5 +14,10 @@ namespace ProjectFinal.Models
         List<ProductViewModel> getListProductView();
 
         List<ProductViewModel> getListProductSale();
+        List<ProductViewModel> GetProductByProvider(string listprovider);
+        List<ProductViewModel> GetAllProduct();
+        List<ProductViewModel> GetProductByName(string name);
+        ProductViewDetail getProductDetail(int productid);
+        List<ProductViewModel> GetProductByCategory(string id);
     }
 }
