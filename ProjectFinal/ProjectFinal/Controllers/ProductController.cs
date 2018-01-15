@@ -51,7 +51,8 @@ namespace ProjectFinal.Controllers
             {
                 product = proRes.getListProductSale();
             }
-            else if ("0".Equals(id)) {
+            else if ("0".Equals(id))
+            {
                 return null;
             }
             else
@@ -124,33 +125,53 @@ namespace ProjectFinal.Controllers
             }
             return JsonConvert.SerializeObject(Listproduct);
         }
-        //public RedirectResult PageProduct(String name)
-        //{
-        //    ViewBag.name = name;
-        //    return Redirect("Product/GetListProduct/0");
-        //}
         [HttpGet]
-        public void addCart(String id)
+        public ActionResult addCart(String id)
         {
             int productid = Int32.Parse(id);
+
+            List<ProductOrderModel> ListPro = null;
+
+            if (Session["myCart"] != null)
+            {
+                ListPro = (List<ProductOrderModel>)Session["myCart"];
+                foreach (var item in ListPro)
+                {
+                    if (item.ProductId == productid)
+                    {
+                        item.Quantity = item.Quantity + 1;
+                        return Redirect("/Order/CreateOrder/");
+                    }
+                }
+            }
+            else
+            {
+                ListPro = new List<ProductOrderModel>();
+            }
             ProductRespository proRes = new ProductRespository();
             ProductViewDetail product = proRes.getProductDetail(productid);
-            ProductViewModel pro = new ProductViewModel();
-            List<ProductViewModel> ListPro = null;
+            ProductOrderModel pro = new ProductOrderModel();
             pro.ProductId = product.ProductId;
             pro.IconImg = product.IconImg.Split(',')[0];
             pro.ProductName = product.ProductName;
             pro.PriceOut = product.PriceOut;
             pro.Discount = product.Discount;
-            if (Session["myCart"] != null)
-            {
-                ListPro = (List<ProductViewModel>)Session["myCart"];
-            }else
-            {
-                ListPro = new List<ProductViewModel>();
-            }
+            pro.Quantity = 1;
+
             ListPro.Add(pro);
             Session["myCart"] = ListPro;
+            return Redirect("/Order/CreateOrder/");
+        } 
+        [HttpGet]
+        public String deleteCart(String id)
+        {
+            int productid = Int32.Parse(id);
+            ProductRespository proRes = new ProductRespository();
+            List<ProductOrderModel> ListPro = (List<ProductOrderModel>)Session["myCart"];
+            ProductOrderModel prod = ListPro.Single(x => x.ProductId == productid);
+            ListPro.Remove(prod);
+            Session["myCart"] = ListPro;
+            return JsonConvert.SerializeObject(ListPro);
         }
     }
 }

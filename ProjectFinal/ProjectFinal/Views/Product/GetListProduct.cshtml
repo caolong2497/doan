@@ -57,7 +57,7 @@
                             <div class="product-img">
                                 <img src="{{item.IconImg}}" />
                                 <div class="p-mask">
-                                    <form action="#" method="post">
+                                    <form ng-submit="addCart(item.ProductId)">
                                         <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
                                     </form>
                                 </div>

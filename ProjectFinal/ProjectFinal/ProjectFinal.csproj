@@ -1432,12 +1432,7 @@
     <Content Include="Views\Common\footer.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
-    <Content Include="Views\Orders\Create.cshtml" />
-    <Content Include="Views\Orders\Delete.cshtml" />
-    <Content Include="Views\Orders\Details.cshtml" />
-    <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Product\GetListProduct.cshtml" />
-    <Content Include="Views\Product\GetProduct.cshtml" />
     <Content Include="Views\Order\CreateOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>

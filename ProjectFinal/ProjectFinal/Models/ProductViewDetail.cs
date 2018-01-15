@@ -30,6 +30,15 @@ namespace ProjectFinal.Models
         public int Discount { get; set; }
         public double PriceOut { get; set; }
     }
+    public class ProductOrderModel
+    {
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
+        public string IconImg { get; set; }
+        public int Discount { get; set; }
+        public int Quantity { get; set; }
+        public double PriceOut { get; set; }
+    }
     public class ProductSearchModel
     {
         public String PriceOut { get; set; }

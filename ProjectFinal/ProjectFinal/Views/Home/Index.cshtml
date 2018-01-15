@@ -48,58 +48,65 @@
 </div>
 <div class="top-products">
 
-<div class="container">
+    <div class="container">
 
-    <h3>Top Products</h3>
-    <div class="sap_tabs">
-        <div id="horizontalTab">
-            <ul class="resp-tabs-list">
-                @foreach (var c in ViewBag.TopProvider)
+        <h3>Top Products</h3>
+        <div class="sap_tabs">
+            <div id="horizontalTab">
+                <ul class="resp-tabs-list">
+                    @foreach (var c in ViewBag.TopProvider)
+                    {
+                        <li class="resp-tab-item"><span>@c.ProviderName</span></li>
+                    }
+                </ul>
+                <div class="clearfix"> </div>
+                @foreach (var product in ViewBag.listProduct)
                 {
-                    <li class="resp-tab-item"><span>@c.ProviderName</span></li>
-                }
-            </ul>
-            <div class="clearfix"> </div>
-            @foreach (var product in ViewBag.listProduct)
-            {
-               
-                <div class="resp-tabs-container">
-                    <div class="tab-1 resp-tab-content">
-                        @foreach (var item in product)
-                        {
-                            var price = item.PriceOut * (100 - item.Discount) / 100;
-                            String[] Image = item.IconImg.Split(',');
-                            <div class="col-md-3 top-product-grids tp1">
-                                <a href="@Url.Action("ProductDetail", "Product",new { id=item.ProductId })">
-                                    <div class="product-img">
-                                        <img  src="@Image.GetValue(0)" alt=""  />
-                                        <div class="p-mask">
-                                                <button type="submit"  class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+
+                    <div class="resp-tabs-container">
+                        <div class="tab-1 resp-tab-content">
+                            @foreach (var item in product)
+                            {
+                                var price = item.PriceOut * (100 - item.Discount) / 100;
+                                String[] Image = item.IconImg.Split(',');
+                                <div class="col-md-3 top-product-grids tp1">
+                                    <a href="@Url.Action("ProductDetail", "Product",new { id=item.ProductId })">
+                                        <div class="product-img">
+                                            <img src="@Image.GetValue(0)" alt="" />
+                                            <div class="p-mask">
+                                                @*<form action="/Product/addCart/">
+                                                    <input type="hidden" name="id" value="@item.ProductId" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>*@
+                                                <form ng-submit="addCart(@item.ProductId)">
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                    @if (item.Discount != 0) {
-                                    <label class="sale_label">Sale</label>
+                                        @if (item.Discount != 0)
+                                        {
+                                            <label class="sale_label">Sale</label>
+                                        }
+                                    </a>
+                                    <h4>@item.ProductName</h4>
+                                    @if (item.Discount != 0)
+                                    {
+                                        <h5>@price.ToString("#,###").Replace(",", ".")₫</h5>
+                                        <del>@item.PriceOut.ToString("#,###").Replace(",", ".")₫</del>
                                     }
-                                </a>
-                                <h4>@item.ProductName</h4>
-                                @if (item.Discount != 0)
-                                {
-                                    <h5>@price.ToString("#,###").Replace(",", ".")₫</h5>
-                                <del>@item.PriceOut.ToString("#,###").Replace(",", ".")₫</del>
-                                }
-                                else
-                                {
-                                    <h5>@item.PriceOut.ToString("#,###").Replace(",", ".")₫</h5>
-                                }
+                                    else
+                                    {
+                                        <h5>@item.PriceOut.ToString("#,###").Replace(",", ".")₫</h5>
+                                    }
                                 </div>
                             }
 
+                        </div>
                     </div>
-                </div>
                 }
-               
 
-                        
+
+
             </div>
 
         </div>

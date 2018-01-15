@@ -1,6 +1,6 @@
 ﻿@model List<ProjectFinal.Models.Category>
 @{
-    var list = Session["myCart"] as List<ProjectFinal.Models.ProductViewModel>;
+    var list = Session["myCart"] as List<ProjectFinal.Models.ProductOrderModel>;
 }
 <div class="header-top-w3layouts">
     <div class="container">
@@ -152,7 +152,3 @@
         <div class="clearfix"></div>
     </div>
 </div>
-
-<script>
-
-</script>

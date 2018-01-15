@@ -12,7 +12,18 @@ $(document).ready(function () {
 			$(this).toggleClass('open');       
 		}
 	);
-
+	$("#btnsub").click(function () {
+	    var i = $("#total").val();
+	    if (i > 1) {
+	        $("#total").val(i-1);
+	    }
+	})
+	$("#btnadd").click(function () {
+	    var i = $("#total").val();
+	    if (i > 1) {
+	        $("#total").val(i + 1);
+	    }
+	})
 	$('#horizontalTab').easyResponsiveTabs({
 		type: 'default', //Types: default, vertical, accordion           
 		width: 'auto', //auto or any width like 600px
@@ -60,7 +71,6 @@ app.controller('MobileController', function ($scope, $http) {
             $scope.Product = response.data;
         });
     }
-    
     $scope.PSearch = {};
     $scope.searchProvider = function (name) {
         if (name == null || name.length == 0) {
@@ -74,6 +84,7 @@ app.controller('MobileController', function ($scope, $http) {
             });
         }
     }
+    $scope.count = 0;
     $scope.proid = [];
     $scope.price = [];
     $('.checkAllPrice').click(function () {
@@ -148,35 +159,49 @@ app.controller('MobileController', function ($scope, $http) {
                 params: { name: $scope.ProductName }
             }).then(function (response) {
                 $scope.PSearch = response.data;
-                //if ($scope.PSearch.length != 0) {
-                //    $('.SearchResult').css("display", "block");
-                //} else {
-                //    $('.SearchResult').css("display", "none");
-                //}
             });
             
         }
        
     }
+
+    //$scope.getSession = function () {
+    //        $http({
+    //            url: "/Product/getCart/",
+    //            method: "GET"
+    //        }).then(function (response) {
+    //            $scope.cartProduct = response.data;
+    //            $scope.count = $scope.cartProduct.length;
+    //        });
+    //}
+    //$scope.getSession();
     $scope.addCart = function (Productid) {
-        console.log("123");
             $http({
                 url: "/Product/addCart/",
                 method: "GET",
                 params: { id: Productid }
             }).then(function (response) {
                 alert("thêm giỏ hàng thành công");
+
             });
-        }
+    }
+    $scope.addCart2 = function (Productid) {
+        $http({
+            url: "/Product/addCart2/",
+            method: "GET",
+            params: { id: Productid }
+        }).then(function (response) {
+            alert("thêm giỏ hàng thành công");
 
-    //$scope.searchName = function () {
-    //    //window.location.href = "http://stackoverflow.com";
-    //    $http({
-    //        url: "/Product/PageProduct/",
-    //        method: "GET",
-    //        params: { name: $scope.ProductName }
-    //    }).then(function (response) {
-
-    //    });
-    //}
+        });
+    }
+    $scope.deleteCart = function (Productid) {
+        $http({
+            url: "/Product/deleteCart/",
+            method: "GET",
+            params: { id: Productid }
+        }).then(function (response) {
+            alert("Xóa giỏ hàng thành công");
+        });
+    }
     });

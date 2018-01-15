@@ -75,7 +75,11 @@ $(window).load(function() {
                               <label>CPU:</label> @ViewBag.product.CPU
                           </li>
                       </ul>
-                        <button type="submit" id="@ViewBag.product.ProductId" ng-click="addCart('@ViewBag.product.ProductId')" class="w3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                    <form action="/Product/addCart/">
+                        <input type="hidden" name="id" value="@ViewBag.product.ProductId"/>
+                        <button type="submit" id="@ViewBag.product.ProductId" class="w3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+
+                    </form>
                     @*<button class="w3ls-cart w3ls-cart-like"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>*@
                     
                 </div>

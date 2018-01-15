@@ -272,6 +272,17 @@ img {
 	  color:#fff;
 	   background-color:#497290;
 }
+.cart_detail{
+    min-height:600px;
+}
+.cart-table{
+    border:solid 1px;
+
+}
+.title_cart{
+    text-align:left;
+    margin:20px 0px;
+}
 .dropdown-menu.multi {
     min-width: 745px;
     padding: 30px 30px;
@@ -330,7 +341,10 @@ button.w3view-cart:focus{
 }
 /*--//header--*/
 
-
+.hoadon{
+    border:solid 1px;
+    margin-top:40px;
+}
 /*--banner--*/
 .banner-agile{
 	background:url(../images/bannerphone.png) no-repeat 0px 0px;
@@ -622,6 +636,7 @@ ul.resp-tabs-list li:nth-child(2):after{
     height: 350px;
         position: relative;
 }
+
 .sale_label {
     position: absolute;
     top: 10px;
