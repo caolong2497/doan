@@ -6,16 +6,18 @@
 <div class="cart_detail">
     <div class="container">
         <h4 class="title_cart">GIỎ HÀNG CỦA BẠN</h4>
-        
+   @if (Session["myCart"] != null)
+   { double total = 0;
         <table class="table table-hover ">
             <tbody>
-                @if (Session["myCart"] != null)
-                { double total = 0;
-                    
-                    foreach (var item in list)
+
+
+                    @foreach (var item in list)
                     {
-                        total += item.PriceOut * (100 - item.Discount) / 100 * item.Quantity;
-                        var price = item.PriceOut * (100 - item.Discount) / 100;
+                        String QuantityId = "total" + item.ProductId;
+                        double price = item.PriceOut * (100 - item.Discount) / 100;
+                        double value = price * item.Quantity;
+                        total += value;
                         <tr>
                             <td>
                                 <img src="@item.IconImg" style="width:50px;height:50px;" />
@@ -24,14 +26,15 @@
                             <td>
                                 <div class="fs-ghltd fs-ghplus">
                                     <div class="fs-ghpltb clearfix">
-                                        <span class="fsghbtn" id="btnsub"><i>-</i></span>
-                                        <input class="fs-ghplip" id="total" type="text" readonly="readonly" value="@item.Quantity" placeholder="0">
-                                        <span class="fsghbtn" id="btnadd">+</span>
+                                        <span class="fsghbtn"  ng-click="changeQuantity(@item.ProductId,1)"><i>-</i></span>
+                                        <input class="fs-ghplip" id="@QuantityId" type="text" readonly="readonly" value="@item.Quantity" placeholder="0">
+                                        <span class="fsghbtn"  ng-click="changeQuantity(@item.ProductId,2)">+</span>
                                     </div>
                                 </div>
                             </td>
                             <td>
                             @price.ToString("#,###").Replace(",", ".")₫</td>
+                            <td>@value.ToString("#,###").Replace(",", ".")₫</td>
                             <td>
                                 <a ng-click="deleteCart(@item.ProductId)"><i class="fa fa-times" aria-hidden="true"></i></a>
                             </td>
@@ -41,13 +44,52 @@
                         <td colspan="3">
                             <h5 style="text-align:right;font-weight:bold">Thành Tiền:</h5>
                         </td>
-                        <td colspan="2">
-                            <h4 style="color:red;text-align:left">@total.ToString("#,###").Replace(",", ".")₫</h4>
+                        <td colspan="3">
+                            <h4 style="color:red;text-align:center">@total.ToString("#,###").Replace(",", ".")₫</h4>
                         </td>
                     </tr>
-                }
+               
             </tbody>
         </table>
-        <button type="button" class="btn btn-primary btn-block">Đặt Hàng</button>
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">Đặt Hàng</button>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Họ và Tên:</label>
+                                <input type="text" ng-model="orderinfo.FullName" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Số Điện Thoại:</label>
+                                <input type="text" ng-model="orderinfo.Phone" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Email:</label>
+                                <input type="text" ng-model="orderinfo.Email" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Địa Chỉ:</label>
+                                <input type="text" ng-model="orderinfo.Address" class="form-control" id="recipient-name">
+                            </div>
+                        <input type="hidden" id="totalMoney" value="@total"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" ng-click="createOrder()" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+   }else
+   {
+       <h4 style="color:red;font-weight:bold">Không Có Sản Phẩm Nào Trong Giỏ Hàng!</h4>
+   }
     </div>
 </div>

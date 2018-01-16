@@ -215,6 +215,7 @@
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ICategoryRespository.cs" />
+    <Compile Include="Models\IOrderRespository.cs" />
     <Compile Include="Models\IProductRespository.cs" />
     <Compile Include="Models\IProviderRepository.cs" />
     <Compile Include="Models\MobileStore.Context.cs">
@@ -241,6 +242,8 @@
     <Compile Include="Models\OrderDetail.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderInfor.cs" />
+    <Compile Include="Models\OrderRespository.cs" />
     <Compile Include="Models\Permission.cs">
       <DependentUpon>MobileStore.tt</DependentUpon>
     </Compile>

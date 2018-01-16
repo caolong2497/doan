@@ -64,6 +64,10 @@ $(window).load(function() {
 });
 var app=angular.module('myApp', []);
 app.controller('MobileController', function ($scope, $http) {
+    $scope.orderinfo = {}
+    $scope.proid = [];
+    $scope.price = [];
+    $scope.PSearch = {};
     $scope.initProduct = function (id) {
         console.log(id);
         $scope.searchProvider($scope.providername);
@@ -71,7 +75,19 @@ app.controller('MobileController', function ($scope, $http) {
             $scope.Product = response.data;
         });
     }
-    $scope.PSearch = {};
+    $scope.changeQuantity = function (id, flag) {
+        var quanId = "total" + id;
+        var i = $("#" + quanId).val();
+        console.log(i + ":" + quanId);
+        if (flag == 1) {
+            i = i - 1;
+            $("#" + quanId).val(i);
+        } else {
+            i = i + 1;
+            $("#" + quanId).val(i);
+        }
+        
+    }
     $scope.searchProvider = function (name) {
         if (name == null || name.length == 0) {
             $http.get("/get-list-provider").then(function (response) {
@@ -84,9 +100,17 @@ app.controller('MobileController', function ($scope, $http) {
             });
         }
     }
-    $scope.count = 0;
-    $scope.proid = [];
-    $scope.price = [];
+    $scope.createOrder = function () {
+        var data = $scope.orderinfo;
+        data.Total=$("#totalMoney").val();
+        console.log(data);
+        $http.post("/Order/CreateOrderInfor", data).then(function (response) {
+            alert("Add Success");
+        }, function (response) {
+            alert("Add Thất Bại");
+        });
+    }
+
     $('.checkAllPrice').click(function () {
         $scope.price = [];
         var c = this.checked;
@@ -182,19 +206,9 @@ app.controller('MobileController', function ($scope, $http) {
                 params: { id: Productid }
             }).then(function (response) {
                 alert("thêm giỏ hàng thành công");
-
             });
     }
-    $scope.addCart2 = function (Productid) {
-        $http({
-            url: "/Product/addCart2/",
-            method: "GET",
-            params: { id: Productid }
-        }).then(function (response) {
-            alert("thêm giỏ hàng thành công");
 
-        });
-    }
     $scope.deleteCart = function (Productid) {
         $http({
             url: "/Product/deleteCart/",
@@ -202,6 +216,7 @@ app.controller('MobileController', function ($scope, $http) {
             params: { id: Productid }
         }).then(function (response) {
             alert("Xóa giỏ hàng thành công");
+            location.reload();
         });
     }
     });
