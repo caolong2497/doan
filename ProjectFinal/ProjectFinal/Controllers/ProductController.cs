@@ -161,7 +161,30 @@ namespace ProjectFinal.Controllers
             ListPro.Add(pro);
             Session["myCart"] = ListPro;
             return Redirect("/Order/CreateOrder/");
-        } 
+        }
+        [HttpGet]
+        public void UppdateQuantity(String id, String flag)
+        {
+            int productid = Int32.Parse(id);
+            int flagId = Int32.Parse(flag);
+            List<ProductOrderModel> ListPro = (List<ProductOrderModel>)Session["myCart"];
+                foreach(var item in ListPro)
+                {
+                if (item.ProductId == productid)
+                {
+                    if (flagId == 1)
+                    {
+                        item.Quantity = item.Quantity-1;
+                    }
+                    else
+                    {
+                        item.Quantity = item.Quantity + 1;
+                    }
+                }
+                }
+            Session["myCart"] = ListPro;
+
+        }
         [HttpGet]
         public String deleteCart(String id)
         {

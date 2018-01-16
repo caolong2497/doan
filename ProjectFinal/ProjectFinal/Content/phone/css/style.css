@@ -1598,8 +1598,17 @@ p.sbmincart-empty-text {
 /*-- //icons --*/
 
 /*-- typography --*/
-.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+/*.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
   border:none;
+}*/
+.txtCheckout{
+    text-align :center;
+}
+.fa-5{
+        font-size: 65px;
+    background: #497290;
+    border-radius: 49px;
+    color: white;
 }
 .but_list h2,.but_list h4,.but_list h6{
 	margin:20px 0;

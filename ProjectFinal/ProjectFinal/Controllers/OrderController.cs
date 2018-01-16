@@ -14,17 +14,17 @@ namespace ProjectFinal.Controllers
         {
             return View();
         }
-        //[HttpPost]
-        // public bool CreateOrderInfor(OrderInfor order)
-        //{
-        //    order.CreateDate = System.DateTime.Now;
-        //    OrderRespository orderRes = new OrderRespository();
-        //    if (orderRes.CreateOrderInfor(order))
-        //    {
-        //        return true;
-        //    }
-        //    return false; 
-        //}
+        public ActionResult CheckOutOrder()
+        {
+            int cartId = (int)Session["CartId"];
+            OrderRespository orderRes = new OrderRespository();
+            OrderInfor order = orderRes.getOrderInfo(cartId);
+            List<OrderDetailModel> orderDetail = orderRes.getOrderDetail(cartId);
+            ViewBag.order = order;
+            ViewBag.orderDetail = orderDetail;
+            return View();
+        }
+
         [HttpPost]
         public bool CreateOrderInfor(OrderInfor order)
         {
@@ -35,6 +35,7 @@ namespace ProjectFinal.Controllers
                 OrderDetail ord = new OrderDetail();
                 List<ProductOrderModel> ListPro = (List<ProductOrderModel>)Session["myCart"];
                 int orderId = orderRes.getLastInsertId();
+                
                 foreach (var item in ListPro)
                 {
                     ord.ProductId = item.ProductId;
@@ -42,11 +43,13 @@ namespace ProjectFinal.Controllers
                     ord.Price = item.PriceOut;
                     ord.Value = item.PriceOut * item.Quantity*(100-item.Discount)/100;
                     ord.OrderId = orderId;
+                    ord.Status = 1;
                     if (!orderRes.CreateOrderDetail(ord))
                     {
                         return false;
                     }
                 }
+                Session["CartId"] = orderId;
                 Session["myCart"] = null;
                 return true;
             }

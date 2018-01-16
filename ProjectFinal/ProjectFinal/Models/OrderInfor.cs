@@ -15,4 +15,13 @@ namespace ProjectFinal.Models
         public double Total { get; set; }
         public System.DateTime CreateDate { get; set; }
     }
+    public class OrderDetailModel
+    {
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
+        public string IconImg { get; set; }
+        public int Quantity { get; set; }
+        public double Value { get; set; }
+       
+    }
 }

@@ -64,6 +64,7 @@ $(window).load(function() {
 });
 var app=angular.module('myApp', []);
 app.controller('MobileController', function ($scope, $http) {
+    
     $scope.orderinfo = {}
     $scope.proid = [];
     $scope.price = [];
@@ -76,17 +77,23 @@ app.controller('MobileController', function ($scope, $http) {
         });
     }
     $scope.changeQuantity = function (id, flag) {
-        var quanId = "total" + id;
-        var i = $("#" + quanId).val();
-        console.log(i + ":" + quanId);
-        if (flag == 1) {
-            i = i - 1;
-            $("#" + quanId).val(i);
-        } else {
-            i = i + 1;
-            $("#" + quanId).val(i);
+        var proid = "#total" + id;
+        var value = $(proid).val();
+        console.log(value + ":" + flag);
+        if (value==5 && flag == 2) {
+            alert("chỉ có thể mua tối đa 5 chiếc mỗi loại");
+            return;
+        } else if(value==1&&flag==1) {
+            return;
+        }else{
+        $http({
+            url: "/Product/UppdateQuantity/",
+            method: "GET",
+            params: { id: id, flag: flag }
+        }).then(function (response) {
+            location.reload();
+        });
         }
-        
     }
     $scope.searchProvider = function (name) {
         if (name == null || name.length == 0) {
@@ -105,7 +112,8 @@ app.controller('MobileController', function ($scope, $http) {
         data.Total=$("#totalMoney").val();
         console.log(data);
         $http.post("/Order/CreateOrderInfor", data).then(function (response) {
-            alert("Add Success");
+            location.href = "/Order/CheckOutOrder/"
+
         }, function (response) {
             alert("Add Thất Bại");
         });

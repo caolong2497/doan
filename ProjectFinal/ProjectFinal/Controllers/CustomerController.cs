@@ -84,6 +84,7 @@ namespace ProjectFinal.Controllers
                     {
                         Session["UserID"] = Customer.CustomerId.ToString();
                         Session["UserName"] = Customer.FullName.ToString();
+                        Session["User"] = Customer;
                         return RedirectToAction("Index", "Home");
                     }
                   

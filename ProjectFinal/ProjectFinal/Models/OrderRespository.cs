@@ -55,5 +55,35 @@ namespace ProjectFinal.Models
             }
             return false;
         }
+
+        public OrderInfor getOrderInfo(int orderId)
+        {
+            var order = (from b in db.Orders
+                   where b.Status == 1 && b.OrderId == orderId
+                   select new OrderInfor
+                   {
+                       FullName = b.FullName,
+                       Phone = b.Phone,
+                       Email = b.Email,
+                       Address = b.Address,
+                       Total = (double)b.Total
+                   }).First();
+            return order;
+        }
+        public List<OrderDetailModel> getOrderDetail(int orderId)
+        {
+            var order = (from t1 in db.Products
+                        join t2 in db.OrderDetails on t1.ProductId equals t2.ProductId
+                        where t2.OrderId == orderId
+                        select new OrderDetailModel
+                        {
+                            ProductId = t1.ProductId,
+                            IconImg = t1.IconImg,
+                            Quantity = t2.Quantity,
+                            ProductName = t1.ProductName,
+                            Value = t2.Value
+                        }).ToList();
+            return order;
+        }
     }
 }
