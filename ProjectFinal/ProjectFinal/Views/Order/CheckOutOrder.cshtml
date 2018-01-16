@@ -4,31 +4,52 @@
              <i class="fa fa-check fa-5" aria-hidden="true"></i>
              <h3>Cảm ơn quý khách đã mua hàng tại IZShop</h3>
          </div>
-         <table class="table table-bordered">
-             <thead>
-                 <tr>
-                     <th>Firstname</th>
-                     <th>Lastname</th>
-                     <th>Email</th>
-                 </tr>
-             </thead>
-             <tbody>
-                 <tr>
-                     <td>John</td>
-                     <td>Doe</td>
-                     <td>john@example.com</td>
-                 </tr>
-                 <tr>
-                     <td>Mary</td>
-                     <td>Moe</td>
-                     <td>mary@example.com</td>
-                 </tr>
-                 <tr>
-                     <td>July</td>
-                     <td>Dooley</td>
-                     <td>july@example.com</td>
-                 </tr>
-             </tbody>
-         </table>
+         <div class="cartInfor">
+             <p class="cartCap">Thông tin đặt hàng</p>
+             <ul class="cartInfor_u">
+                 <li>
+                     <label> Họ Tên Khách Hàng:</label>
+                     <span>@ViewBag.order.FullName</span>
+                 </li>
+                 <li>
+                     <label> Số Điện Thoại:</label>
+                     <span>@ViewBag.order.Phone</span>
+             </li>
+                 <li>
+                     <label> Email:</label>
+                     <span>@ViewBag.order.Email</span>
+                 </li>
+             <li>
+                 <label> Địa chỉ nhận hàng:</label>
+                 <span>@ViewBag.order.Address</span>
+             </li>
+
+         </ul>
+     </div>
+         <div class="cartInfor">
+             <p class="cartCap">Sản phẩm bạn đã mua</p>
+             <ul class="cartPro clearfix">
+                 @foreach (var item in ViewBag.orderDetail)
+                 {
+                     String[] Image = item.IconImg.Split(',');
+                    <li class="cartPro_img">
+                        <span>
+                            <img src="@Image.GetValue(0)" />
+                        </span>
+                    </li>
+                    <li class="cartPro_id">
+                        <b>@item.ProductName</b>
+                        <p>Số lượng: <span>@item.Quantity</span></p>
+                        <h4 class="cartPro_pri">@item.Value.ToString("#,###").Replace(",", ".")₫</h4>
+                    </li>
+                 }
+                
+                
+             </ul>
+
+         </div>
+         <p class="button_more">
+             <a href="~/Home/index">Mua Thêm Sản Phẩm Khác</a>
+         </p>
      </div>
 </div>

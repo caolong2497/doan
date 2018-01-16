@@ -218,6 +218,7 @@ img {
     top: 15px;
     left: 147px;
 }
+
 .phone-w3l {
     text-align: right;
 	width:50%;
@@ -246,6 +247,97 @@ img {
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #fff;
     background-color:#716fca;
+}
+.cartInfor{
+        margin: 15px 0;
+    background-color: #fff;
+    border: solid 1px #d5d5d5;
+}
+.cartCap{
+        font-size: 16px;
+    padding: 15px;
+    color: #4a4a4a;
+    border-bottom: solid 1px #d5d5d5;
+}
+.cartInfor_u{
+    padding: 15px;
+}
+.cartInfor_u li {
+    display: table;
+    width: 100%;
+    margin-bottom: 3px;
+}
+.cartInfor_u label {
+    display: table-cell;
+    vertical-align: top;
+    width: 200px;
+    color: gray;
+}
+.cartInfor_u span {
+    display: table-cell;
+    vertical-align: top;
+    font-weight: bold;
+}
+.checkoutOrder{
+    max-width: 510px;
+    width: 100%;
+    margin: 50px auto;
+}
+.cartPro {
+    display: table;
+    width: 100%;
+    padding: 15px;
+}
+.cartPro li {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.cartPro_img {
+    width: 69px;
+    text-align: center;
+}
+.cartPro_img img {
+    max-width: 60px;
+}
+.cartPro_img {
+    padding-left: 10px;
+    position: relative;
+}
+.cartPro_id {
+    padding-left: 10px;
+    position: relative;
+}
+.cartPro_id p {
+    color: rgb(74, 74, 74);
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.cartPro_id b {
+    color: rgb(61, 61, 61);
+    margin-bottom: 10px;
+
+}
+.cartPro_pri {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.button_more{
+        text-align: center;
+    padding: 10px 0;
+}
+.button_more a{
+    display: inline-block;
+    padding: 14px 20px;
+    color: #317f0f;
+    background-color: #fff;
+    border: solid 1px #34a105;
+}
+.button_more a:hover{
+
+    color: #000;
+
 }
 .search-agileinfo input[type="search"] {
     width: 100%;
@@ -1602,7 +1694,8 @@ p.sbmincart-empty-text {
   border:none;
 }*/
 .txtCheckout{
-    text-align :center;
+    text-align: center;
+    margin: 25px 20px;
 }
 .fa-5{
         font-size: 65px;
@@ -1976,6 +2069,7 @@ table.table {
     width: 100%;
     border: 1px solid #D0D0D0;
 }
+
 td.t-data {
     border: 1px solid #D2D2D2;
     padding: 10px !important;

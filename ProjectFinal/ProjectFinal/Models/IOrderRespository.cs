@@ -10,6 +10,6 @@ namespace ProjectFinal.Models
     {
         bool CreateOrderInfor(OrderInfor order);
         bool CreateOrderDetail(OrderDetail order);
-        bool getOrderInfo(int orderId);
+        OrderInfor getOrderInfo(int orderId);
     }
 }
