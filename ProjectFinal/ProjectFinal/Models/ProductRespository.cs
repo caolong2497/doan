@@ -111,7 +111,7 @@ namespace ProjectFinal.Models
                                IconImg = b.IconImg,
                                Discount = b.Discount,
                                PriceOut = b.PriceOut
-                           }).Take(5).ToList();
+                           }).ToList();
             return product;
         }
 

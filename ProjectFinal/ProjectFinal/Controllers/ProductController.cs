@@ -28,7 +28,26 @@ namespace ProjectFinal.Controllers
             ViewBag.id = id;
             return View();
         }
+        [HttpGet]
+        public void getListProductByName(String name)
+        {
+            ProductRespository proRes = new ProductRespository();
+            List<ProductViewModel> product = proRes.GetProductByName(name);
 
+            List<ProductViewModel> Listproduct = new List<ProductViewModel>();
+            foreach (var item in product)
+            {
+                ProductViewModel pro = new ProductViewModel();
+                pro.ProductId = item.ProductId;
+                pro.IconImg = item.IconImg.Split(',')[0];
+                pro.ProductName = item.ProductName;
+                pro.PriceOut = item.PriceOut;
+                pro.Discount = item.Discount;
+                Listproduct.Add(pro);
+            }
+            Session["Product"] = Listproduct;
+            //return JsonConvert.SerializeObject(Listproduct);
+        }
         [HttpGet]
         public String GetProduct(String id)
         {
@@ -53,7 +72,8 @@ namespace ProjectFinal.Controllers
             }
             else if ("0".Equals(id))
             {
-                return null;
+                product = Session["Product"] as List<ProductViewModel>;
+                Session["Product"] = null;
             }
             else
             {
@@ -113,8 +133,11 @@ namespace ProjectFinal.Controllers
             List<ProductViewModel> product = proRes.GetProductByName(name);
 
             List<ProductViewModel> Listproduct = new List<ProductViewModel>();
+            int i= 0;
             foreach (var item in product)
             {
+                i++;
+                if (i == 5) { break;}
                 ProductViewModel pro = new ProductViewModel();
                 pro.ProductId = item.ProductId;
                 pro.IconImg = item.IconImg.Split(',')[0];
@@ -193,8 +216,28 @@ namespace ProjectFinal.Controllers
             List<ProductOrderModel> ListPro = (List<ProductOrderModel>)Session["myCart"];
             ProductOrderModel prod = ListPro.Single(x => x.ProductId == productid);
             ListPro.Remove(prod);
-            Session["myCart"] = ListPro;
+            if (ListPro.Count() == 0)
+            {
+                Session["myCart"] = null;
+
+            }
+            else
+            {
+                Session["myCart"] = ListPro;
+            }
+            
             return JsonConvert.SerializeObject(ListPro);
+        }
+        [HttpGet]
+        public int countProductinCart()
+        {
+            List<ProductOrderModel> ListPro = (List<ProductOrderModel>)Session["myCart"];
+            int count = 0;
+            foreach(var item in ListPro)
+            {
+                count = count + item.Quantity;
+            }
+            return count; 
         }
     }
 }

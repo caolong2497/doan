@@ -1,37 +1,39 @@
 ﻿<div class="container">
-     <div class="checkoutOrder">
-         <div class="txtCheckout">
-             <i class="fa fa-check fa-5" aria-hidden="true"></i>
-             <h3>Cảm ơn quý khách đã mua hàng tại IZShop</h3>
-         </div>
-         <div class="cartInfor">
-             <p class="cartCap">Thông tin đặt hàng</p>
-             <ul class="cartInfor_u">
-                 <li>
-                     <label> Họ Tên Khách Hàng:</label>
-                     <span>@ViewBag.order.FullName</span>
-                 </li>
-                 <li>
-                     <label> Số Điện Thoại:</label>
-                     <span>@ViewBag.order.Phone</span>
-             </li>
-                 <li>
-                     <label> Email:</label>
-                     <span>@ViewBag.order.Email</span>
-                 </li>
-             <li>
-                 <label> Địa chỉ nhận hàng:</label>
-                 <span>@ViewBag.order.Address</span>
-             </li>
+    <div class="checkoutOrder">
+        <div class="txtCheckout">
+            <i class="fa fa-check fa-5" aria-hidden="true"></i>
+            <h3>Cảm ơn quý khách đã mua hàng tại IZShop</h3>
+        </div>
+        <div class="cartInfor">
+            <p class="cartCap">Thông tin đặt hàng</p>
+            <ul class="cartInfor_u">
+                <li>
+                    <label> Họ Tên Khách Hàng:</label>
+                    <span>@ViewBag.order.FullName</span>
+                </li>
+                <li>
+                    <label> Số Điện Thoại:</label>
+                    <span>@ViewBag.order.Phone</span>
+                </li>
+                <li>
+                    <label> Email:</label>
+                    <span>@ViewBag.order.Email</span>
+                </li>
+                <li>
+                    <label> Địa chỉ nhận hàng:</label>
+                    <span>@ViewBag.order.Address</span>
+                </li>
 
-         </ul>
-     </div>
-         <div class="cartInfor">
-             <p class="cartCap">Sản phẩm bạn đã mua</p>
-             <ul class="cartPro clearfix">
-                 @foreach (var item in ViewBag.orderDetail)
-                 {
-                     String[] Image = item.IconImg.Split(',');
+            </ul>
+        </div>
+        <div class="cartInfor">
+            <p class="cartCap">Sản phẩm bạn đã mua</p>
+
+            @foreach (var item in ViewBag.orderDetail)
+            {
+                String[] Image = item.IconImg.Split(',');
+                <ul class="cartPro clearfix">
+
                     <li class="cartPro_img">
                         <span>
                             <img src="@Image.GetValue(0)" />
@@ -42,14 +44,15 @@
                         <p>Số lượng: <span>@item.Quantity</span></p>
                         <h4 class="cartPro_pri">@item.Value.ToString("#,###").Replace(",", ".")₫</h4>
                     </li>
-                 }
-                
-                
-             </ul>
+                </ul>
+            }
 
-         </div>
-         <p class="button_more">
-             <a href="~/Home/index">Mua Thêm Sản Phẩm Khác</a>
-         </p>
-     </div>
+
+
+
+        </div>
+        <p class="button_more">
+            <a href="~/Home/index">Mua Thêm Sản Phẩm Khác</a>
+        </p>
+    </div>
 </div>

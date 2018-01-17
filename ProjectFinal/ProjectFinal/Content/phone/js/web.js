@@ -70,11 +70,25 @@ app.controller('MobileController', function ($scope, $http) {
     $scope.price = [];
     $scope.PSearch = {};
     $scope.initProduct = function (id) {
-        console.log(id);
-        $scope.searchProvider($scope.providername);
-        $http.get("/Product/GetProduct/"+id ).then(function (response) {
-            $scope.Product = response.data;
-        });
+            $scope.searchProvider($scope.providername);
+            $http.get("/Product/GetProduct/" + id).then(function (response) {
+                $scope.Product = response.data;
+            });
+    }
+    $scope.searchProductbyName = function (name) {
+        
+        if (name == null) {
+            alert("Bạn chưa nhập từ khóa tìm kiếm");
+        } else {
+            $http({
+                url: "/Product/getListProductByName/",
+                method: "GET",
+                params: { name: $scope.ProductName }
+            }).then(function (response) {
+                location.href = "/Product/GetListProduct/?id=0";
+            });
+       
+        }
     }
     $scope.changeQuantity = function (id, flag) {
         var proid = "#total" + id;
@@ -213,10 +227,23 @@ app.controller('MobileController', function ($scope, $http) {
                 method: "GET",
                 params: { id: Productid }
             }).then(function (response) {
-                alert("thêm giỏ hàng thành công");
+                alert("Thêm  Vào giỏ Hàng Thành Công");
+                $scope.getCountProduct();
+               
             });
-    }
+    };
+    $scope.getCountProduct = function () {
+        $http({
+            url: "/Product/countProductinCart/",
+            method: "GET",
+        }).then(function (response) {
+            $scope.count = response.data;
+            console.log($scope.count);
+            $(".countProduct").text($scope.count);
+            $(".countProduct").css("background", "#52598a");;
 
+        });
+    }
     $scope.deleteCart = function (Productid) {
         $http({
             url: "/Product/deleteCart/",
@@ -227,4 +254,5 @@ app.controller('MobileController', function ($scope, $http) {
             location.reload();
         });
     }
+    $scope.getCountProduct();
     });
