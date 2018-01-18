@@ -6,49 +6,40 @@
 <div class="cart_detail">
     <div class="container">
         <h4 class="title_cart">GIỎ HÀNG CỦA BẠN</h4>
-   @if (Session["myCart"] != null)
-   { double total = 0;
-        <table class="table table-hover ">
+    <div ng-if="productS!='0'">
+        <table class="table table-hover " ng-init="getProductInSession()">
             <tbody>
+                <tr ng-repeat="item in productS">
+                    <td>
+                        <img src="{{item.IconImg}}" style="width:50px;height:50px;" />
+                    </td>
+                    <td>{{item.ProductName}}</td>
+                    <td>
+                        <div class="fs-ghltd fs-ghplus">
+                            <div class="fs-ghpltb clearfix">
+                                <span class="fsghbtn" ng-click="changeQuantity(item.ProductId,1)"><i>-</i></span>
+                                <input class="fs-ghplip" id="total{{item.ProductId}}" type="text" readonly="readonly" value="{{item.Quantity}}" placeholder="0">
+                                <span class="fsghbtn" ng-click="changeQuantity(item.ProductId,2)">+</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        {{item.PriceOut*(100-item.Discount)/100 | currency:"":0}} ₫
+                    </td>
+                    <td>{{item.PriceOut*(100-item.Discount)/100* item.Quantity | currency:"":0}}₫</td>
+                    <td>
+                        <a ng-click="deleteCart(item.ProductId)"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <h5 style="text-align:right;font-weight:bold">Thành Tiền:</h5>
+                    </td>
+                    <td colspan="3">
+                        <h4 style="color:red;text-align:center">{{total | currency:"":0}}₫</h4>
+                    </td>
+                </tr>
 
-
-                    @foreach (var item in list)
-                    {
-                        String QuantityId = "total" + item.ProductId;
-                        double price = item.PriceOut * (100 - item.Discount) / 100;
-                        double value = price * item.Quantity;
-                        total += value;
-                        <tr>
-                            <td>
-                                <img src="@item.IconImg" style="width:50px;height:50px;" />
-                            </td>
-                            <td>@item.ProductName</td>
-                            <td>
-                                <div class="fs-ghltd fs-ghplus">
-                                    <div class="fs-ghpltb clearfix">
-                                        <span class="fsghbtn"  ng-click="changeQuantity(@item.ProductId,1)"><i>-</i></span>
-                                        <input class="fs-ghplip" id="@QuantityId" type="text" readonly="readonly" value="@item.Quantity" placeholder="0">
-                                        <span class="fsghbtn"  ng-click="changeQuantity(@item.ProductId,2)">+</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                            @price.ToString("#,###").Replace(",", ".")₫</td>
-                            <td>@value.ToString("#,###").Replace(",", ".")₫</td>
-                            <td>
-                                <a ng-click="deleteCart(@item.ProductId)"><i class="fa fa-times" aria-hidden="true"></i></a>
-                            </td>
-                        </tr>
-                    }
-                    <tr>
-                        <td colspan="3">
-                            <h5 style="text-align:right;font-weight:bold">Thành Tiền:</h5>
-                        </td>
-                        <td colspan="3">
-                            <h4 style="color:red;text-align:center">@total.ToString("#,###").Replace(",", ".")₫</h4>
-                        </td>
-                    </tr>
-               
             </tbody>
         </table>
         <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">Đặt Hàng</button>
@@ -62,27 +53,27 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Họ và Tên:</label>
-                                <input type="text" ng-model="orderinfo.FullName"  class="form-control" id="recipient-name">
-                                @*@if (Session["user"] != null)
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Họ và Tên:</label>
+                            <input type="text" ng-model="orderinfo.FullName" class="form-control" id="recipient-name">
+                            @*@if (Session["user"] != null)
                                 {
                                     <input type="text" ng-model="orderinfo.FullName" class="form-control" value="@Customer.FullName" id="recipient-name">
                                 }*@
-                            </div>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Số Điện Thoại:</label>
-                                <input type="text" ng-model="orderinfo.Phone" class="form-control" id="recipient-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Email:</label>
-                                <input type="text" ng-model="orderinfo.Email" class="form-control" id="recipient-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Địa Chỉ:</label>
-                                <input type="text" ng-model="orderinfo.Address" class="form-control" id="recipient-name">
-                            </div>
-                        <input type="hidden" id="totalMoney" value="@total"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Số Điện Thoại:</label>
+                            <input type="text" ng-model="orderinfo.Phone" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Email:</label>
+                            <input type="text" ng-model="orderinfo.Email" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Địa Chỉ:</label>
+                            <input type="text" ng-model="orderinfo.Address" class="form-control" id="recipient-name">
+                        </div>
+                        <input type="hidden" id="totalMoney" value="{{total}}" />
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -91,9 +82,9 @@
                 </div>
             </div>
         </div>
-   }else
-   {
-       <h4 style="color:red;font-weight:bold">Không Có Sản Phẩm Nào Trong Giỏ Hàng!</h4>
-   }
+    </div>
+        <div ng-if="productS=='0'">
+            <h4 style="color:red;font-weight:bold">Không Có Sản Phẩm Nào Trong Giỏ Hàng!</h4>
+        </div>
     </div>
 </div>

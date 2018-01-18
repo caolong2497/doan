@@ -19,5 +19,7 @@ namespace ProjectFinal.Models
         List<ProductViewModel> GetProductByName(string name);
         ProductViewDetail getProductDetail(int productid);
         List<ProductViewModel> GetProductByCategory(string id);
+        Boolean upProductBuy(int id, int quantity);
+        Boolean upProductView(String id);
     }
 }

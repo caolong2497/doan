@@ -1,5 +1,5 @@
 ﻿
-@{
+@*@{
     ViewBag.Title = "Login";
 }
 
@@ -39,6 +39,41 @@
 
             @section Scripts {
                 @Scripts.Render("~/bundles/jqueryval")
-            }
+            }*@
+
+
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="login">
+
+    <div class="main-agileits">
+        <div class="form-w3agile">
+            <h3>Login</h3>
+                
+                    <div ng-if="error!=''" class="alert alert-danger">{{error}}</div>
+
+                <div class="key">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <input type="text" ng-model="email" name="Email" placeholder="Email" value="@ViewBag.email">
+                    <div class="clearfix"></div>
+                </div>
+                <div class="key">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input type="password" ng-model="password" name="Password" placeholder="Password" value="@ViewBag.password">
+                    <div class="clearfix"></div>
+                </div>
+                <input type="button" ng-click="loginform()" value="Login">
+        </div>
+        <div class="forg">
+            <a href="#" class="forg-left">Forgot Password</a>
+            <a>
+                @Html.ActionLink("Đăng Ký", "CreateCustomer", "Customer", new { @class = "forg-right" })
+            <div class="clearfix"></div>
+    </div>
+</div>
+</div>
 
 

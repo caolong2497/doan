@@ -18,6 +18,7 @@ namespace ProjectFinal.Controllers
             ProductRespository proRes = new ProductRespository();
             ProductViewDetail product = proRes.getProductDetail(productid);
             ViewBag.product = product;
+            UpProductView(id);
             String[] Image = product.IconImg.Split(',');
             ViewBag.Image = Image;
             return View();
@@ -219,7 +220,6 @@ namespace ProjectFinal.Controllers
             if (ListPro.Count() == 0)
             {
                 Session["myCart"] = null;
-
             }
             else
             {
@@ -231,6 +231,10 @@ namespace ProjectFinal.Controllers
         [HttpGet]
         public int countProductinCart()
         {
+            if (Session["myCart"] == null)
+            {
+                return 0;
+            }
             List<ProductOrderModel> ListPro = (List<ProductOrderModel>)Session["myCart"];
             int count = 0;
             foreach(var item in ListPro)
@@ -238,6 +242,36 @@ namespace ProjectFinal.Controllers
                 count = count + item.Quantity;
             }
             return count; 
+        }
+        [HttpGet]
+        public void UpProductView(String id)
+        {
+            ProductRespository proRes = new ProductRespository();
+            proRes.upProductView(id);
+            
+        }
+
+        [HttpGet]
+        public String getProductInSession()
+        {
+            
+            if (Session["myCart"] == null)
+            {
+                return "0";
+            }
+                List<ProductOrderModel> ListPro = (List<ProductOrderModel>)Session["myCart"];
+                return JsonConvert.SerializeObject(ListPro);
+        }
+        [HttpGet]
+        public double getTotal()
+        {
+            List<ProductOrderModel> ListPro = (List<ProductOrderModel>)Session["myCart"];
+            double total = 0;
+            foreach(var i in ListPro)
+            {
+                total = i.PriceOut * (100 - i.Discount) / 100 * i.Quantity + total;
+            }
+            return total;
         }
     }
 }

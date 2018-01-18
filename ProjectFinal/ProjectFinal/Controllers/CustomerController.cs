@@ -70,35 +70,22 @@ namespace ProjectFinal.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        public ActionResult Login(String email, String password) {
-
-            if (!"".Equals(email) && !"".Equals(password))
+        public bool Login(String email, String password) {
+            if (!checkEmail(email))
             {
-                if (!checkEmail(email))
+                cusRes = new CustomerRepository();
+                String encodePass = Common.EncodeMd5(password);
+                var Customer = cusRes.GetCustomer(email, encodePass);
+                if (Customer != null)
                 {
-                    cusRes = new CustomerRepository();
-                    String encodePass = Common.EncodeMd5(password);
-                    var Customer = cusRes.GetCustomer(email, encodePass);
-                    if (Customer != null)
-                    {
-                        Session["UserID"] = Customer.CustomerId.ToString();
-                        Session["UserName"] = Customer.FullName.ToString();
-                        Session["User"] = Customer;
-                        return RedirectToAction("Index", "Home");
-                    }
-                  
+                    Session["UserID"] = Customer.CustomerId.ToString();
+                    Session["UserName"] = Customer.FullName.ToString();
+                    Session["User"] = Customer;
+                    return true;
                 }
-                ViewBag.Error = "Email hoặc Mật khẩu sai";
+                return false;
             }
-            else
-            {
-                ViewBag.Error="Email và mật khẩu  không được để trống";
-            }
-            ViewBag.email = email;
-            ViewBag.password = password;
-                return View();
-
+            return false;
         }
         public bool checkEmail(string email)
         {

@@ -2071,6 +2071,21 @@ p.single-price-text {
 .form-w3agile input[type="submit"]:hover {
 	background:#000;
 }
+.form-w3agile input[type="button"] {
+    background: #497290;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    font-size: 14px;
+    outline: none;
+    width: 32%;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+.form-w3agile input[type="button"]:hover {
+	background:#000;
+}
 .forg a {
     text-decoration: none;
     color: #029241;

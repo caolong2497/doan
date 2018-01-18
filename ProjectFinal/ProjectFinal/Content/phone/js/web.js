@@ -32,9 +32,13 @@ $(document).ready(function () {
 	$("#searchInput").focus(function () {
 	    $('.SearchResult').css("display", "block");
 	});
-	$("#searchInput").focusout(function () {
-	    $('.SearchResult').css("display", "none");
-	});
+	//$("#searchInput").focusout(function () {
+	//    $("a").click(function () {
+	//        alert("hello");
+	//        return;
+	//    })
+	//     $('.SearchResult').css("display", "none");
+	//});
 
 });
 $(window).load(function() {
@@ -64,8 +68,10 @@ $(window).load(function() {
 });
 var app=angular.module('myApp', []);
 app.controller('MobileController', function ($scope, $http) {
-    
-    $scope.orderinfo = {}
+    $scope.email="";
+    $scope.password = "";
+    $scope.error = "";
+    $scope.orderinfo = {};
     $scope.proid = [];
     $scope.price = [];
     $scope.PSearch = {};
@@ -105,7 +111,7 @@ app.controller('MobileController', function ($scope, $http) {
             method: "GET",
             params: { id: id, flag: flag }
         }).then(function (response) {
-            location.reload();
+            $scope.getProductInSession();
         });
         }
     }
@@ -182,7 +188,6 @@ app.controller('MobileController', function ($scope, $http) {
         if ($scope.price.length == 0) {
             $scope.price.push('all');
         }
-        //console.log($scope.proid + ":" + $scope.price);
         $http({
             url: "/Product/SearchProduct/",
             method: "GET",
@@ -190,14 +195,10 @@ app.controller('MobileController', function ($scope, $http) {
         }).then(function(response){
             $scope.Product = response.data;
         });
-        //$http.get("/get-list-provider-by-name?name=" + name).then(function (response) {
-        //    $scope.data = response.data;
-        //});
     }
     $scope.searchProductName = function () {
         if ($scope.ProductName == "") {
             $scope.PSearch = {};
-            //$('.SearchResult').css("display", "none");
         }else{
             $http({
                 url: "/Product/GetProductByName/",
@@ -210,17 +211,6 @@ app.controller('MobileController', function ($scope, $http) {
         }
        
     }
-
-    //$scope.getSession = function () {
-    //        $http({
-    //            url: "/Product/getCart/",
-    //            method: "GET"
-    //        }).then(function (response) {
-    //            $scope.cartProduct = response.data;
-    //            $scope.count = $scope.cartProduct.length;
-    //        });
-    //}
-    //$scope.getSession();
     $scope.addCart = function (Productid) {
             $http({
                 url: "/Product/addCart/",
@@ -238,12 +228,51 @@ app.controller('MobileController', function ($scope, $http) {
             method: "GET",
         }).then(function (response) {
             $scope.count = response.data;
-            console.log($scope.count);
+            if ($scope.count == 0) {
+                $(".countProduct").text("");
+                $(".countProduct").css("background", "rgba(255, 255, 255, 0.075)");
+            }else{
             $(".countProduct").text($scope.count);
-            $(".countProduct").css("background", "#52598a");;
+            $(".countProduct").css("background", "#497290");
+            }
+        });
+    }
+    $scope.getProductInSession = function () {
+        $http({
+            url: "/Product/getProductInSession/",
+            method: "GET",
+        }).then(function (response) {
+            $scope.productS = response.data;
+            if ($scope.productS!="0") {
+                $http({
+                    url: "/Product/getTotal/",
+                    method: "GET",
+                }).then(function (response) {
+                    $scope.total = response.data;
+                });
+            }
+            $scope.getCountProduct();
 
         });
     }
+    //$scope.loginform = function () {
+    //    var regex="/[a-b]/";
+    //    if ($scope.email == "" || $scope.email == "") {
+    //        $scope.error = "Tên Đăng Nhập và Mật Khẩu Không Được Để Trống";
+    //    } else if (!/[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+.+.[A-Za-z]{2,4}/.test($scope.email)) {
+    //        $scope.error = "Email Không Đúng Định Dạng";
+    //        console.log("false");
+    //    } else {
+    //         $http({
+    //        url: "/Product/deleteCart/",
+    //        method: "GET",
+    //        params: { name: Productid }
+    //    }).then(function (response) {
+    //        alert("Xóa giỏ hàng thành công");
+    //        $scope.getProductInSession();
+    //    });
+    //    }
+    //}
     $scope.deleteCart = function (Productid) {
         $http({
             url: "/Product/deleteCart/",
@@ -251,7 +280,7 @@ app.controller('MobileController', function ($scope, $http) {
             params: { id: Productid }
         }).then(function (response) {
             alert("Xóa giỏ hàng thành công");
-            location.reload();
+            $scope.getProductInSession();
         });
     }
     $scope.getCountProduct();

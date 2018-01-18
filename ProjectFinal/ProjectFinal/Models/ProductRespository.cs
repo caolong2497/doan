@@ -228,6 +228,35 @@ namespace ProjectFinal.Models
             return Listproduct;
         }
 
+        public bool upProductView(String id)
+        {
+            try { 
+            int productid = Int32.Parse(id);
+            Product product = db.Products.FirstOrDefault(item => item.ProductId == productid);
+            product.CoutView = product.CoutView + 1;
+            db.SaveChanges();
+                return true;
+            }catch(Exception ex)
+            {
+                Console.Write("loi " + ex);
+            }
+            return false;
+        }
+        public bool upProductBuy(int id,int quantity)
+        {
+            try
+            {
+            Product product = db.Products.FirstOrDefault(item => item.ProductId == id);
+            product.CoutBuy = product.CoutBuy + quantity;
+            db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.Write("loi " + ex);
+            }
+            return false;
+        }
         public List<ProductViewModel> GetProductByPrice(String ListPrice)
         {
             String[] Price = ListPrice.Split(',');

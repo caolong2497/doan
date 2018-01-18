@@ -14,6 +14,7 @@ namespace ProjectFinal.Controllers
         {
             return View();
         }
+
         public ActionResult CheckOutOrder()
         {
             int cartId = (int)Session["CartId"];
@@ -30,6 +31,7 @@ namespace ProjectFinal.Controllers
         {
             order.CreateDate = System.DateTime.Now;
             OrderRespository orderRes = new OrderRespository();
+            ProductRespository productRes = new ProductRespository();
             if (orderRes.CreateOrderInfor(order))
             {
                 OrderDetail ord = new OrderDetail();
@@ -44,7 +46,7 @@ namespace ProjectFinal.Controllers
                     ord.Value = item.PriceOut * item.Quantity*(100-item.Discount)/100;
                     ord.OrderId = orderId;
                     ord.Status = 1;
-                    if (!orderRes.CreateOrderDetail(ord))
+                    if (!orderRes.CreateOrderDetail(ord) || !productRes.upProductBuy(ord.ProductId, ord.Quantity))
                     {
                         return false;
                     }
