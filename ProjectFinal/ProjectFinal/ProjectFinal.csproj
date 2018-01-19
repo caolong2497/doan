@@ -1437,6 +1437,8 @@
     <Content Include="Views\Product\GetListProduct.cshtml" />
     <Content Include="Views\Order\CreateOrder.cshtml" />
     <Content Include="Views\Order\CheckOutOrder.cshtml" />
+    <Content Include="Views\Common\ErrorPage.cshtml" />
+    <Content Include="Views\Common\ContactPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

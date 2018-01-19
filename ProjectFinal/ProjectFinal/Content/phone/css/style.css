@@ -26,6 +26,9 @@ body a:hover {
 body a:focus, a:hover {
 	text-decoration: none;
 }
+#map{
+    height:500px;
+}
 input[type="button"], input[type="submit"] {
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
@@ -516,8 +519,17 @@ button.w3view-cart:focus{
 	background:#716fca;
 }
 /*--//banner--*/
-
-
+    .errorPage{
+        height:250px;
+    }
+    .errorPage h3{
+        padding-top:60px;
+        color:red;
+        font-weight:bold
+    }
+.contact-mid{
+    text-align:center;
+}
 /*--banner bottom--*/
 .banner-bootom-w3-agileits,.top-products,.fandt,.top-brands,.newsletter,.footer,.content,.contact,.about,.team,.main-grid-border,.faq,.products,.collpse.tabs,.login,.check-out,.payment{
 	padding:50px 0;
@@ -2500,6 +2512,7 @@ height: 140px;
 		top: 2px;
 		left: -22px;
 	}
+
 	.fgd1 .fa {
 		font-size: 13px;
 		width: 25px;

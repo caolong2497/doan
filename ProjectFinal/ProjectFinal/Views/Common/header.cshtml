@@ -45,7 +45,7 @@
                                     var cat2 = Model.Where(c => c.ParentId == cat.CategoryId && c.ShowHome!=0);
                                     if (cat2.ToList().Count == 0)
                                     {
-                                        <li><a href="about.html" class="hyper"><span>@cat.CategoryName</span></a></li>
+                                        <li><a href="@cat.MetaLink" class="hyper"><span>@cat.CategoryName</span></a></li>
                                     }
                                     else
                                     {

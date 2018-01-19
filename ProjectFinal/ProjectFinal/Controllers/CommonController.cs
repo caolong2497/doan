@@ -20,5 +20,13 @@ namespace ProjectFinal.Controllers
         {
             return PartialView();
         }
+        public ActionResult ErrorPage()
+        {
+            return View();
+        }
+        public ActionResult ContactPage()
+        {
+            return View();
+        }
     }
 }

@@ -21,11 +21,8 @@ namespace ProjectFinal.Controllers
         }
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult CreateCustomer(CustomerRegister customer)
+        public bool CreateCustomer(CustomerRegister customer)
         {
-
-            if (ModelState.IsValid)
-            {
                 Customer cus = new Customer();
                 cus.FullName = customer.FullName;
                 cus.Email = customer.Email;
@@ -43,11 +40,11 @@ namespace ProjectFinal.Controllers
                 Boolean result = cusRes.CreateCustomer(cus);
                 if (result)
                 {
-                    return RedirectToAction("Index", "Home");
+                Session["UserName"] = customer.FullName;
+                Session["User"] = customer;
+                return true;
                 }
-
-            }
-            return View(customer);
+            return false;
 
         }
 
@@ -70,8 +67,8 @@ namespace ProjectFinal.Controllers
         }
 
         [HttpPost]
-        public bool Login(String email, String password) {
-            if (!checkEmail(email))
+        public int Login(String email, String password) {
+            if (checkEmail(email)==0)
             {
                 cusRes = new CustomerRepository();
                 String encodePass = Common.EncodeMd5(password);
@@ -81,22 +78,23 @@ namespace ProjectFinal.Controllers
                     Session["UserID"] = Customer.CustomerId.ToString();
                     Session["UserName"] = Customer.FullName.ToString();
                     Session["User"] = Customer;
-                    return true;
+                    return 1;
                 }
-                return false;
+                return 0;
             }
-            return false;
+            return 0;
         }
-        public bool checkEmail(string email)
+        [HttpGet]
+        public int checkEmail(string email)
         {
             cusRes = new CustomerRepository();
             Customer customer = cusRes.checkEmail(email);
 
             if (customer == null)
             {
-                return true;
+                return 1;
             }
-            return false;
+            return 0;
         }
 
     }
