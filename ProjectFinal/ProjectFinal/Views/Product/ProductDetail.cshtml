@@ -102,7 +102,7 @@ $(window).load(function() {
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
-                            @ViewBag.product.Description
+                            @Html.Raw(ViewBag.product.Description)
                         </div>
                     </div>
                 </div>
@@ -118,26 +118,6 @@ $(window).load(function() {
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                         <div class="panel-body">
                             <div class="fb-comments" data-href="http://localhost:11501/Product/ProductDetail?id=@ViewBag.product.ProductId" data-numposts="6"></div>
-
-                            @*<div class="panel panel-default comment_item">
-
-                                <div class="panel-body">
-                                   By <label class="author">Thanh Long</label> at 6-6-2017 :<br />
-                                    <p class="content_cmt">Ngon</p>
-                                </div>
-                            </div>
-                            <div class="panel panel-default comment_item">
-
-                                <div class="panel-body">
-                                    By <label class="author">Hợp ĐV</label> at 6-6-2017 :<br />
-                                    <p class="content_cmt">Ngon</p>
-                                </div>
-                            </div>
-                            <div class="form-group comment_post">
-                                <label for="inputlg">Hãy để lại bình luận của bạn ở đây</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    <button type="submit" class="btn btn-primary pull-right btn_comment">Bình luận</button>
-                            </div>*@
                         </div>
                     </div>
                 </div>

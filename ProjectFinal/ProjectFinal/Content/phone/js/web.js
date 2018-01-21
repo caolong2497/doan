@@ -30,16 +30,20 @@ $(document).ready(function () {
         width: 'auto', //auto or any width like 600px
         fit: true   // 100% fit in a container
     });
+    var flag = true;
     $("#searchInput").focus(function () {
         $('.SearchResult').css("display", "block");
+    });  
+    $("#searchInput").focusout(function (e) {
+        $(".spham").click(function () {
+
+            flag = true;
+        });
+        if (flag == false) {
+            $('.SearchResult').css("display", "none");
+        }
+        
     });
-    //$("#searchInput").focusout(function () {
-    //    $("a").click(function () {
-    //        alert("hello");
-    //        return;
-    //    })
-    //     $('.SearchResult').css("display", "none");
-    //});
 
 });
 $(window).load(function () {

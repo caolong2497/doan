@@ -17,4 +17,13 @@ namespace ProjectFinal.Models
         public String Phone { get; set; }
         public String Email { get; set; }
     }
+    public class CustomerInfor
+    {
+        public int CustomerId { get; set; }
+        public String FullName { get; set; }
+        public String PassWord { get; set; }
+        public String Address { get; set; }
+        public String Phone { get; set; }
+        public String Email { get; set; }
+    }
 }

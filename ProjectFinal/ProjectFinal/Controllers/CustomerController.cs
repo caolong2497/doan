@@ -47,7 +47,13 @@ namespace ProjectFinal.Controllers
             return false;
 
         }
-
+        public ActionResult getCustomerInfor(String email)
+        {
+            CustomerRepository cusRes = new CustomerRepository();
+            CustomerInfor customer = cusRes.getCustomerInforByEmail(email);
+            ViewBag.CustomerInfor = customer;
+                return View();
+        }
         public ActionResult Login()
         {
 

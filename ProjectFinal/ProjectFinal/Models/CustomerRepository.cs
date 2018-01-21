@@ -29,7 +29,21 @@ namespace ProjectFinal.Models
                             select e).FirstOrDefault();
             return cus;
         }
-
+        public CustomerInfor getCustomerInforByEmail(String email)
+        {
+            CustomerInfor cus = (from e in db.Customers
+                            where e.Email == email
+                            select  new CustomerInfor
+                             {
+                                 CustomerId = e.CustomerId,
+                                 FullName = e.FullName,
+                                 Email = e.FullName,
+                                 Phone = e.Phone,
+                                 Address = e.Address,
+                                 PassWord=e.PassWord
+                             }).First();
+            return cus;
+        }
         public IEnumerable<Customer> GetListCustomer()
         {
             throw new NotImplementedException();
