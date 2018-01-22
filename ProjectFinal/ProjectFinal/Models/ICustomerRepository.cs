@@ -8,10 +8,11 @@ namespace ProjectFinal.Models
 {
     interface ICustomerRepository
     {
-        IEnumerable<Customer> GetListCustomer();
         Boolean CreateCustomer(Customer customer);
-        Boolean UpdateCustomer(Customer customer);
+        Boolean UpdateCustomer(CustomerRegister customer);
         Customer checkEmail(String mail);
         Customer GetCustomer(String email, String password);
+        CustomerInfor getCustomerInforByEmail(String email);
+        Boolean changPassword(string email, string encodePass);
     }
 }

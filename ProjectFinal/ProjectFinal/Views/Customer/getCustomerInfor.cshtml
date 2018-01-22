@@ -1,0 +1,67 @@
+﻿@{
+    var check = 0;
+    if (Session["Email"] != null)
+    {
+        if (Session["Email"].ToString() == ViewBag.CustomerInfor.Email)
+        {
+            check = 1;
+
+        }
+    }
+}
+
+@if (check == 1)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Thông Tin Cá Nhân</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class=" col-md-12 col-lg-12 ">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                        <tr>
+                                            <td>FullName:</td>
+                                            <td>@ViewBag.CustomerInfor.FullName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone</td>
+                                            <td>@ViewBag.CustomerInfor.Phone</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address</td>
+                                            <td>@ViewBag.CustomerInfor.Address</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td>@ViewBag.CustomerInfor.Email</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <span class="pull-right">
+                            <a href="@Url.Action("UpdateCustomer", "Customer", new { email = @ViewBag.CustomerInfor.Email })" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container errorPage">
+    <h3>
+        Đường Dẫn Không Hợp lệ<h3>
+    </div>
+}

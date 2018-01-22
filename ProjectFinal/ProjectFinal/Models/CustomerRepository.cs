@@ -37,21 +37,26 @@ namespace ProjectFinal.Models
                              {
                                  CustomerId = e.CustomerId,
                                  FullName = e.FullName,
-                                 Email = e.FullName,
+                                 Email = e.Email,
                                  Phone = e.Phone,
                                  Address = e.Address,
                                  PassWord=e.PassWord
                              }).First();
             return cus;
         }
-        public IEnumerable<Customer> GetListCustomer()
+        public bool UpdateCustomer(CustomerRegister customer)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool UpdateCustomer(Customer customer)
-        {
-            throw new NotImplementedException();
+            try { 
+            Customer cus = db.Customers.FirstOrDefault(item => item.Email == customer.Email);
+            cus.FullName = customer.FullName;
+            cus.Address = customer.Address;
+            cus.Phone = customer.Phone;
+            db.SaveChanges();
+                return true;
+            } catch(Exception ex)
+            {
+                return false;
+            }
         }
 
         public Customer GetCustomer(string email, string password)
@@ -60,6 +65,21 @@ namespace ProjectFinal.Models
                             where e.Email == email && e.PassWord==password
                             select e).FirstOrDefault();
             return cus;
+        }
+
+        public bool changPassword(string email, string encodePass)
+        {
+            try
+            {
+                Customer cus = db.Customers.FirstOrDefault(item => item.Email == email);
+                cus.PassWord = encodePass;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

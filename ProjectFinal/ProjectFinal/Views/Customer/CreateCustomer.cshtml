@@ -3,69 +3,6 @@
 @{
     ViewBag.Title = "CreateCustomer";
 }
-
-@*<div class="login">
-
-        <div class="main-agileits">
-            <div class="form-w3agile">
-                <h3>Đăng Ký</h3>
-
-
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
-                    <div class="key">
-
-
-                        <i class="fa fa-user" aria-hidden="true"></i>
-
-                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @placeholder = "FullName" } })
-
-                        <div class="clearfix"></div>
-                    </div>
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                    <div class="key">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @placeholder = "Email" } })
-
-                        <div class="clearfix"></div>
-                    </div>
-                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                        <div class="key">
-                            <i class="fa fa-phone " aria-hidden="true"></i>
-                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @placeholder = "Phone" } })
-
-                            <div class="clearfix"></div>
-                        </div>
-                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                        <div class="key">
-                            <i class="fa fa-location-arrow " aria-hidden="true"></i>
-                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @placeholder = "Address" } })
-
-                            <div class="clearfix"></div>
-                        </div>
-                        @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
-                        <div class="key">
-                            <i class="fa fa-lock" aria-hidden="true"></i>
-                            @Html.EditorFor(model => model.PassWord, new { htmlAttributes = new { @placeholder = "PassWord" } })
-
-                            <div class="clearfix"></div>
-                        </div>
-                        @Html.ValidationMessageFor(model => model.PassWordConfirm, "", new { @class = "text-danger" })
-                        <div class="key">
-                            <i class="fa fa-lock" aria-hidden="true"></i>
-                            @Html.EditorFor(model => model.PassWordConfirm, new { htmlAttributes = new { @placeholder = "PassWord Confirm" } })
-
-                            <div class="clearfix"></div>
-                        </div>
-
-                        <input type="submit" value="Register">
-
-                }
-            </div>
-        </div>
-    </div>*@
 <div class="login">
 
     <div class="main-agileits">

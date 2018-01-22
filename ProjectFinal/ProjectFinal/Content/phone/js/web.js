@@ -30,14 +30,19 @@ $(document).ready(function () {
         width: 'auto', //auto or any width like 600px
         fit: true   // 100% fit in a container
     });
-    var flag = true;
+    var flag = false;
     $("#searchInput").focus(function () {
         $('.SearchResult').css("display", "block");
-    });  
+    });
+    $('.SearchResult').mouseenter(function () {
+        flag = true;
+    });
+    $('.SearchResult').mouseleave(function () {
+        flag = false;
+    });
     $("#searchInput").focusout(function (e) {
-        $(".spham").click(function () {
-
-            flag = true;
+        $(".spham").hover(function () {
+            //flag = true;
         });
         if (flag == false) {
             $('.SearchResult').css("display", "none");
@@ -87,6 +92,10 @@ app.controller('MobileController', function ($scope, $http) {
     $scope.passWord = "";
     $scope.passWordConfirm = "";
     $scope.Customer = {};
+    $scope.oldPassword="";
+    $scope.newPassword="";
+    $scope.newPasswordConfirm = "";
+    $scope.error_forgetEmail = "";
     $scope.initProduct = function (id) {
         $scope.searchProvider($scope.providername);
         $http.get("/Product/GetProduct/" + id).then(function (response) {
@@ -387,6 +396,123 @@ app.controller('MobileController', function ($scope, $http) {
         console.log(check+"ngoai");
 
     }
+    $scope.getCustomer = function (email) {
+        $http({
+            url: "/Customer/getCustomer/",
+            method: "GET",
+            params: { email: email }
+        }).then(function (response) {
+            $scope.Customer = response.data;
+        });
+    }
+    $scope.updateCustomer = function () {
+        alert("hello");
+        var data = $scope.Customer;
+        var check = 1;
+        if (data.FullName == "" || data.FullName == null) {
+            $scope.error_fullname = "FullName không được để trống";
+            check = 0;
+        } else {
+            $scope.error_fullname = "";
+        }
+        if (data.Phone == "" || data.Phone == null) {
+            $scope.error_phone = "Số Điện Thoại  không được để trống";
+            check = 0;
+        } else if (!/(\+84|0)\d{9,10}/.test(data.Phone)) {
+            check = 0;
+            $scope.error_phone = "Số điện thoại không đúng định dạng";
+        } else {
+            $scope.error_phone = "";
+        }
+        if (data.Address == "" || data.Address == null) {
+            $scope.error_address = "Địa chỉ không được để trống";
+            check = 0;
+        } else {
+            $scope.error_address = "";
+        }
+        if (check == 1) {
+            $http.post("/Customer/editCustomer/", data).then(function (response) {
+                result = response.data;
+                if (result) {
+                    alert("Update Thành Công");
+                    location.href = "/Customer/getCustomerInfor?email="+data.Email;
+                } else {
+                    alert("Update thất bại");
+                }
+            }, function (response) {
+                alert("Update Thất Bại");
+            });
+        }
+    }
+    $scope.changePassword = function () {
+        if ($scope.oldPassword == "" || $scope.newPassword == "" || $scope.newPasswordConfirm=="") {
+            $scope.error_Pass = "Các Trường Không Được Để Trống";
+        } else if(6 > $scope.newPassword.length || $scope.newPassword.length > 20){
+            $scope.error_Pass = "Mật khẩu  phải trong khoản từ 6 đến 20 kí tự";
+        }else if($scope.newPassword != $scope.newPasswordConfirm ) {
+            $scope.error_Pass = "Mật Khẩu Mới Và Mật Khẩu Xác Nhận Không Trùng Khớp";
+        }else{
+            $http({
+                url: "/Customer/checkPass/",
+                method: "GET",
+                params: { oldPassword: $scope.oldPassword }
+            }).then(function (response) {
+                result = response.data;
+                if (result == 0) {
+                    $scope.error_Pass = "Mật Khẩu không đúng";
+                } else {
+                    $scope.error_Pass = "";
+                    $http({
+                        url: "/Customer/changePass/",
+                        method: "GET",
+                        params: { newPassword: $scope.newPassword }
+                    }).then(function (response) {
+                        kq = response.data;
+                        if (kq == 1) {
+                            alert("Đổi Mật Khẩu thành công");
+                            location.href = "/Home/index";
+                        } else {
+                            alert("Đổi Mật Khẩu Thất Bại");
+                        }
+                    });
+                }
+            });
+        }
 
+    }
+    $scope.forgetPassword = function () {
+        if($scope.email==""){
+            $scope.error_forgetEmail="Hãy Điền Email Của Bạn";
+        } else if (!/[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+.+.[A-Za-z]{2,4}/.test($scope.email)) {
+            $scope.error_forgetEmail = "Địa chỉ Email không đúng định dạng";
+            check=0;
+        }else{
+            $http({
+                url: "/Customer/checkEmail/",
+                method: "GET",
+                params: { email: $scope.email }
+            }).then(function (response) {
+                result=response.data;
+                if(result==1){
+                    $scope.error_forgetEmail = "Địa chỉ Email không đúng";
+                }else{
+                    $http({
+                        url: "/Customer/resetPassWord/",
+                        method: "GET",
+                        params: { email: $scope.email }
+                    }).then(function (response) {
+                        result = response.data;
+                        if (result == 1) {
+                            $scope.error_forgetEmail = "";
+                            alert("Reset Mật Khẩu Thành công,Hãy Check Lại Hòm Thư Của Bạn");
+                            location.href = "/Customer/Login";
+                        } else {
+                            $scope.error_forgetEmail = "Đang có lỗi,hãy thử lại sau";
+                        }
+                    })
+                }
+            })
+         }
+    }
     $scope.getCountProduct();
 });

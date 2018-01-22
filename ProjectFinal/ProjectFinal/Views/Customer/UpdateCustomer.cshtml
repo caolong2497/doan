@@ -1,0 +1,53 @@
+﻿<div class="container" ng-init="getCustomer('@ViewBag.email')">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Thông Tin Cá Nhân</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <span class="text-danger">{{error_fullname}}</span><br />
+                            <span class="text-danger">{{error_phone}}</span><br />
+                            <span class="text-danger">{{error_address}}</span>
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>FullName:</td>
+                                        <td><input type="text" class="form-control" ng-model="Customer.FullName" placeholder="FullName"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone</td>
+                                        <td><input type="text" class="form-control" ng-model="Customer.Phone" placeholder="Phone"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address</td>
+                                        <td><input type="text" class="form-control" ng-model="Customer.Address" placeholder="Address"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td> 
+                                        <td><input type="text" class="form-control" ng-model="Customer.Email" readonly class="form-control-plaintext" ></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Password</td>
+                                        <td><input type="password" class="form-control" readonly class="form-control-plaintext" value="*****"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="@Url.Action("changePassword","Customer")">Đổi Mật Khẩu</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <span class="pull-right">
+                        <a ng-click="updateCustomer()"  data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-ok"></i></a>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

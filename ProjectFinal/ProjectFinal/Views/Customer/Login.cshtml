@@ -9,7 +9,8 @@
             <h3>Login</h3>
                 
                     <div ng-if="error!=''" class="alert alert-danger">{{error}}</div>
-
+            <div ng-if="forgetEmail!=''" class="alert alert-ok">{{forgetEmail}}</div>
+            
                 <div class="key">
                     <i class="fa fa-envelope" aria-hidden="true"></i>
                     <input type="text" ng-model="email" name="Email" autocomplete="off" placeholder="Email" value="">
@@ -23,7 +24,7 @@
                 <input type="button" ng-click="loginform()" value="Login">
         </div>
         <div class="forg">
-            <a href="#" class="forg-left">Forgot Password</a>
+            <a href="@Url.Action("forgetPassword","Customer")" class="forg-left">Forgot Password</a>
             <a>
                 @Html.ActionLink("Đăng Ký", "CreateCustomer", "Customer", new { @class = "forg-right" })
             <div class="clearfix"></div>

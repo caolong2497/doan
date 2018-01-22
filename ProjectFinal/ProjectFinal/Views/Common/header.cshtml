@@ -1,6 +1,7 @@
 ﻿@model List<ProjectFinal.Models.Category>
 @{
     var list = Session["myCart"] as List<ProjectFinal.Models.ProductOrderModel>;
+    var Customer = Session["User"] as List<ProjectFinal.Models.CustomerRegister>;
 }
 <div class="header-top-w3layouts">
     <div class="container">
@@ -9,9 +10,10 @@
         </div>
         <div class="col-md-6 phone-w3l">
             <ul>
-                @if (Session["UserName"] != null)
+                @if (Session["Email"] != null)
                 {
-                    <li>Welcome <bold> @Session["UserName"].ToString()</bold> </li>
+                    <li>Welcome <a href="@Url.Action("getCustomerInfor", "Customer",new { email= @Session["Email"].ToString() })" class="fullName">@Session["UserName"].ToString()</a></li>
+                    
                     <li>@Html.ActionLink("Logout", "Logout", "Customer")</li> <br />
                 }
                 <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
