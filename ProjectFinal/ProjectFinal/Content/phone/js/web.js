@@ -41,9 +41,6 @@ $(document).ready(function () {
         flag = false;
     });
     $("#searchInput").focusout(function (e) {
-        $(".spham").hover(function () {
-            //flag = true;
-        });
         if (flag == false) {
             $('.SearchResult').css("display", "none");
         }

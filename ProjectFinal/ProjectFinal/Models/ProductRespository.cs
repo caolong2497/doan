@@ -134,7 +134,7 @@ namespace ProjectFinal.Models
         {
             String[] ListProviderId = listprovider.Split(',');
             var product = (from b in db.Products
-                           where ListProviderId.Contains(b.ProviderId + "")
+                           where ListProviderId.Contains(b.ProviderId + "") && b.Status==1
                            orderby b.PriceOut * (100 - b.Discount) / 100 descending
                            select new ProductViewModel
                            {
@@ -150,6 +150,7 @@ namespace ProjectFinal.Models
         public List<ProductViewModel> getListProductSale()
         {
             var product = (from b in db.Products
+                           where  b.Status == 1
                            orderby b.Discount descending
                            select new ProductViewModel
                            {
@@ -166,7 +167,7 @@ namespace ProjectFinal.Models
         {
             int catId = Int32.Parse(id);
             var product = (from b in db.Products
-                           where b.CategoryId.Equals(catId)
+                           where b.CategoryId.Equals(catId) && b.Status==1
                            orderby b.PriceOut * (100 - b.Discount) / 100 descending
                            select new ProductViewModel
                            {
@@ -214,6 +215,7 @@ namespace ProjectFinal.Models
                 }
                 List<ProductViewModel> product = (from b in db.Products
                                                   where b.PriceOut * (100 - b.Discount) / 100 >= pricemin && b.PriceOut * (100 - b.Discount) / 100 <= pricemax && ListProviderId.Contains(b.ProviderId + "")
+                                                  && b.Status==1
                                                   orderby b.PriceOut * (100 - b.Discount) / 100 descending
                                                   select new ProductViewModel
                                                   {
@@ -287,6 +289,7 @@ namespace ProjectFinal.Models
                 }
                 List<ProductViewModel> product = (from b in db.Products
                                where b.PriceOut*(100-b.Discount)/100 >= pricemin && b.PriceOut * (100 - b.Discount) / 100 <= pricemax
+                               && b.Status==1
                                 orderby b.PriceOut * (100 - b.Discount) / 100 descending
                                 select new ProductViewModel
                                {

@@ -165,8 +165,15 @@ namespace ProjectFinal.Controllers
         {
             String mailto = email;
             String subject = "Reset Password Account IZShop";
-            String Content = "Bạn Vừa Yêu Cầu Lấy Lại Mật Khẩu\n Mật Khẩu Mới Của Bạn là:";
+
             SmtpClient smtp = new SmtpClient();
+            Random rnd = new Random();
+            int code = rnd.Next(1000, 10000);
+            String CodeConfirm = code + "";
+            String Content = "Bạn Vừa Yêu Cầu Lấy Lại Mật Khẩu\n Mã xác nhận:" + CodeConfirm;
+            CustomerRepository cusRes = new CustomerRepository();
+            cusRes.generateCodeConfirm(email, CodeConfirm);
+            
             try
             {
                 //ĐỊA CHỈ SMTP Server
@@ -177,7 +184,6 @@ namespace ProjectFinal.Controllers
                 smtp.EnableSsl = true;
                 //UserName và Password của mail
                 smtp.Credentials = new NetworkCredential("botizshop@gmail.com", "botiz123");
-
                 //Tham số lần lượt là địa chỉ người gửi, người nhận, tiêu đề và nội dung thư
                 smtp.Send("botizshop@gmail.com", mailto, subject, Content);
                 return 1;
@@ -186,6 +192,14 @@ namespace ProjectFinal.Controllers
             {
                 return 0;
             }
+        }
+        public ActionResult ConfirmCode(String email, String codeConfirm)
+        {
+            return View();
+        }
+        public int checkCodeConfirm(String email, String codeConfirm)
+        {
+            return;
         }
     }
 }

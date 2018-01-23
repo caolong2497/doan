@@ -10,7 +10,7 @@ namespace ProjectFinal.Models
         MobileStoreEntities db = new MobileStoreEntities();
         public List<Category> ListCategory()
         {
-            return db.Categories.ToList();
+            return db.Categories.Where(e => e.Status==1).ToList();
         }
     }
 }

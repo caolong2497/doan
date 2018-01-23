@@ -13,6 +13,7 @@ namespace ProjectFinal.Models
         {   
             try
             {
+                customer.Status = 1;
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return true;
@@ -25,15 +26,15 @@ namespace ProjectFinal.Models
         public Customer checkEmail(string email)
         {
             Customer cus = (from e in db.Customers
-                            where e.Email == email
+                            where e.Email == email && e.Status==1
                             select e).FirstOrDefault();
             return cus;
         }
         public CustomerInfor getCustomerInforByEmail(String email)
         {
             CustomerInfor cus = (from e in db.Customers
-                            where e.Email == email
-                            select  new CustomerInfor
+                            where e.Email == email && e.Status == 1
+                                 select  new CustomerInfor
                              {
                                  CustomerId = e.CustomerId,
                                  FullName = e.FullName,
@@ -62,7 +63,7 @@ namespace ProjectFinal.Models
         public Customer GetCustomer(string email, string password)
         {
             Customer cus = (from e in db.Customers
-                            where e.Email == email && e.PassWord==password
+                            where e.Email == email && e.PassWord==password && e.Status == 1
                             select e).FirstOrDefault();
             return cus;
         }
@@ -81,5 +82,27 @@ namespace ProjectFinal.Models
                 return false;
             }
         }
+        public bool generateCodeConfirm(String email,String codeConfirm)
+        {
+            try
+            {
+                Customer cus = db.Customers.FirstOrDefault(item => item.Email == email);
+                cus.CodeConfirm = codeConfirm;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public Customer checkCodeConfirm(String email, String codeConfirm)
+        {
+            Customer cus = (from e in db.Customers
+                            where e.Email == email && e.Status == 1 && e.CodeConfirm==codeConfirm
+                            select e).FirstOrDefault();
+            return cus;
+        }
+
     }
 }
