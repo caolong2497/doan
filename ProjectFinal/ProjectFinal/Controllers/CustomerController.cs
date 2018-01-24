@@ -161,14 +161,14 @@ namespace ProjectFinal.Controllers
 
             return View();
         }
-        public int resetPassWord(String email)
+        public int getCodeConfirm(String email)
         {
             String mailto = email;
             String subject = "Reset Password Account IZShop";
 
             SmtpClient smtp = new SmtpClient();
             Random rnd = new Random();
-            int code = rnd.Next(1000, 10000);
+            int code = rnd.Next(100000, 1000000);
             String CodeConfirm = code + "";
             String Content = "Bạn Vừa Yêu Cầu Lấy Lại Mật Khẩu\n Mã xác nhận:" + CodeConfirm;
             CustomerRepository cusRes = new CustomerRepository();
@@ -199,7 +199,29 @@ namespace ProjectFinal.Controllers
         }
         public int checkCodeConfirm(String email, String codeConfirm)
         {
-            return;
+            cusRes = new CustomerRepository();
+            var Customer = cusRes.checkCodeConfirm(email, codeConfirm);
+            if (Customer == null)
+            {
+                return 1;
+            }
+            Session["EmailResetPass"] = email;
+            return 0;
+        }
+        public ActionResult generateNewPassword()
+        {
+            return View();
+        }
+        public int generateNewPass(String newPassword)
+        {
+            String email = Session["EmailResetPass"].ToString();
+            String encodePass = Common.EncodeMd5(newPassword);
+            cusRes = new CustomerRepository();
+            if (cusRes.changPassword(email, encodePass))
+            {
+                return 1;
+            }
+            return 0;
         }
     }
 }

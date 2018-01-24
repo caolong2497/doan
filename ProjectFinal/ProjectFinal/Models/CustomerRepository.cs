@@ -74,6 +74,7 @@ namespace ProjectFinal.Models
             {
                 Customer cus = db.Customers.FirstOrDefault(item => item.Email == email);
                 cus.PassWord = encodePass;
+                cus.CodeConfirm = "abcxyz123";
                 db.SaveChanges();
                 return true;
             }

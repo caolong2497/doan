@@ -1,0 +1,24 @@
+﻿
+<div class="login">
+
+    <div class="main-agileits">
+        <div class="form-w3agile">
+            <p class="tip_reset">Hãy check hòm thư của bạn và nhập mã xác nhận để đổi mật khẩu!</p>
+            <div ng-if="error_forgetEmail!=''" class="alert alert-danger">{{error_forgetEmail}}</div>
+            
+            <div class="key">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <input type="text" ng-model="email" name="Email" autocomplete="off" placeholder="Email" value="">
+                <div class="clearfix"></div>
+            </div>
+            <div class="key">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+                <input type="text" ng-model="codeConfirm" name="Password" autocomplete="off" placeholder="Mã Xác Nhận" value="">
+                <div class="clearfix"></div>
+            </div>
+            <input type="button" ng-click="resetPassword()" value="Submit">
+        </div>
+
+    </div>
+</div>
+

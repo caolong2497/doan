@@ -93,6 +93,8 @@ app.controller('MobileController', function ($scope, $http) {
     $scope.newPassword="";
     $scope.newPasswordConfirm = "";
     $scope.error_forgetEmail = "";
+    $scope.error_password = "";
+    $scope.forgetEmail = "";
     $scope.initProduct = function (id) {
         $scope.searchProvider($scope.providername);
         $http.get("/Product/GetProduct/" + id).then(function (response) {
@@ -492,17 +494,19 @@ app.controller('MobileController', function ($scope, $http) {
                 result=response.data;
                 if(result==1){
                     $scope.error_forgetEmail = "Địa chỉ Email không đúng";
-                }else{
+                } else {
+                    $scope.error_forgetEmail = "";
+                    $scope.forgetEmail = "Email Hợp Lệ, Hãy đợi trong giây lát";
                     $http({
-                        url: "/Customer/resetPassWord/",
+                        url: "/Customer/getCodeConfirm/",
                         method: "GET",
                         params: { email: $scope.email }
                     }).then(function (response) {
                         result = response.data;
                         if (result == 1) {
                             $scope.error_forgetEmail = "";
-                            alert("Reset Mật Khẩu Thành công,Hãy Check Lại Hòm Thư Của Bạn");
-                            location.href = "/Customer/Login";
+                            alert("Hãy Kiểm Tra Hộp Thư Của Bạn");
+                            location.href = "/Customer/ConfirmCode";
                         } else {
                             $scope.error_forgetEmail = "Đang có lỗi,hãy thử lại sau";
                         }
@@ -510,6 +514,53 @@ app.controller('MobileController', function ($scope, $http) {
                 }
             })
          }
+    }
+    $scope.resetPassword = function () {
+        if ($scope.email == "") {
+            $scope.error_forgetEmail = "Hãy Điền Email Của Bạn";
+        } else if (!/[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+.+.[A-Za-z]{2,4}/.test($scope.email)) {
+            $scope.error_forgetEmail = "Địa chỉ Email không đúng định dạng";
+            check = 0;
+        } else {
+            $http({
+                url: "/Customer/checkCodeConfirm/",
+                method: "GET",
+                params: { email: $scope.email, codeConfirm: $scope.codeConfirm }
+            }).then(function (response) {
+                result = response.data;
+                if (result == 1) {
+                    $scope.error_forgetEmail = "Email Hoặc Mã Xác Nhận Không Đúng";
+                } else {
+                    location.href = "/Customer/generateNewPassword/";
+                }
+            })
+        }
+    }
+    $scope.generateNewPass = function () {
+        if ($scope.newPassword == "" || $scope.newPassConfirm == null || $scope.newPassConfirm == "" || $scope.newPassConfirm == null) {
+            check = 0;
+            $scope.error_password = "Các Trường Không được để trống";
+        } else if (6 > $scope.newPassword.length || $scope.newPassConfirm.length > 20 ) {
+            $scope.error_password = "Mật khẩu có độ dài từ 6-20 kí tự";
+            check = 0;
+        } else if ($scope.newPassConfirm != $scope.newPassword) {
+                $scope.error_password = "Mật khẩu xác nhận và mật khẩu mới không trùng khớp!";
+                check = 0;
+        } else {
+            $http({
+                url: "/Customer/generateNewPass/",
+                method: "GET",
+                params: { newPassword: $scope.newPassConfirm }
+            }).then(function (response) {
+                result = response.data;
+                if (result == 1) {
+                    alert("Tạo Mật Khẩu Mới Thành Công,Hãy Đăng Nhập Bằng Mật Khẩu Mới!")
+                    location.href = "/Customer/Login";
+                } else {
+                    $scope.error_password = "Đã Có Lỗi Xảy Ra, Hãy Thử Lại Sau!";
+                }
+            })
+        }
     }
     $scope.getCountProduct();
 });

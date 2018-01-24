@@ -306,21 +306,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Content\phone\about.html" />
-    <Content Include="Content\phone\casuals.html" />
-    <Content Include="Content\phone\contact.html" />
-    <Content Include="Content\phone\cosmetics.html" />
     <Content Include="Content\phone\css\bootstrap.css" />
     <Content Include="Content\phone\css\flexslider.css" />
     <Content Include="Content\phone\css\font-awesome.min.css" />
     <Content Include="Content\phone\css\style.css" />
-    <Content Include="Content\phone\deos.html" />
-    <Content Include="Content\phone\faq.html" />
     <Content Include="Content\phone\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\phone\formals.html" />
-    <Content Include="Content\phone\haircare.html" />
-    <Content Include="Content\phone\handbags.html" />
-    <Content Include="Content\phone\icons.html" />
     <Content Include="Content\phone\images\4.png" />
     <Content Include="Content\phone\images\46.jpg" />
     <Content Include="Content\phone\images\5.png" />
@@ -545,9 +535,6 @@
     <Content Include="Content\phone\images\wp7.jpg" />
     <Content Include="Content\phone\images\wp8.jpg" />
     <Content Include="Content\phone\images\wp9.jpg" />
-    <Content Include="Content\phone\index.html" />
-    <Content Include="Content\phone\inner.html" />
-    <Content Include="Content\phone\jewellery.html" />
     <Content Include="Content\phone\js\angular.min.js" />
     <Content Include="Content\phone\js\bootstrap.js" />
     <Content Include="Content\phone\js\easyResponsiveTabs.js" />
@@ -558,21 +545,7 @@
     <Content Include="Content\phone\js\jquery.wmuSlider.js" />
     <Content Include="Content\phone\js\minicart.js" />
     <Content Include="Content\phone\js\web.js" />
-    <Content Include="Content\phone\kids.html" />
-    <Content Include="Content\phone\login.html" />
-    <Content Include="Content\phone\men.html" />
-    <Content Include="Content\phone\night.html" />
-    <Content Include="Content\phone\party.html" />
-    <Content Include="Content\phone\payment.html" />
-    <Content Include="Content\phone\recommended.html" />
-    <Content Include="Content\phone\register.html" />
-    <Content Include="Content\phone\shoes.html" />
-    <Content Include="Content\phone\single.html" />
-    <Content Include="Content\phone\skincare.html" />
-    <Content Include="Content\phone\typography.html" />
     <Content Include="Content\phone\w3layouts-License.txt" />
-    <Content Include="Content\phone\watches.html" />
-    <Content Include="Content\phone\women.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1443,6 +1416,8 @@
     <Content Include="Views\Customer\UpdateCustomer.cshtml" />
     <Content Include="Views\Customer\changePassword.cshtml" />
     <Content Include="Views\Customer\forgetPassword.cshtml" />
+    <Content Include="Views\Customer\ConfirmCode.cshtml" />
+    <Content Include="Views\Customer\generateNewPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

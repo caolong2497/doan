@@ -39,6 +39,11 @@ input[type="button"], input[type="submit"] {
 .cart{
     position:relative;
 }
+.tip_reset{
+    margin-bottom:10px;
+    font-weight:bold;
+    color:#1b125d;
+}
 .countProduct{
          position: absolute;
     top: 5px;
