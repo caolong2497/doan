@@ -42,9 +42,6 @@ namespace ProjectFinal.Controllers
                 Boolean result = cusRes.CreateCustomer(cus);
                 if (result)
                 {
-                Session["Email"] = customer.Email;
-                Session["UserName"] = customer.FullName;
-                Session["User"] = customer;
                 return true;
                 }
             return false;
@@ -53,8 +50,12 @@ namespace ProjectFinal.Controllers
         public ActionResult getCustomerInfor(String email)
         {
             CustomerRepository cusRes = new CustomerRepository();
+            OrderRespository orderRes = new OrderRespository();
             CustomerInfor customer = cusRes.getCustomerInforByEmail(email);
+            int id = customer.CustomerId;
+            List<OrderInfor> order = orderRes.getOrderByCustomer(id);
             ViewBag.CustomerInfor = customer;
+            ViewBag.ListOrder = order;
                 return View();
         }
         [HttpGet]
@@ -105,6 +106,7 @@ namespace ProjectFinal.Controllers
                 var Customer = cusRes.GetCustomer(email, encodePass);
                 if (Customer != null)
                 {
+                    Session["ID"] = Customer.CustomerId;
                     Session["Email"] = Customer.Email;
                     Session["UserName"] = Customer.FullName;
                     Session["User"] = Customer;

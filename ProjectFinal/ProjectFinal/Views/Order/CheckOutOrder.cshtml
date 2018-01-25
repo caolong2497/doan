@@ -28,7 +28,6 @@
         </div>
         <div class="cartInfor">
             <p class="cartCap">Sản phẩm bạn đã mua</p>
-
             @foreach (var item in ViewBag.orderDetail)
             {
                 String[] Image = item.IconImg.Split(',');
@@ -46,10 +45,6 @@
                     </li>
                 </ul>
             }
-
-
-
-
         </div>
         <p class="button_more">
             <a href="~/Home/index">Mua Thêm Sản Phẩm Khác</a>

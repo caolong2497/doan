@@ -14,12 +14,11 @@
 {
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
-
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4  toppad">
                 <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Thông Tin Cá Nhân</h3>
+                    <div class="panel-heading panel-inforCustomer">
+                        <h3 class="panel-title">Thông Tin Tài Khoản</h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -27,15 +26,15 @@
                                 <table class="table table-user-information">
                                     <tbody>
                                         <tr>
-                                            <td>FullName:</td>
-                                            <td>@ViewBag.CustomerInfor.FullName</td>
+                                            <td>Họ Tên:</td>
+                                            <td >@ViewBag.CustomerInfor.FullName</td>
                                         </tr>
                                         <tr>
-                                            <td>Phone</td>
+                                            <td>Số Điện Thoại:</td>
                                             <td>@ViewBag.CustomerInfor.Phone</td>
                                         </tr>
                                         <tr>
-                                            <td>Address</td>
+                                            <td>Địa Chỉ:</td>
                                             <td>@ViewBag.CustomerInfor.Address</td>
                                         </tr>
                                         <tr>
@@ -55,7 +54,55 @@
 
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 toppad">
+
+
+                <div class="panel panel-info">
+                    <div class="panel-heading panel-inforCustomer">
+                        <h3 class="panel-title">Lịch Sử Đặt Hàng</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                @if (ViewBag.ListOrder.Count == 0)
+                                {
+                                    <h4>Bạn Chưa Có Đơn Hàng Nào!</h4>
+                                }else { 
+                                <table class="table table-striped ">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã Đơn Hàng</th>
+                                            <th>Người Nhận</th>
+                                            <th>Số Điện Thoại</th>
+                                            <th>Địa Chỉ</th>
+                                            <th>Tổng Tiền </th>
+                                            <th>Ngày Mua </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var order in ViewBag.ListOrder)
+                                        {
+                                            <tr>
+                                                <td>@order.OrderId</td>
+                                                <td>@order.FullName</td>
+                                                <td>@order.Phone</td>
+                                                <td>@order.Address</td>
+                                                <td>@order.Total.ToString("#,###").Replace(",", ".")₫</td>
+                                                <td>@order.CreateDate.ToString("dd-MM-yyyy")</td>
+                                            </tr>
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 }
 else

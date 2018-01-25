@@ -149,14 +149,45 @@ app.controller('MobileController', function ($scope, $http) {
     }
     $scope.createOrder = function () {
         var data = $scope.orderinfo;
+        var check = 1;
         data.Total = $("#totalMoney").val();
         console.log(data);
+        if (data.FullName == "" || data.FullName == null) {
+            $scope.error_fullname = "Họ Tên không được để trống";
+            check = 0;
+        } else {
+            $scope.error_fullname = "";
+        }
+        if (data.Phone == "" || data.Phone == null) {
+            $scope.error_phone = "Số Điện Thoại  không được để trống";
+            check = 0;
+        } else if (!/^(\+84|0)\d{9,10}$/.test(data.Phone)) {
+            check = 0;
+            $scope.error_phone = "Số điện thoại không đúng định dạng";
+        } else {
+            $scope.error_phone = "";
+        }
+        if (data.Address == "" || data.Address == null) {
+            $scope.error_address = "Địa chỉ không được để trống";
+            check = 0;
+        } else {
+            $scope.error_address = "";
+        }
+        if (data.Email == "" || data.Email == null) {
+            $scope.error_email = "Email không được để trống";
+            check = 0;
+        } else if (!/[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+.+.[A-Za-z]{2,4}/.test(data.Email)) {
+            $scope.error_email = "Địa chỉ Email không đúng định dạng";
+            check = 0;
+        } else { $scope.error_email =""}
+        if(check==1){
         $http.post("/Order/CreateOrderInfor", data).then(function (response) {
             location.href = "/Order/CheckOutOrder/"
 
         }, function (response) {
             alert("Add Thất Bại");
         });
+        }
     }
 
     $('.checkAllPrice').click(function () {
@@ -318,7 +349,7 @@ app.controller('MobileController', function ($scope, $http) {
         var data = $scope.Customer;
         console.log(data.FullName);
         if (data.FullName == "" || data.FullName == null) {
-            $scope.error_fullname = "FullName không được để trống";
+            $scope.error_fullname = "Họ Tên không được để trống";
             check=0;
         } else {
             $scope.error_fullname = "";
@@ -326,7 +357,7 @@ app.controller('MobileController', function ($scope, $http) {
         if (data.Phone == "" || data.Phone == null) {
             $scope.error_phone = "Số Điện Thoại  không được để trống";
             check = 0;
-        } else if (!/(\+84|0)\d{9,10}/.test(data.Phone)) {
+        } else if (!/^(\+84|0)\d{9,10}$/.test(data.Phone)) {
             check = 0;
             $scope.error_phone = "Số điện thoại không đúng định dạng";
         } else {
@@ -376,8 +407,8 @@ app.controller('MobileController', function ($scope, $http) {
                         $http.post("/Customer/CreateCustomer/", data).then(function (response) {
                             result = response.data;
                             if (result) {
-                                alert("Đăng Ký Thành Công");
-                                location.href = "/Home/index";
+                                alert("Đăng Ký Thành Công,Hãy Đăng Nhập lại");
+                                location.href = "/Customer/Login";
                             } else {
                                 alert("Đăng Ký thất bại");
                             }
@@ -405,11 +436,10 @@ app.controller('MobileController', function ($scope, $http) {
         });
     }
     $scope.updateCustomer = function () {
-        alert("hello");
         var data = $scope.Customer;
         var check = 1;
         if (data.FullName == "" || data.FullName == null) {
-            $scope.error_fullname = "FullName không được để trống";
+            $scope.error_fullname = "Họ Tên không được để trống";
             check = 0;
         } else {
             $scope.error_fullname = "";
@@ -417,7 +447,7 @@ app.controller('MobileController', function ($scope, $http) {
         if (data.Phone == "" || data.Phone == null) {
             $scope.error_phone = "Số Điện Thoại  không được để trống";
             check = 0;
-        } else if (!/(\+84|0)\d{9,10}/.test(data.Phone)) {
+        } else if (!/^(\+84|0)\d{9,10}$/.test(data.Phone)) {
             check = 0;
             $scope.error_phone = "Số điện thoại không đúng định dạng";
         } else {

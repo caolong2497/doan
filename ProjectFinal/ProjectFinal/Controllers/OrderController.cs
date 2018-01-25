@@ -23,6 +23,7 @@ namespace ProjectFinal.Controllers
             List<OrderDetailModel> orderDetail = orderRes.getOrderDetail(cartId);
             ViewBag.order = order;
             ViewBag.orderDetail = orderDetail;
+            Session["CartId"] = null;
             return View();
         }
 
@@ -32,6 +33,11 @@ namespace ProjectFinal.Controllers
             order.CreateDate = System.DateTime.Now;
             OrderRespository orderRes = new OrderRespository();
             ProductRespository productRes = new ProductRespository();
+            if (Session["ID"] != null)
+            {
+                order.CustomerId = Int32.Parse(Session["ID"].ToString());
+                
+            }
             if (orderRes.CreateOrderInfor(order))
             {
                 OrderDetail ord = new OrderDetail();

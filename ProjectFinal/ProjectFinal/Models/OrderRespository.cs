@@ -8,7 +8,23 @@ namespace ProjectFinal.Models
     public class OrderRespository : IOrderRespository
     {
         MobileStoreEntities db = new MobileStoreEntities();
-
+        public List<OrderInfor> getOrderByCustomer(int CustomerId)
+        {
+            var order = (from b in db.Orders
+                         where b.Status == 1 && b.CustomerId == CustomerId
+                         orderby b.CreateDate descending
+                         select new OrderInfor
+                         {
+                             OrderId=b.OrderId,
+                             FullName = b.FullName,
+                             Phone = b.Phone,
+                             Email = b.Email,
+                             Address = b.Address,
+                             CreateDate=b.CreateDate,
+                             Total = (double)b.Total
+                         }).ToList();
+            return order;
+        }
         public bool CreateOrderDetail(OrderDetail order)
         {
             try
@@ -30,10 +46,11 @@ namespace ProjectFinal.Models
             return id;
 
         }
-
+        
         public bool CreateOrderInfor(OrderInfor order)
         {
             Order or = new Order();
+            or.CustomerId = order.CustomerId;
             or.FullName = order.FullName;
             or.OrderNo = "123";
             or.Phone = order.Phone;

@@ -165,6 +165,18 @@ p {
 .panel-footer{
         height: 50px;
 }
+.panel-info > .panel-inforCustomer{
+        color: #000000;
+    background-color: #ffffff;
+    border-color: #c5c5c5;
+}
+.panel-info {
+    border-color: #c5c5c5;
+}
+.panel-title {
+
+    font-weight: bold;
+}
 /*end*/
 .thongso {
 -webkit-column-count: 2;
@@ -1839,7 +1851,6 @@ h3.head-top {
     background-color: #fff;
 }
 .panel-body {
-    padding: 2em;
     font-size: 14px;
     line-height: 2em;
     color: #999;

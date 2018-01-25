@@ -8,6 +8,7 @@ namespace ProjectFinal.Models
 {
     interface IOrderRespository
     {
+        List<OrderInfor> getOrderByCustomer(int CustomerId);
         bool CreateOrderInfor(OrderInfor order);
         bool CreateOrderDetail(OrderDetail order);
         OrderInfor getOrderInfo(int orderId);
