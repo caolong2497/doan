@@ -134,7 +134,7 @@ namespace ProjectFinal.Models
         {
             String[] ListProviderId = listprovider.Split(',');
             var product = (from b in db.Products
-                           where ListProviderId.Contains(b.ProviderId + "") && b.Status==1
+                           where ListProviderId.Contains(b.ProviderId + "") && b.Status == 1
                            orderby b.PriceOut * (100 - b.Discount) / 100 descending
                            select new ProductViewModel
                            {
@@ -162,7 +162,110 @@ namespace ProjectFinal.Models
                            }).Take(9).ToList();
             return product;
         }
+        public List<ProductViewModel> getProductFilter(String Listprovider, String ListPrice, String ProductName, String page)
+        {
+            String[] ListProviderId = Listprovider.Split(',');
+            String[] Price = ListPrice.Split(',');
+            List<ProductViewModel> Listproduct = new List<ProductViewModel>();
+            if ("all".Equals(Listprovider) && "all".Equals(ListPrice))
+            {
+                Listproduct = (from b in db.Products
+                               where b.Status == 1
+                               && b.ProductName.Contains(ProductName)
+                               select new ProductViewModel
+                               {
+                                   ProductId = b.ProductId,
+                                   ProductName = b.ProductName,
+                                   IconImg = b.IconImg,
+                                   Discount = b.Discount,
+                                   PriceOut = b.PriceOut
+                               }).ToList();
+            }
+            else if (!"all".Equals(Listprovider) && "all".Equals(ListPrice))
+            {
+                Listproduct = (from b in db.Products
+                               where ListProviderId.Contains(b.ProviderId + "") && b.Status == 1
+                               && b.ProductName.Contains(ProductName)
+                               orderby b.PriceOut * (100 - b.Discount) / 100 descending
+                               select new ProductViewModel
+                               {
+                                   ProductId = b.ProductId,
+                                   ProductName = b.ProductName,
+                                   IconImg = b.IconImg,
+                                   Discount = b.Discount,
+                                   PriceOut = b.PriceOut
+                               }).ToList();
+            }
+            else
+            {
+                foreach (var item in Price)
+                {
+                    List<ProductViewModel> product = null;
+                    int pricemin = 0;
+                    int pricemax = 0;
+                    if ("13".Equals(item))
+                    {
+                        pricemax = 3000000;
+                    }
+                    else if ("36".Equals(item))
+                    {
+                        pricemin = 3000000;
+                        pricemax = 6000000;
+                    }
+                    else if ("610".Equals(item))
+                    {
+                        pricemin = 6000000;
+                        pricemax = 10000000;
+                    }
+                    else if ("1015".Equals(item))
+                    {
+                        pricemin = 10000000;
+                        pricemax = 15000000;
+                    }
+                    else
+                    {
+                        pricemin = 15000000;
+                        pricemax = 999999999;
+                    }
+                    if (!"all".Equals(Listprovider))
+                    {
+                        product = (from b in db.Products
+                                   where b.PriceOut * (100 - b.Discount) / 100 >= pricemin && b.PriceOut * (100 - b.Discount) / 100 <= pricemax && ListProviderId.Contains(b.ProviderId + "")
+                                   && b.ProductName.Contains(ProductName)
+                                   && b.Status == 1
+                                   orderby b.PriceOut * (100 - b.Discount) / 100 descending
+                                   select new ProductViewModel
+                                   {
+                                       ProductId = b.ProductId,
+                                       ProductName = b.ProductName,
+                                       IconImg = b.IconImg,
+                                       Discount = b.Discount,
+                                       PriceOut = b.PriceOut
+                                   }).ToList();
+                    }
+                    else
+                    {
+                        product = (from b in db.Products
+                                   where b.PriceOut * (100 - b.Discount) / 100 >= pricemin && b.PriceOut * (100 - b.Discount) / 100 <= pricemax
+                                   && b.ProductName.Contains(ProductName)
+                                   && b.Status == 1
+                                   orderby b.PriceOut * (100 - b.Discount) / 100 descending
+                                   select new ProductViewModel
+                                   {
+                                       ProductId = b.ProductId,
+                                       ProductName = b.ProductName,
+                                       IconImg = b.IconImg,
+                                       Discount = b.Discount,
+                                       PriceOut = b.PriceOut
+                                   }).ToList();
+                    }
 
+                    Listproduct.AddRange(product);
+                }
+
+            }
+            return Listproduct;
+        }
         public List<ProductViewModel> GetProductByCategory(string id)
         {
             int catId = Int32.Parse(id);
@@ -264,41 +367,45 @@ namespace ProjectFinal.Models
             String[] Price = ListPrice.Split(',');
             List<ProductViewModel> Listproduct = new List<ProductViewModel>();
             int pricemin = 0;
-            int pricemax = 0; 
-            foreach ( var item in Price)
-            {   
+            int pricemax = 0;
+            foreach (var item in Price)
+            {
                 if ("13".Equals(item))
                 {
                     pricemax = 3000000;
-                }else if ("36".Equals(item))
+                }
+                else if ("36".Equals(item))
                 {
                     pricemin = 3000000;
                     pricemax = 6000000;
-                }else if ("610".Equals(item))
+                }
+                else if ("610".Equals(item))
                 {
                     pricemin = 6000000;
                     pricemax = 10000000;
-                }else if ("1015".Equals(item))
+                }
+                else if ("1015".Equals(item))
                 {
                     pricemin = 10000000;
                     pricemax = 15000000;
-                }else
+                }
+                else
                 {
                     pricemin = 15000000;
                     pricemax = 999999999;
                 }
                 List<ProductViewModel> product = (from b in db.Products
-                               where b.PriceOut*(100-b.Discount)/100 >= pricemin && b.PriceOut * (100 - b.Discount) / 100 <= pricemax
-                               && b.Status==1
-                                orderby b.PriceOut * (100 - b.Discount) / 100 descending
-                                select new ProductViewModel
-                               {
-                                   ProductId = b.ProductId,
-                                   ProductName = b.ProductName,
-                                   IconImg = b.IconImg,
-                                   Discount = b.Discount,
-                                   PriceOut = b.PriceOut
-                               }).ToList(); 
+                                                  where b.PriceOut * (100 - b.Discount) / 100 >= pricemin && b.PriceOut * (100 - b.Discount) / 100 <= pricemax
+                                                  && b.Status == 1
+                                                  orderby b.PriceOut * (100 - b.Discount) / 100 descending
+                                                  select new ProductViewModel
+                                                  {
+                                                      ProductId = b.ProductId,
+                                                      ProductName = b.ProductName,
+                                                      IconImg = b.IconImg,
+                                                      Discount = b.Discount,
+                                                      PriceOut = b.PriceOut
+                                                  }).ToList();
                 Listproduct.AddRange(product);
             }
             return Listproduct;

@@ -46,8 +46,14 @@ namespace ProjectFinal.Controllers
                 pro.Discount = item.Discount;
                 Listproduct.Add(pro);
             }
+            Session["name"] = name;
             Session["Product"] = Listproduct;
             //return JsonConvert.SerializeObject(Listproduct);
+        }
+        [HttpGet]
+        public String getProductNameFromSession()
+        {
+            return Session["name"].ToString();
         }
         [HttpGet]
         public String GetProduct(String id)
@@ -92,7 +98,24 @@ namespace ProjectFinal.Controllers
             }
             return JsonConvert.SerializeObject(Listproduct);
         }
-
+        [HttpGet]
+        public String getProductFilter(String Listprovider, String ListPrice, String ProductName, String page)
+        {
+            ProductRespository proRes = new ProductRespository();
+            List<ProductViewModel> product = proRes.getProductFilter(Listprovider, ListPrice, ProductName, page);
+            List<ProductViewModel> Listproduct = new List<ProductViewModel>();
+            foreach (var item in product)
+            {
+                ProductViewModel pro = new ProductViewModel();
+                pro.ProductId = item.ProductId;
+                pro.IconImg = item.IconImg.Split(',')[0];
+                pro.ProductName = item.ProductName;
+                pro.PriceOut = item.PriceOut;
+                pro.Discount = item.Discount;
+                Listproduct.Add(pro);
+            }
+            return JsonConvert.SerializeObject(Listproduct);
+        }
         [HttpGet]
         public String SearchProduct(String Listprovider, String ListPrice)
         {

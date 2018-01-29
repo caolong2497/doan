@@ -36,7 +36,7 @@ namespace ProjectFinal.Controllers
             if (Session["ID"] != null)
             {
                 order.CustomerId = Int32.Parse(Session["ID"].ToString());
-                
+
             }
             if (orderRes.CreateOrderInfor(order))
             {

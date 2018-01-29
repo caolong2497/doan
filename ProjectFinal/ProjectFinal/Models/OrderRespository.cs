@@ -50,7 +50,10 @@ namespace ProjectFinal.Models
         public bool CreateOrderInfor(OrderInfor order)
         {
             Order or = new Order();
-            or.CustomerId = order.CustomerId;
+            if (order.CustomerId != 0)
+            {
+                or.CustomerId = order.CustomerId;
+            }
             or.FullName = order.FullName;
             or.OrderNo = "123";
             or.Phone = order.Phone;
@@ -58,9 +61,10 @@ namespace ProjectFinal.Models
             or.Address = order.Address;
             or.Status = 1;
             or.Total = order.Total;
+            or.CreateDate = DateTime.Today;
             try
             {
-                or.CreateDate = order.CreateDate;
+                
                 db.Orders.Add(or);
                 db.SaveChanges();
 

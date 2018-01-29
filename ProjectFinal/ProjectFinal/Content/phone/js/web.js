@@ -95,11 +95,17 @@ app.controller('MobileController', function ($scope, $http) {
     $scope.error_forgetEmail = "";
     $scope.error_password = "";
     $scope.forgetEmail = "";
+    $scope.ProductName = "";
     $scope.initProduct = function (id) {
         $scope.searchProvider($scope.providername);
         $http.get("/Product/GetProduct/" + id).then(function (response) {
             $scope.Product = response.data;
         });
+        if (id == 0) {
+            $http.get("/Product/getProductNameFromSession/").then(function (response) {
+                $scope.ProductName = response.data;
+            });
+        }
     }
     $scope.searchProductbyName = function (name) {
 
@@ -232,6 +238,21 @@ app.controller('MobileController', function ($scope, $http) {
         })
         $scope.SearchProduct();
     };
+    //$scope.SearchProduct = function () {
+    //    if ($scope.proid.length == 0) {
+    //        $scope.proid.push('all');
+    //    }
+    //    if ($scope.price.length == 0) {
+    //        $scope.price.push('all');
+    //    }
+    //    $http({
+    //        url: "/Product/SearchProduct/",
+    //        method: "GET",
+    //        params: { Listprovider: $scope.proid.join(), ListPrice: $scope.price.join() }
+    //    }).then(function (response) {
+    //        $scope.Product = response.data;
+    //    });
+    //}
     $scope.SearchProduct = function () {
         if ($scope.proid.length == 0) {
             $scope.proid.push('all');
@@ -240,9 +261,9 @@ app.controller('MobileController', function ($scope, $http) {
             $scope.price.push('all');
         }
         $http({
-            url: "/Product/SearchProduct/",
+            url: "/Product/getProductFilter/",
             method: "GET",
-            params: { Listprovider: $scope.proid.join(), ListPrice: $scope.price.join() }
+            params: { Listprovider: $scope.proid.join(), ListPrice: $scope.price.join(), ProductName: $scope.ProductName,page:1 }
         }).then(function (response) {
             $scope.Product = response.data;
         });
@@ -257,6 +278,7 @@ app.controller('MobileController', function ($scope, $http) {
                 params: { name: $scope.ProductName }
             }).then(function (response) {
                 $scope.PSearch = response.data;
+                //$scope.Product = $scope.PSearch;
             });
 
         }

@@ -75,10 +75,6 @@
                                         <div class="product-img">
                                             <img src="@Image.GetValue(0)" alt="" />
                                             <div class="p-mask">
-                                                @*<form action="/Product/addCart/">
-                                                    <input type="hidden" name="id" value="@item.ProductId" />
-                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
-                                                </form>*@
                                                 <form ng-submit="addCart(@item.ProductId)">
                                                     <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
                                                 </form>

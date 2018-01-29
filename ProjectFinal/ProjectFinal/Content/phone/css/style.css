@@ -304,7 +304,7 @@ img {
     letter-spacing: 0;
     position: absolute;
     top: 15px;
-    left: 147px;
+    left: 160px;
 }
 
 .phone-w3l {
@@ -2743,13 +2743,13 @@ height: 140px;
 		float: left;
 	}
 	.cart-wthree {
-		width: 40%;
+		width: 35%;
 		float: left;
 		text-align: right;
 	}
 	.navbar-toggle {
 		border-radius: 0;
-		background:#716fca;
+		background:#497290;
 		float:none;
 		transition: 0.5s all;
 		-webkit-transition: 0.5s all;
@@ -2968,7 +2968,7 @@ height: 140px;
 		font-size: 18px;
 	}
 	.tp1,.tp2,.tp5,.tp6 {
-		margin-bottom: 40px;
+		    margin-bottom: -85px;
 	}
 	ul.resp-tabs-list li:nth-child(2):before {
 		width: 6%;
