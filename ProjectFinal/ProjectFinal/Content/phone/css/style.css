@@ -668,15 +668,16 @@ button.w3view-cart:focus{
     -webkit-transform: scale3d(1.1, 1.1, 1);
     transform: scale3d(1.1, 1.1, 1);
 }
-.bb-right-top{
-	background:url(../images/sale.jpg) no-repeat 0px 0px;
-	background-size:cover;
-	min-height:235px;
-	-moz-transition: all 1s;
+.bb-right-top {
+
+    background: url(../images/giamgia.jpg) no-repeat 0px 0px;
+    background-size: cover;
+    min-height: 235px;
+    -moz-transition: all 1s;
     -o-transition: all 1s;
     -webkit-transition: all 1s;
     transition: all 1s;
-	width:100%;
+    width: 100%;
 }
 .bb-right-top:hover {
     -moz-transform: scale3d(1.1, 1.1, 1);

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace ProjectFinal.Controllers
 {
@@ -19,10 +20,32 @@ namespace ProjectFinal.Controllers
             ProductViewDetail product = proRes.getProductDetail(productid);
             ViewBag.product = product;
             UpProductView(id);
-            String[] Image = product.IconImg.Split(',');
+            //storeToCookie(productid);
+             String[] Image = product.IconImg.Split(',');
             ViewBag.Image = Image;
             return View();
         }
+        //public void storeToCookie(int id)
+        //{
+            
+        //    if (Response.Cookies["product"]["id"] == null)
+        //    {
+        //        HttpCookie product = new HttpCookie("product");
+        //        product["id"] = id+"";
+        //        product.Expires = DateTime.Now.AddDays(1);
+        //    Response.Cookies.Add(product);
+        //    }else
+        //    {
+        //        String productid = Request.Cookies["Product"]["id"]+","+id;
+        //        HttpCookie product = new HttpCookie("product");
+        //        product["id"] = productid;
+        //        product.Expires = DateTime.Now.AddDays(1);
+        //        Response.Cookies.Add(product);
+        //    }
+           
+        //}
+
+    
         public ActionResult GetListProduct(String id)
         {
 
@@ -48,7 +71,7 @@ namespace ProjectFinal.Controllers
             }
             Session["name"] = name;
             Session["Product"] = Listproduct;
-            //return JsonConvert.SerializeObject(Listproduct);
+ 
         }
         [HttpGet]
         public String getProductNameFromSession()

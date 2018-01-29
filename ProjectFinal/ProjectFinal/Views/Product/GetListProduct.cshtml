@@ -44,7 +44,19 @@
                         </div>
                     </div>
                 </div>
-
+                @*<div class="w3ls_dresses_grid_left_grid">
+                    <h3>Sản Phẩm Đã Xem Gần Đây</h3>
+                    <div class="w3ls_dresses_grid_left_grid_sub">
+                        <div class="ecommerce_color ecommerce_size">
+                            @if (Request.Cookies["product"] != null)
+                            {
+                                <p>
+                                    @Request.Cookies["product"]["id"]
+                                </p>
+                            }
+                        </div>
+                    </div>
+                </div>*@
             </div>
             <div class="col-md-8 col-sm-8 women-dresses" id="listproduct" >
                 <div ng-if="Product.length==0">
