@@ -6,7 +6,7 @@
 
     <div class="main-agileits">
         <div class="form-w3agile">
-            <h3>Login</h3>
+            <h3>Đăng Nhập</h3>
                 
                     <div ng-if="error!=''" class="alert alert-danger">{{error}}</div>
             
@@ -18,13 +18,13 @@
                 </div>
                 <div class="key">
                     <i class="fa fa-lock" aria-hidden="true"></i>
-                    <input type="password" ng-model="password" name="Password" autocomplete="off" placeholder="Password" value="">
+                    <input type="password" ng-model="password" name="Password" autocomplete="off" placeholder="Mật Khẩu" value="">
                     <div class="clearfix"></div>
                 </div>
-                <input type="button" ng-click="loginform()" value="Login">
+                <input type="button" ng-click="loginform()" value="Đăng Nhập">
         </div>
         <div class="forg">
-            <a href="@Url.Action("forgetPassword","Customer")" class="forg-left">Forgot Password</a>
+            <a href="@Url.Action("forgetPassword","Customer")" class="forg-left">Quên Mật Khẩu</a>
            
                 @Html.ActionLink("Đăng Ký", "CreateCustomer", "Customer", new { @class = "forg-right" })
 

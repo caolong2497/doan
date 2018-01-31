@@ -548,7 +548,7 @@ app.controller('MobileController', function ($scope, $http) {
                     $scope.error_forgetEmail = "Địa chỉ Email không đúng";
                 } else {
                     $scope.error_forgetEmail = "";
-                    $scope.forgetEmail = "Email Hợp Lệ, Hãy đợi trong giây lát";
+                    $scope.forgetEmail = "Địa Chỉ Email Hợp Lệ, Hãy Kiểm Tra Email Của Bạn";
                     $http({
                         url: "/Customer/getCodeConfirm/",
                         method: "GET",
@@ -557,7 +557,7 @@ app.controller('MobileController', function ($scope, $http) {
                         result = response.data;
                         if (result == 1) {
                             $scope.error_forgetEmail = "";
-                            alert("Hãy Kiểm Tra Hộp Thư Của Bạn");
+
                             location.href = "/Customer/ConfirmCode";
                         } else {
                             $scope.error_forgetEmail = "Đang có lỗi,hãy thử lại sau";
